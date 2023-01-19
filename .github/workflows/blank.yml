@@ -32,16 +32,22 @@ jobs:
         run: |
          dotnet pack ./working
          
+      #- name: Find created nuget
+       # id: findcreatednuget        
+        #run: |
+         #   cd ./working/bin/Debug/
+          #  $myvar = dir *.nupkg /b
+           # echo ::set-output name=nugetPackageName::$($myvar)
+        #shell: cmd
+        
       - name: Find created nuget
         id: findcreatednuget        
         run: |
-            cd ./working/bin/Debug/
-            $myvar = dir *.nupkg /b
-            echo ::set-output name=nugetPackageName::$($myvar)
+          cd ./working/bin/Debug/
+          echo "{nugetPackageName}={dir *.nupkg /b}" >> $GITHUB_OUTPUT
         shell: cmd
         
-
-          
+        
       - name: Echo Found Package
         id: echoFoundPackage
         run: echo "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
