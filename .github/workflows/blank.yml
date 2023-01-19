@@ -28,14 +28,18 @@ jobs:
           nuget-api-key: ${{ secrets.NuGetAPIKey }}
           nuget-version: '6.x'
           
+#      - name: Create NuGet Package
+#       run: |
+#       nuget pack template.nuspec -NoDefaultExcludes -NonInteractive
+
       - name: Create NuGet Package
         run: |
-         nuget pack template.nuspec -NoDefaultExcludes -NonInteractive
-         
+         dotnet build ./working
+
       - name: Find created nuget
         id: findcreatednuget        
         run: |
-          echo "nugetPackageName=$(dir *.nupkg /b)" >> $env:GITHUB_OUTPUT
+          echo "nugetPackageName=$(dir ./working/*.nupkg /b)" >> $env:GITHUB_OUTPUT
         shell: cmd
         
       - name: Echo Found Package
