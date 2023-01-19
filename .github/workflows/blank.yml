@@ -42,7 +42,13 @@ jobs:
         env:
           CERTIFICATE_BASE64: ${{  secrets.SKYLINEPFX }}
         run: |
-          echo $CERTIFICATE_BASE64 | base64 --decode > Skyline.pfx
+          echo $CERTIFICATE_BASE64 > encodedSignatureFile
+        shell: cmd
+        
+      - name: Decrypt Signature File
+        id: decryptSignatureFile
+        run: |
+          echo certutil -decode encodedSignatureFile Skyline.pfx
         shell: cmd
         
       - name: Sign NuGet Package
