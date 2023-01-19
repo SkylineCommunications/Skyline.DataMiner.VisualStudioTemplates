@@ -37,6 +37,11 @@ jobs:
         run: echo "nugetPackageName=$(dir *.nupkg /b)" >> $env:GITHUB_OUTPUT
         shell: cmd
         
+      - name: Echo Found Package
+        id: echoFoundPackage
+        run: echo "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
+        shell: cmd
+        
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
         env:
