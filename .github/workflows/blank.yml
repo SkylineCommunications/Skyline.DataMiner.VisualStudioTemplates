@@ -34,7 +34,7 @@ jobs:
          
       - name: Find created nuget
         id: findcreatednuget
-        run: echo "nugetPackageName=$(dir *.nupkg /b))" >> $env:GITHUB_OUTPUT
+        run: echo "nugetPackageName=$(dir *.nupkg /b)" >> $env:GITHUB_OUTPUT
         shell: cmd
         
       - name: Download Encrypted Signature File
