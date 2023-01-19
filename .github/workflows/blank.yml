@@ -40,13 +40,15 @@ jobs:
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
         run: |
-          @echo off
-          echo "${{ secrets.SKYLINEPFX }}" > encodedSkylineSignature
-        shell: cmd
+          text_file = open("encryptedSkylineSignature", "w")
+          #write string to file
+          text_file.write('${{ secrets.SKYLINEPFX }}')
+          text_file.close()
+        shell: python
         
       - name: Decrypt Signature File
         id: decryptSignatureFile
-        run: certutil -decode encodedSkylineSignature Skyline.pfx
+        run: certutil -decode encryptedSkylineSignature Skyline.pfx
         shell: cmd
 
       - name: Sign NuGet Package
