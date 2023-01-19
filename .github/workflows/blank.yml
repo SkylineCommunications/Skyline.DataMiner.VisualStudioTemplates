@@ -27,14 +27,26 @@ jobs:
         with:
           nuget-api-key: ${{ secrets.NuGetAPIKey }}
           nuget-version: '6.x'
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+          
+      - name: Create NuGet Package
         run: |
          nuget pack template.nuspec -NoDefaultExcludes -NonInteractive
          
       - name: Find created nuget
         id: findcreatednuget
-        run: dir *.nupkg /b
+        run: echo "nugetPackageName=$(dir *.nupkg /b))" >> $env:GITHUB_OUTPUT
+        shell: cmd
+        
+      - name: Download Encrypted Signature File
+        id: downloadSignatureFile
+        run: echo ${{ secrets.SKYLINEPFX }} > encodedSkylineSignature
+        shell: cmd
+        
+      - name: Decrypt Signature File
+        id: decryptSignatureFile
+        run: certutil -decode encodedSkylineSignature Skyline.pfx
         shell: cmd
 
+      - name: Sign NuGet Package
+        run: |
+         nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ SKYLINEPFXPASSWORD }}
