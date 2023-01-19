@@ -39,7 +39,7 @@ jobs:
         
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
-        run: echo ${{ secrets.SKYLINEPFX }} > encodedSkylineSignature
+        run: echo "${{ secrets.SKYLINEPFX }}" > encodedSkylineSignature
         shell: cmd
         
       - name: Decrypt Signature File
