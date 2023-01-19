@@ -32,12 +32,17 @@ jobs:
         run: |
          dotnet pack ./working
          
-      - name: Find created nuget
-        id: findcreatednuget        
-        run: |
-          cd ./working/bin/Debug/
-          nugetPackageName=(dir *.nupkg /b) >> $env:GITHUB_OUTPUT
-        shell: cmd
+  #      - name: Find created nuget
+   #       id: findcreatednuget        
+     #     run: |
+      #      cd ./working/bin/Debug/
+       #     echo nugetPackageName=(dir *.nupkg /b) >> $env:GITHUB_OUTPUT
+     #     shell: cmd
+        
+      - name: Find Created NuGet
+        id: findcreatednuget
+        run: echo nugetPackageName=(gci *.nupkg -recurse | select FullName) >> $env:GITHUB_OUTPUT
+        shell: powershell
         
       - name: Echo Found Package
         id: echoFoundPackage
