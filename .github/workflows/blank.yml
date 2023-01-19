@@ -40,7 +40,8 @@ jobs:
       - name: Find created nuget
         id: findcreatednuget        
         run: |
-           dir "./working/bin/Debug/*.nupkg" /b
+          cd ./working/bin/Debug/
+          dir ./*.nupkg /b
         shell: cmd
         
       - name: Echo Found Package
