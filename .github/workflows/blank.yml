@@ -39,18 +39,12 @@ jobs:
         
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
+        env:
+          CERTIFICATE_BASE64: ${{  secrets.SKYLINEPFX }}
         run: |
-          text_file = open("encryptedSkylineSignature", "w")
-          #write string to file
-          text_file.write(${{ secrets.SKYLINEPFX }})
-          text_file.close()
-        shell: python
-        
-      - name: Decrypt Signature File
-        id: decryptSignatureFile
-        run: certutil -decode encryptedSkylineSignature Skyline.pfx
+          echo $CERTIFICATE_BASE64 | base64 --decode > Skyline.pfx
         shell: cmd
-
+        
       - name: Sign NuGet Package
         run: |
          nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
