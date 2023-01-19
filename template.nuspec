@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Skyline.DataMiner.Templates.DotNet.SrmFunctionSolution</id>
+        <version>1.0.1</version>
+        <title>Skyline.DataMiner.Templates.DotNet.SrmFunctionSolution</title>
+        <description>Skyline DataMiner SRM function dotnet solution template</description>
+        <authors>SkylineCommunications</authors>
+        <owners>Skyline Communications</owners>
+        <language>en-US</language>
+        <tags>DataMiner;DIS;Template</tags>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <copyright>2023 Skyline Communications</copyright>
+        <summary>This is a dotnet CLI template for a DataMiner SRM function solution.</summary>
+        <releaseNotes>Initial version.</releaseNotes>
+        <packageTypes>
+            <packageType name="Template" />
+        </packageTypes>
+    </metadata>
+</package>
