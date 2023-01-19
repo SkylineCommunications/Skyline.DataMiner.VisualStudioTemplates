@@ -33,8 +33,9 @@ jobs:
          nuget pack template.nuspec -NoDefaultExcludes -NonInteractive
          
       - name: Find created nuget
-        id: findcreatednuget
-        run: echo "nugetPackageName=$(dir *.nupkg /b)" >> $env:GITHUB_OUTPUT
+        id: findcreatednuget        
+        run: |
+          echo "nugetPackageName=$(dir *.nupkg /b)" >> $env:GITHUB_OUTPUT
         shell: cmd
         
       - name: Echo Found Package
