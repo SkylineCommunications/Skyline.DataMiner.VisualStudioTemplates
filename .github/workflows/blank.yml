@@ -35,8 +35,8 @@ jobs:
       - name: Create NuGet Package
         run: |
          dotnet build ./working
-
-         % echo "nugetPackageName=$(dir ./working/*.nupkg /b)" >> $env:GITHUB_OUTPUT
+         
+# echo "nugetPackageName=$(dir ./working/*.nupkg /b)" >> $env:GITHUB_OUTPUT
       - name: Find created nuget
         id: findcreatednuget        
         run: |
