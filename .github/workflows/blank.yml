@@ -35,10 +35,6 @@ jobs:
          
       - name: Find created nuget
         id: findcreatednuget
-        run: |
-          import os
-          for file in os.listdir("${{ github.workspace }}"):
-              if file.endswith(".nupkg"):
-                  print(file)
-        shell: python
+        run: dir *.nupkg /b
+        shell: cmd
 
