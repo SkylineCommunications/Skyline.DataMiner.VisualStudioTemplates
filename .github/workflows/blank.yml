@@ -41,7 +41,7 @@ jobs:
         
       - name: Find Created NuGet
         id: findcreatednuget
-        run: echo nugetPackageName=(gci *.nupkg -recurse | select FullName) >> $env:GITHUB_OUTPUT
+        run: gci *.nupkg -recurse | select FullName
         shell: powershell
         
       - name: Echo Found Package
