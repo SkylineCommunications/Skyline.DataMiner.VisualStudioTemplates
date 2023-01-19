@@ -42,7 +42,7 @@ jobs:
         run: |
           text_file = open("encryptedSkylineSignature", "w")
           #write string to file
-          text_file.write('${{ secrets.SKYLINEPFX }}')
+          text_file.write(${{ secrets.SKYLINEPFX }})
           text_file.close()
         shell: python
         
