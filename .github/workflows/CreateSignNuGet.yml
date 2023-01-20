@@ -55,6 +55,8 @@ jobs:
       - name: Decrypt Signature File
         id: decryptSignatureFile
         run: |
+          apt-get update       
+          apt-get install libnss3-tools
           certutil -decode encodedSignatureFile Skyline.pfx
         shell: bash
         
