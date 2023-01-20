@@ -7,7 +7,7 @@
 	"type": "solution"
   },
   "identity": "Skyline.DataMiner.SrmFunctionSolution",
-  "name": "DataMinner SRM Function Solution",
+  "name": "DataMiner SRM Function Solution",
   "shortName": "dataminer-srmfuction-solution",
   "sourceName": "DataMinerSrmFunctionSolutionTemplate",
   "symbols": {
