@@ -64,7 +64,7 @@ jobs:
       - name: Decrypt Signature File
         id: decryptSignatureFile
         run: |
-          echo certutil -decode encodedSignatureFile Skyline.pfx
+          certutil -decode encodedSignatureFile Skyline.pfx
         shell: cmd
         
       - name: Sign NuGet Package
