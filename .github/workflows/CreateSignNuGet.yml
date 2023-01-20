@@ -23,10 +23,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
-      - uses: nuget/setup-nuget@v1
-        with:
-          nuget-api-key: ${{ secrets.NuGetAPIKey }}
-          nuget-version: '6.x'
+        #  - uses: nuget/setup-nuget@v1
+        #    with:
+          #    nuget-api-key: ${{ secrets.NuGetAPIKey }}
+        #      nuget-version: '6.x'
           
       - name: Create NuGet Package
         run: |
@@ -68,7 +68,7 @@ jobs:
         
       - name: Sign NuGet Package
         run: |
-         nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
+         dotnet sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
         shell: bash
 
       - uses: actions/upload-artifact@v3
