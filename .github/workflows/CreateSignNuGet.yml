@@ -73,5 +73,5 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: MyNuGet.nupkg
+          name: NugetPackages
           path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
