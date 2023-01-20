@@ -59,12 +59,15 @@ jobs:
           CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX }}
         run: |
           'echo "$CERTIFICATE_BASE64" > encodedSignatureFile'
+        shell: bash
+          
       - name: Decrypt Signature File
         id: decryptSignatureFile
         run: |
           certutil -decode encodedSignatureFile Skyline.pfx
-        shell: cmd
+        shell: bash
         
       - name: Sign NuGet Package
         run: |
          nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
+        shell: bash
