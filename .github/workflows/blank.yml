@@ -44,7 +44,7 @@ jobs:
         id: findcreatednuget        
         run: |
           cd ./working/bin/Debug/
-          echo nugetPackageName=dir *.nupkg >> $GITHUB_OUTPUT
+          echo nugetPackageName=$(dir *.nupkg) >> $GITHUB_OUTPUT
         shell: bash
         
         
