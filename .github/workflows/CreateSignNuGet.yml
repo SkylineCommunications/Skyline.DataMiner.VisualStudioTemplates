@@ -52,12 +52,12 @@ jobs:
         run: 'echo "$CERTIFICATE_BASE64" > encodedSignatureFile'
         shell: bash
           
+      - name: Install certutil
+        run: sudo apt-get install libnss3-tools
+  
       - name: Decrypt Signature File
         id: decryptSignatureFile
-        run: |
-          apt-get update       
-          apt-get install libnss3-tools
-          certutil -decode encodedSignatureFile Skyline.pfx
+        run: certutil -decode encodedSignatureFile Skyline.pfx
         shell: bash
         
       - name: Sign NuGet Package
