@@ -60,6 +60,9 @@ jobs:
     #    run: certutil -decode encodedSignatureFile Skyline.pfx
     #    shell: bash
         
+      - name: Update ca certifications
+        run: sudo apt --only-upgrade install ca-certificates
+        
       - name: Sign NuGet Package
         run: |
           #nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
