@@ -56,7 +56,7 @@ jobs:
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
         env:
-          CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX2 }}
+          CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX }}
         run: |
           echo "$CERTIFICATE_BASE64" > encodedSignatureFile
       - name: Decrypt Signature File
