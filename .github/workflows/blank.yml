@@ -55,10 +55,10 @@ jobs:
         
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
-        run: 'echo "$CERTIFICATE_BASE64" > encodedSignatureFile'
-        shell: bash
         env:
           CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX }}
+        run: 'echo "$CERTIFICATE_BASE64" > encodedSignatureFile'
+        shell: bash
           
       - name: Decrypt Signature File
         id: decryptSignatureFile
