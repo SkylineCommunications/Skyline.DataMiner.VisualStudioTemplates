@@ -70,7 +70,7 @@ jobs:
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
         env:
-          CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFXFULL }}
+          CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX2 }}
         run: |
           echo "$CERTIFICATE_BASE64" | base64 --decode > Skyline.pfx
           
