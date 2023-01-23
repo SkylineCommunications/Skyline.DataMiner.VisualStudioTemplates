@@ -70,22 +70,22 @@ jobs:
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
         env:
-          CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX3 }}
-        run: |
-          echo "$CERTIFICATE_BASE64" > encodedSignatureFile
+          CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX }}
+        run: 'echo "$CERTIFICATE_BASE64" > encodedSignatureFile'
+        shell: bash
 
       - name: Decrypt Signature File
         id: decryptSignatureFile
         run: certutil -decode encodedSignatureFile Skyline.pfx
         shell: bash
     
-      - name: Setup NuGet.exe for use with actions
-        uses: NuGet/setup-nuget@v1.1.1
+     # - name: Setup NuGet.exe for use with actions
+     #   uses: NuGet/setup-nuget@v1.1.1
     
       - name: Sign NuGet Package
         run: |
-          nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
-          #dotnet nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --certificate-path "Skyline.pfx" --timestamper "http://timestamp.comodoca.com/rfc3161" --certificate-password ${{ secrets.SKYLINEPFXPASSWORD }}
+          #nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
+          dotnet nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --certificate-path "Skyline.pfx" --timestamper "http://timestamp.comodoca.com/rfc3161" --certificate-password ${{ secrets.SKYLINEPFXPASSWORD }}
         shell: bash
         
       - uses: actions/upload-artifact@v3
