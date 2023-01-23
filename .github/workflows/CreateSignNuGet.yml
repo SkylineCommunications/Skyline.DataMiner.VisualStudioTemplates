@@ -19,7 +19,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
@@ -45,30 +44,47 @@ jobs:
         run: echo "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
         shell: bash
         
+      - uses: actions/upload-artifact@v3
+        with:
+          name: NugetPackages
+          path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
+
+    # Creates Signs and Pushes a NuGet from a Nuspec file called template.nuspec located in the root of workspace"
+  sign:
+      # The type of runner that the job will run on
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - name: Download Unsigned NuGet
+        id: downloadUnsignedNuget
+        uses: actions/download-artifact@v3
+        with:
+          name: NugetPackages
+          
+      - name: Find Nuget
+        id: findcreatednuget        
+        run: |
+          echo nugetPackageName=$(find . -type f -name '*.nupkg') >> $GITHUB_OUTPUT
+        shell: bash  
+        
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
         env:
           CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFXFULL }}
         run: |
           echo "$CERTIFICATE_BASE64" | base64 --decode > Skyline.pfx
-      
- #     - name: Install certutil
-  #      run: sudo apt-get install libnss3-tools
-  
-    #  - name: Decrypt Signature File
-    #    id: decryptSignatureFile
-    #    run: certutil -decode encodedSignatureFile Skyline.pfx
-    #    shell: bash
-        
-      - name: Update ca certifications
-        run: sudo apt --only-upgrade install ca-certificates
-        
+          
+        #  - name: Decrypt Signature File
+        #    id: decryptSignatureFile
+        #    run: certutil -decode encodedSignatureFile Skyline.pfx
+        #    shell: bash
+    
       - name: Sign NuGet Package
         run: |
           #nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
-          dotnet nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --certificate-path "Skyline.pfx" --timestamper "http://timestamp.comodoca.com/rfc3161" --certificate-password ${{ secrets.SKYLINEPFXFULLPASSWORD }}
+          dotnet sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --certificate-path "Skyline.pfx" --timestamper "http://timestamp.comodoca.com/rfc3161" --certificate-password ${{ secrets.SKYLINEPFXFULLPASSWORD }}
         shell: bash
-
+        
       - uses: actions/upload-artifact@v3
         with:
           name: NugetPackages
