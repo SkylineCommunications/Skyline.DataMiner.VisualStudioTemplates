@@ -15,19 +15,14 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # Creates Signs and Pushes a NuGet from a Nuspec file called template.nuspec located in the root of workspace"
+  # Creates from a Nuspec file called template.nuspec located in the root of workspace"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
-        #  - uses: nuget/setup-nuget@v1
-        #    with:
-          #    nuget-api-key: ${{ secrets.NuGetAPIKey }}
-        #      nuget-version: '6.x'
-          
+      
       - name: Create NuGet Package
         run: |
          dotnet pack ./working
@@ -45,27 +40,47 @@ jobs:
         run: echo "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
         shell: bash
         
+      - uses: actions/upload-artifact@v3
+        with:
+          name: NugetPackages
+          path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
+
+    # Signing cannot be done from linux environment (https://github.com/dotnet/runtime/issues/48794)
+  sign:
+      # The type of runner that the job will run on
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - name: Download Unsigned NuGet
+        id: downloadUnsignedNuget
+        uses: actions/download-artifact@v3
+        with:
+          name: NugetPackages
+          
+      - name: Find Nuget
+        id: findcreatednuget        
+        run: |
+          echo nugetPackageName=$(find . -type f -name '*.nupkg') >> $GITHUB_OUTPUT
+        shell: bash  
+        
       - name: Download Encrypted Signature File
         id: downloadSignatureFile
         env:
-          CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX3 }}
-        run: |
-          echo "$CERTIFICATE_BASE64" | base64 --decode > Skyline.pfx
-      
- #     - name: Install certutil
-  #      run: sudo apt-get install libnss3-tools
-  
-    #  - name: Decrypt Signature File
-    #    id: decryptSignatureFile
-    #    run: certutil -decode encodedSignatureFile Skyline.pfx
-    #    shell: bash
-        
+          CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX }}
+        run: 'echo "$CERTIFICATE_BASE64" > encodedSignatureFile'
+        shell: bash
+
+      - name: Decrypt Signature File
+        id: decryptSignatureFile
+        run: certutil -decode encodedSignatureFile Skyline.pfx
+        shell: bash
+    
       - name: Sign NuGet Package
         run: |
           #nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
           dotnet nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --certificate-path "Skyline.pfx" --timestamper "http://timestamp.comodoca.com/rfc3161" --certificate-password ${{ secrets.SKYLINEPFXPASSWORD }}
         shell: bash
-
+        
       - uses: actions/upload-artifact@v3
         with:
           name: NugetPackages
