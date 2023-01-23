@@ -15,18 +15,14 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # Creates Signs and Pushes a NuGet from a Nuspec file called template.nuspec located in the root of workspace"
+  # Creates from a Nuspec file called template.nuspec located in the root of workspace"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
-        #  - uses: nuget/setup-nuget@v1
-        #    with:
-          #    nuget-api-key: ${{ secrets.NuGetAPIKey }}
-        #      nuget-version: '6.x'
-          
+      
       - name: Create NuGet Package
         run: |
          dotnet pack ./working
@@ -49,7 +45,7 @@ jobs:
           name: NugetPackages
           path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
 
-    # Creates Signs and Pushes a NuGet from a Nuspec file called template.nuspec located in the root of workspace"
+    # Signing cannot be done from linux environment (https://github.com/dotnet/runtime/issues/48794)
   sign:
       # The type of runner that the job will run on
     runs-on: windows-latest
@@ -78,9 +74,6 @@ jobs:
         id: decryptSignatureFile
         run: certutil -decode encodedSignatureFile Skyline.pfx
         shell: bash
-    
-     # - name: Setup NuGet.exe for use with actions
-     #   uses: NuGet/setup-nuget@v1.1.1
     
       - name: Sign NuGet Package
         run: |
