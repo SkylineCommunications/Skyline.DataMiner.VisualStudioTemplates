@@ -8,8 +8,12 @@ This repository contains DataMiner templates that can be used with Visual Studio
 
 ## How to install
 
+
 1. Install the latest [.NET](https://dot.net)
 2. Run 'dotnet new install Skyline.DataMiner.VisualStudioTemplates' to install the templates.
+
+> **Note**
+> In the future, the above will be done automatically by DataMiner Integration Studio.
 
 ## How to use
 
