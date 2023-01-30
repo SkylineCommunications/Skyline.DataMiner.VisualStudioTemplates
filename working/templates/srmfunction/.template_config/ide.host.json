@@ -10,6 +10,14 @@
           "text": "The name of the script."
         },
         "isVisible": true      
+      },
+	  {       
+        "id": "Author",
+        "name": 
+        {
+          "text": "The author."
+        },
+        "isVisible": true      
       }
     ]
 }

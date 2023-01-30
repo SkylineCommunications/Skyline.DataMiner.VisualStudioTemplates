@@ -3,7 +3,11 @@
     "symbolInfo": {
         "ScriptName": {
             "longName": "script-name",
-            "shortName": "script"
+            "shortName": "name"
+        },
+		"Author": {
+            "longName": "author",
+            "shortName": "author"
         },
     }
 }

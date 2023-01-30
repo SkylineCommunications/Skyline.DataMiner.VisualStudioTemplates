@@ -1,6 +1,6 @@
 /*
 ****************************************************************************
-*  Copyright (c) 2023,  Skyline Communications NV  All Rights Reserved.    *
+*  Copyright (c) $COPYRIGHTYEAR$,  Skyline Communications NV  All Rights Reserved.    *
 ****************************************************************************
 
 By using this script, you expressly agree with the usage terms and
@@ -45,7 +45,7 @@ Revision History:
 
 DATE		VERSION		AUTHOR			COMMENTS
 
-dd/mm/2023	1.0.0.1		XXX, Skyline	Initial version
+$INITIALVERSIONDATE$	1.0.0.1		XXX, Skyline	Initial version
 ****************************************************************************
 */
 
