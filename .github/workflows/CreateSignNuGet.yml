@@ -107,5 +107,5 @@ jobs:
         
       - name: Push to NuGet.org
         run: |
-          dotnet nuget push "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --api-key ${{ secrets.NUGETAPI } --source https://api.nuget.org/v3/index.json
+          dotnet nuget push "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --api-key ${{ secrets.NUGETAPI }} --source https://api.nuget.org/v3/index.json
         shell: bash
