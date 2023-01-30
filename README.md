@@ -18,7 +18,7 @@ This repository contains DataMiner templates that can be used with Visual Studio
 1. Select DataMiner from the project type drop down.
 2. Select the template you want to install and follow the instructions.
 
-![Visual Studio New Project Window](https://github.com/SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates/blob/main/Images/VisualStudio-NewProject.png)
+![Visual Studio New Project Window](https://github.com/SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates/blob/main/images/VisualStudio-NewProject.png)
 
 ### Using the CLI
 
