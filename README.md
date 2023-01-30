@@ -26,6 +26,10 @@ This repository contains DataMiner templates that can be used with Visual Studio
 2. Run `dotnet new dataminer-srmfunction-solution --help` to see the available options.
 3. Run `dotnet new dataminer-srmfunction-solution ' with the required options along with any other options to create a solution from the template.
 
+## How to contribute
+
+To add additional templates, create a new template and put it under the templates folder. For more information about how to create a template, refer to [Custom templates for dotnet new](https://learn.microsoft.com/en-us/dotnet/core/tools/custom-templates).
+
 ## License
 
 This project is licensed under the [MIT License](https://github.com/SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates/blob/main/LICENSE). See the file for details.
