@@ -2,11 +2,6 @@
 
 This repository contains DataMiner templates that can be used with Visual Studio and the dotnet CLI.
 
-## Collaboration project
-This is the collaboration project being used to develop this: [NetInsight - Partner Management](https://collaboration.dataminer.services/project/14770/list)
-More details about the test setup can be found at TBD (link to internal-docs).
-
-
 ## Solution Templates
 
 ### SRM Function Solution
@@ -23,6 +18,8 @@ More details about the test setup can be found at TBD (link to internal-docs).
 1. Select DataMiner from the project type drop down.
 2. Select the template you want to install and follow the instructions.
 
+![Visual Studio New Project Window](https://github.com/SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates/blob/main/Images/VisualStudio-NewProject.png)
+
 ### Using the CLI
 
 1. Choose a project template i.e. `dataminer-srmfunction-solution`.
@@ -31,4 +28,4 @@ More details about the test setup can be found at TBD (link to internal-docs).
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates/blob/main/LICENSE) – see the file for details.
+This project is licensed under the [MIT License](https://github.com/SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates/blob/main/LICENSE). See the file for details.
