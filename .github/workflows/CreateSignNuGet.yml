@@ -7,6 +7,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+.[0-9]+"
   pull_request:
     branches: [ "main" ]
 
@@ -85,3 +87,25 @@ jobs:
         with:
           name: NugetPackages
           path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
+  push:
+    if: github.ref_type == 'tag'
+    name: push
+    runs-on: ubuntu-latest
+    needs: sign
+    steps:
+      - name: Download Signed NuGet
+        id: downloadSignedNuGet
+        uses: actions/download-artifact@v3
+        with:
+          name: NugetPackages
+          
+      - name: Find Nuget
+        id: findcreatednuget        
+        run: |
+          echo nugetPackageName=$(find . -type f -name '*.nupkg') >> $GITHUB_OUTPUT
+        shell: bash
+        
+      - name: Push to NuGet.org
+        run: |
+          dotnet nuget push "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --api-key ${{ secrets.NUGETAPI } --source https://api.nuget.org/v3/index.json
+        shell: bash
