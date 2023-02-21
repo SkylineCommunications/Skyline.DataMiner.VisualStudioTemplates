@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary1
+﻿namespace $PackageId$
 {
 	public class Class1
 	{

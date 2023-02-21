@@ -100,39 +100,5 @@
         }
       ]
     }
-  ],
-  "postActions": [
-    {
-      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
-      "args": {
-        "executable": "powershell.exe",
-        "args": "-ExecutionPolicy Bypass -File .\\UpdateSolutionReadme.ps1 -Ps_PackageID $PackageId$ -Ps_ProjectName $ProjectName$",
-        "redirectStandardOutput": true,
-        "redirectStandardError": true
-      },
-      "manualInstructions": [
-        {
-          "text": "Run 'UpdateSolutionReadme.ps1'"
-        }
-      ],
-      "continueOnError": true,
-      "description": "Update the readme file"
-    },
-    {
-      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
-      "args": {
-        "executable": "cmd.exe",
-        "args": "/C del UpdateSolutionReadme.ps1"
-      },
-      "manualInstructions": [
-        {
-          "text": "Delete 'UpdateSolutionReadme.ps1'"
-        }
-      ],
-      "continueOnError": false,
-      "description": "Delete the script file"
-    }
-  ]
-  
- 
+  ] 
 }
