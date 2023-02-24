@@ -6,7 +6,7 @@ $PackageDescription$
 
 ## Projects
 
-* For more information about $PackageId$, see [$$ProjectName$$/README.md]($$ProjectName$$/README.md).
+* For more information about $PackageId$, see [$ProjectName$/README.md]($ProjectName$/README.md).
 
 ### About DataMiner
 

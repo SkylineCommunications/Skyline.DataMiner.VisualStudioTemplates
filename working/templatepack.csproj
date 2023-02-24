@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.0.0.1-Demo4</PackageVersion>
+    <PackageVersion>1.0.0.1</PackageVersion>
     <PackageId>Skyline.DataMiner.VisualStudioTemplates</PackageId>
     <Title>DataMiner DotNet Templates</Title>
     <Authors>SkylineCommunications</Authors>
