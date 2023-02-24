@@ -4,10 +4,13 @@ This repository contains DataMiner templates that can be used with Visual Studio
 
 ## Solution Templates
 
-### SRM Function Solution
-### Automation Solution (WIP)
-### NuGet Solution (WIP)
-### NuGet Project (WIP)
+### NuGet Solution
+
+Visual Studio template that creates a Solution containing pre-filled meta-data to handle NuGet creation.
+
+### NuGet Project
+
+Visual Studio template that creates a Project containing pre-filled meta-data to handle NuGet creation.
 
 ## How to install
 
