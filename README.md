@@ -4,6 +4,8 @@ This repository contains DataMiner templates that can be used with Visual Studio
 
 ## Solution Templates
 
+The following section lists the currently available Visual Studio templates.
+
 ### NuGet Solution
 
 Visual Studio template that creates a Solution containing pre-filled meta-data to handle NuGet creation.
@@ -38,7 +40,7 @@ Visual Studio template that creates a Project containing pre-filled meta-data to
 
 ## How to contribute
 
-To add additional templates, create a new template and put it under the templates folder. For more information about how to create a template, refer to [Custom templates for dotnet new](https://learn.microsoft.com/en-us/dotnet/core/tools/custom-templates).
+To add additional templates, create a new template and put it under the working/templates folder. For more information about how to create a template, refer to [Custom templates for dotnet new](https://learn.microsoft.com/en-us/dotnet/core/tools/custom-templates).
 
 ## License
 
