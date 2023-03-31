@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json.schemastore.org/dotnetcli.host",
+    "symbolInfo": {
+		"ConnectorName": {
+			"longName": "connector-name",
+            "shortName": "cn"
+		},
+        "ProviderName": {
+            "longName": "provider-name",
+            "shortName": "pn"
+        },
+        "VendorName": {
+            "longName": "vendor-name",
+            "shortName": "vn"
+        },
+		"VendorOid": {
+            "longName": "vendor-oid",
+            "shortName": "vo"
+        },
+		"DeviceOid": {
+            "longName": "device-oid",
+            "shortName": "do"
+        },
+		"IntegrationId": {
+            "longName": "integration-id",
+            "shortName": "iid"
+        },
+		"ElementType": {
+            "longName": "element-type",
+            "shortName": "et"
+        },
+		"ConnectionType": {
+            "longName": "connection-type",
+            "shortName": "ct"
+        },
+		"Author": {
+            "longName": "author",
+            "shortName": "a"
+        },
+    }
+}
