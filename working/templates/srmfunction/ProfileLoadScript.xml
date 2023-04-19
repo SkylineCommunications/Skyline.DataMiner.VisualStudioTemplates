@@ -8,12 +8,27 @@
 	<Folder></Folder>
 
 	<Protocols>
+		<Protocol id="2">
+			<Description>Function DVE</Description>
+			<Name>$PROTOCOLNAME$.$FUNCTIONNAME$</Name>
+			<Version>Production</Version>
+			<DefaultElement></DefaultElement>
+		</Protocol>
 	</Protocols>
 
 	<Memory>
 	</Memory>
 
 	<Parameters>
+		<ScriptParameter id="3" type="string" values="">
+			<Description>Info</Description>
+		</ScriptParameter>
+		<ScriptParameter id="4" type="string" values="">
+			<Description>ProcessInfo</Description>
+		</ScriptParameter>
+		<ScriptParameter id="5" type="string" values="">
+			<Description>ProfileInstance</Description>
+		</ScriptParameter>
 	</Parameters>
 
 	<Script>

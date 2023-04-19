@@ -34,6 +34,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{8A00
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "$SCRIPTNAME$_1", "$SCRIPTNAME$_1\$SCRIPTNAME$_1.csproj", "{C99E3ABD-DE32-45FA-9FB7-8C9B659E11C1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{0A65DF85-1067-44AA-B14B-451BEF792C9D}"
+	ProjectSection(SolutionItems) = preProject
+		Functions\Functions.xml = Functions\Functions.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Definitions", "Definitions", "{32075BA8-6E1E-476A-AA0F-5EB0933E15A2}"
+	ProjectSection(SolutionItems) = preProject
+		Profile Data\Definitions\$PROFILEDEFINITIONNAME$.json = Profile Data\Definitions\$PROFILEDEFINITIONNAME$.json
+		Profile Data\Definitions\readme.md = Profile Data\Definitions\readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Instances", "Instances", "{37441868-41FC-42BB-9C33-3B53C1E47D3A}"
+	ProjectSection(SolutionItems) = preProject
+		Profile Data\Instances\readme.md = Profile Data\Instances\readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parameters", "Parameters", "{8655A8D5-58BB-41E7-A572-55EE00F07426}"
+	ProjectSection(SolutionItems) = preProject
+		Profile Data\Parameters\readme.md = Profile Data\Parameters\readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +74,9 @@ Global
 		{510B47A0-A1C9-4AD1-A708-CF5E9EBE9571} = {BC89B906-BFA7-4178-AB35-1B3211D7E19E}
 		{8A001798-583D-4A9E-8532-3F6055D10078} = {510B47A0-A1C9-4AD1-A708-CF5E9EBE9571}
 		{C99E3ABD-DE32-45FA-9FB7-8C9B659E11C1} = {8A001798-583D-4A9E-8532-3F6055D10078}
+		{32075BA8-6E1E-476A-AA0F-5EB0933E15A2} = {BC89B906-BFA7-4178-AB35-1B3211D7E19F}
+		{37441868-41FC-42BB-9C33-3B53C1E47D3A} = {BC89B906-BFA7-4178-AB35-1B3211D7E19F}
+		{8655A8D5-58BB-41E7-A572-55EE00F07426} = {BC89B906-BFA7-4178-AB35-1B3211D7E19F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {955EC3A7-7D84-4299-A6B2-58C6448D71ED}

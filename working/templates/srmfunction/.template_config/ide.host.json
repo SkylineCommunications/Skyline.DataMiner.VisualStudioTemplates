@@ -18,6 +18,30 @@
           "text": "The author."
         },
         "isVisible": true      
-      }
+      },
+	  {       
+        "id": "FunctionName",
+        "name": 
+        {
+          "text": "The name of the SRM function."
+        },
+        "isVisible": true      
+      },
+	  {       
+        "id": "ProtocolName",
+        "name": 
+        {
+          "text": "The name of the connector associated with the SRM function."
+        },
+        "isVisible": true      
+      },
+	  {       
+        "id": "ProfileDefinitionName",
+        "name": 
+        {
+          "text": "The name of the profile definition."
+        },
+        "isVisible": true      
+      },
     ]
 }

@@ -9,5 +9,17 @@
             "longName": "author",
             "shortName": "author"
         },
+		"FunctionName": {
+			"longName": "function-name",
+            "shortName": "function-name"
+		},
+		"ProtocolName": {
+			"longName": "protocol-name",
+            "shortName": "protocol-name"
+		},
+		"ProfileDefinitionName": {
+			"longName": "profile-definition-name",
+            "shortName": "profile-definition-name"
+		},
     }
 }

@@ -1,0 +1,1 @@
+This folder contains Profile Instance JSON files associated with this SRM Function solution.

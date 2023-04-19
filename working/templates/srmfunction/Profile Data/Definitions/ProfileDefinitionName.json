@@ -1,0 +1,20 @@
+{
+    "TableProfileDefinitions": [],
+    "ParameterSettings": {},
+    "ID": "$PROFILEDEFINITIONID$",
+    "Parameters": [],
+    "Scripts": [
+        {
+            "Name": "$SCRIPTNAME$",
+            "Description": "Profile-Load script for function $FUNCTIONNAME$",
+            "Script": "$SCRIPTNAME$"
+        }
+    ],
+    "ServiceProfileDefinitionID": "00000000-0000-0000-0000-000000000000",
+    "TrackLastModified": "$PROFILECREATEDAT$",
+    "Name": "$PROFILEDEFINITIONNAME$",
+    "CreatedBy": "$AUTHOR$",
+    "CreatedAt": "$PROFILECREATEDAT$",
+    "LastModifiedBy": "$AUTHOR$",
+    "LastModifiedAt": "$PROFILECREATEDAT$"
+}

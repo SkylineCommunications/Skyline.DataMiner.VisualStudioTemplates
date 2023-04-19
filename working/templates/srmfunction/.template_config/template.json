@@ -41,7 +41,49 @@
       "parameters": {
         "format": "yyyy-MM-dd"
       }
-	}
+	},
+	"FunctionName": {
+        "type": "parameter",
+        "datatype": "string",
+		"defaultValue": "",
+        "replaces": "$FUNCTIONNAME$",
+        "description": "The name of the SRM function."
+    },
+	"FunctionId": {
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "$FUNCTIONID$",
+	  "description": "The Id of the SRM function."
+    },
+	"ProtocolName": {
+        "type": "parameter",
+        "datatype": "string",
+		"defaultValue": "",
+        "replaces": "$PROTOCOLNAME$",
+        "description": "The name of the connector associated with the SRM function."
+    },
+	"ProfileDefinitionName": {
+        "type": "parameter",
+        "datatype": "string",
+		"defaultValue": "",
+        "replaces": "$PROFILEDEFINITIONNAME$",
+		"FileRename": "ProfileDefinitionName",
+        "description": "The name of the profile definition associated with the SRM function."
+    },
+	"ProfileDefinitionId": {
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "$PROFILEDEFINITIONID$",
+	  "description": "The Id of the profile definition."
+    },
+	"ProfileCreatedAt": {
+	  "type": "generated",
+	  "generator": "now",
+	  "replaces": "$PROFILECREATEDAT$",
+	  "parameters": {
+		  "format": "yyyy-MM-ddTHH:mm:ss.fffffffZ"
+		  }
+	},
   },
     "guids": [
     "E36AC6BE-8DD5-4353-BB79-822B92FAF41A",
