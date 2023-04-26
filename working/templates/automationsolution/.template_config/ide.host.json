@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json.schemastore.org/vs-2017.3.host",
+    "order": 0,
+    "icon": "icon.png",
+    "symbolInfo": [
+	  {       
+        "id": "ScriptName",
+        "name": 
+        {
+          "text": "The name of the Automation script."
+        },
+        "isVisible": true
+      },
+	  {       
+        "id": "Author",
+        "name": 
+        {
+          "text": "The author."
+        },
+        "isVisible": true      
+      }
+    ]
+}

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net462</TargetFramework>
+		<AssemblyTitle>$SCRIPTNAME$_1</AssemblyTitle>
+		<Company>Skyline Communications</Company>
+		<Copyright>© Skyline Communications</Copyright>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugType>full</DebugType>
+		<CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-debug.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.1.0.6" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ProjectExtensions>
+	    <VisualStudio>
+		    <UserProperties DisLinkedXmlFile="..\$SCRIPTNAME$.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
+        </VisualStudio>
+	</ProjectExtensions>
+</Project>

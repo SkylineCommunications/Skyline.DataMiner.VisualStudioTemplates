@@ -2,14 +2,8 @@
 	<PropertyGroup>
 		<PlatformTarget>x86</PlatformTarget>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-debug.ruleset</CodeAnalysisRuleSet>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
-    </PropertyGroup>
 	<ItemGroup>
         <AdditionalFiles Include="..\Internal\Code Analysis\stylecop.json" />
-        <Content Include="..\Internal\Code Analysis\.editorconfig" />
+        <Content Include="..\Internal\.editorconfig" />
     </ItemGroup>
 </Project>

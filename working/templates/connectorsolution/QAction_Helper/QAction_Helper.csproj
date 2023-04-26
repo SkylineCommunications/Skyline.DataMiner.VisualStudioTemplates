@@ -7,18 +7,12 @@
     <DocumentationFile>bin\$(Configuration)\QAction_Helper.xml</DocumentationFile>
     <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-debug.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
-  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Skyline.DataMiner.Dev.Protocol" Version="10.1.0.6" />
   </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties DisLinkId="" DisProjectType="qactionHelperProject" DisLinkedXmlFile="..\protocol.xml" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

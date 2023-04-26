@@ -15,9 +15,6 @@
     <DebugType>pdbonly</DebugType>
     <CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup>
-    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
-  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\QAction_Helper\QAction_Helper.csproj" />
   </ItemGroup>
@@ -27,4 +24,9 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties DisLinkId="1" DisProjectType="qactionProject" DisLinkedXmlFile="..\protocol.xml" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
