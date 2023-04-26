@@ -49,116 +49,119 @@ $INITIALVERSIONDATE$	1.0.0.1		XXX, Skyline	Initial version
 ****************************************************************************
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json;
-using Skyline.DataMiner.Automation;
-using Skyline.DataMiner.Library.Exceptions;
-using Skyline.DataMiner.Library.Solutions.SRM.LifecycleServiceOrchestration;
-using Skyline.DataMiner.Library.Solutions.SRM.Logging.Orchestration;
-using Skyline.DataMiner.Net.Profiles;
-
-/// <summary>
-/// DataMiner Script Class.
-/// </summary>
-public class Script
+namespace SRM.PLS.$SCRIPTNAME$
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using Newtonsoft.Json;
+	using Skyline.DataMiner.Automation;
+	using Skyline.DataMiner.Library.Exceptions;
+	using Skyline.DataMiner.Library.Solutions.SRM.LifecycleServiceOrchestration;
+	using Skyline.DataMiner.Library.Solutions.SRM.Logging.Orchestration;
+	using Skyline.DataMiner.Net.Profiles;
+
 	/// <summary>
-	/// The Script entry point.
+	/// DataMiner Script Class.
 	/// </summary>
-	/// <param name="engine">Link with SLAutomation process.</param>
-	public void Run(Engine engine)
+	public class Script
 	{
-		var configurationInfo = LoadResourceConfigurationInfo(engine);
-		var nodeProfileConfiguration = LoadNodeProfileConfiguration(engine);
-		var helper = new ProfileParameterEntryHelper(engine, configurationInfo?.OrchestrationLogger);
-		
-		var element = engine.GetDummy("Function DVE");
-		
-		try
+		/// <summary>
+		/// The Script entry point.
+		/// </summary>
+		/// <param name="engine">Link with SLAutomation process.</param>
+		public void Run(Engine engine)
 		{
-			helper.Log($"Executing profile-Load with Action {configurationInfo?.ProfileAction}", LogEntryType.Info);
+			var configurationInfo = LoadResourceConfigurationInfo(engine);
+			var nodeProfileConfiguration = LoadNodeProfileConfiguration(engine);
+			var helper = new ProfileParameterEntryHelper(engine, configurationInfo?.OrchestrationLogger);
 
-			// EXAMPLE to retrieve the Node Profile Parameter Entries, including interfaces.
-			var allProfileParameterEntries = helper.GetNodeProfileParameterEntries(
-				configurationInfo,
-				nodeProfileConfiguration,
-				includeInterfaceParameters: true).ToList();
+			var element = engine.GetDummy("Function DVE");
 
-			// EXAMPLE to retrieve all SrmParametersConfigurations
-			var parametersConfiguration = helper.GetNodeSrmParametersConfiguration(configurationInfo, nodeProfileConfiguration).ToList();
-			foreach (var config in parametersConfiguration)
+			try
 			{
-				string value = config.Value.Type == ParameterValue.ValueType.Double ? Convert.ToString(config.Value.DoubleValue) : config.Value.StringValue;
-				helper.Log($"Parameter configuration {config.ProfileParameterName} with table key {config.ResourceKey}, parameter Id {config.ProtocolParameterId} and value {value}.", LogEntryType.Info);
+				helper.Log($"Executing profile-Load with Action {configurationInfo?.ProfileAction}", LogEntryType.Info);
+
+				// EXAMPLE to retrieve the Node Profile Parameter Entries, including interfaces.
+				var allProfileParameterEntries = helper.GetNodeProfileParameterEntries(
+					configurationInfo,
+					nodeProfileConfiguration,
+					includeInterfaceParameters: true).ToList();
+
+				// EXAMPLE to retrieve all SrmParametersConfigurations
+				var parametersConfiguration = helper.GetNodeSrmParametersConfiguration(configurationInfo, nodeProfileConfiguration).ToList();
+				foreach (var config in parametersConfiguration)
+				{
+					string value = config.Value.Type == ParameterValue.ValueType.Double ? Convert.ToString(config.Value.DoubleValue) : config.Value.StringValue;
+					helper.Log($"Parameter configuration {config.ProfileParameterName} with table key {config.ResourceKey}, parameter Id {config.ProtocolParameterId} and value {value}.", LogEntryType.Info);
+				}
+
+				helper.Log($"Successfully configured resource", LogEntryType.Info);
+			}
+			catch (Exception e)
+			{
+				helper.Log($"Failed to execute profile-load script with action {configurationInfo?.ProfileAction} due to {e}", LogEntryType.Critical);
+				throw;
+			}
+		}
+
+		/// <summary>
+		/// Loads the profile instance.
+		/// </summary>
+		/// <param name="engine">The engine reference.</param>
+		/// <returns>The <see cref="ProfileInstance"/> object.</returns>
+		/// <exception cref="ArgumentException">In case there is no 'ProfileInstance' input parameter defined.</exception>
+		/// <exception cref="ProfileManagerException">In case the profile instance is not found.</exception>
+		private static NodeProfileConfiguration LoadNodeProfileConfiguration(Engine engine)
+		{
+			var instancePlaceHolder = engine.GetScriptParam("ProfileInstance");
+			if (instancePlaceHolder == null)
+			{
+				throw new ArgumentException("There is no input parameter named Info");
 			}
 
-			helper.Log($"Successfully configured resource", LogEntryType.Info);
-		}
-		catch (Exception e)
-		{
-			helper.Log($"Failed to execute profile-load script with action {configurationInfo?.ProfileAction} due to {e}", LogEntryType.Critical);
-			throw;
-		}
-	}
-	
-	/// <summary>
-	/// Loads the profile instance.
-	/// </summary>
-	/// <param name="engine">The engine reference.</param>
-	/// <returns>The <see cref="ProfileInstance"/> object.</returns>
-	/// <exception cref="ArgumentException">In case there is no 'ProfileInstance' input parameter defined.</exception>
-	/// <exception cref="ProfileManagerException">In case the profile instance is not found.</exception>
-	private static NodeProfileConfiguration LoadNodeProfileConfiguration(Engine engine)
-	{
-		var instancePlaceHolder = engine.GetScriptParam("ProfileInstance");
-		if (instancePlaceHolder == null)
-		{
-			throw new ArgumentException("There is no input parameter named Info");
-		}
-
-		try
-		{
-			var data = JsonConvert.DeserializeObject<Dictionary<string, Guid>>(instancePlaceHolder.Value);
-
-			return new NodeProfileConfiguration(data);
-		}
-		catch (Exception ex)
-		{
-			throw new ArgumentException(string.Format("Invalid input parameter 'ProfileInstance': \r\n{0}", ex));
-		}
-	}
-
-	/// <summary>
-	/// Loads resource configuration info object.
-	/// </summary>
-	/// <param name="engine">The engine reference.</param>
-	/// <returns>The <see cref="SrmResourceConfigurationInfo"/> object.</returns>
-	/// <exception cref="ArgumentException">In case there is no 'Info' input parameter defined.</exception>
-	private static SrmResourceConfigurationInfo LoadResourceConfigurationInfo(Engine engine)
-	{
-		var infoPlaceHolder = engine.GetScriptParam("Info");
-		if (infoPlaceHolder == null)
-		{
-			throw new ArgumentException("There is no input parameter named Info");
-		}
-
-		try
-		{
-			var resourceConfiguration = JsonConvert.DeserializeObject<SrmResourceConfigurationInfo>(infoPlaceHolder.Value);
-			if (resourceConfiguration == null)
+			try
 			{
-				throw new ArgumentException(
-					string.Format("Could not effectively deserialize the 'Info' parameter {0}.", infoPlaceHolder.Value));
+				var data = JsonConvert.DeserializeObject<Dictionary<string, Guid>>(instancePlaceHolder.Value);
+
+				return new NodeProfileConfiguration(data);
+			}
+			catch (Exception ex)
+			{
+				throw new ArgumentException(string.Format("Invalid input parameter 'ProfileInstance': \r\n{0}", ex));
+			}
+		}
+
+		/// <summary>
+		/// Loads resource configuration info object.
+		/// </summary>
+		/// <param name="engine">The engine reference.</param>
+		/// <returns>The <see cref="SrmResourceConfigurationInfo"/> object.</returns>
+		/// <exception cref="ArgumentException">In case there is no 'Info' input parameter defined.</exception>
+		private static SrmResourceConfigurationInfo LoadResourceConfigurationInfo(Engine engine)
+		{
+			var infoPlaceHolder = engine.GetScriptParam("Info");
+			if (infoPlaceHolder == null)
+			{
+				throw new ArgumentException("There is no input parameter named Info");
 			}
 
-			return resourceConfiguration;
-		}
-		catch (Exception)
-		{
-			// Whenever an invalid or empty JSON is passed, we should support the basic flow and retrieve parameters straight from the profile instance.
-			return new SrmResourceConfigurationInfo();
+			try
+			{
+				var resourceConfiguration = JsonConvert.DeserializeObject<SrmResourceConfigurationInfo>(infoPlaceHolder.Value);
+				if (resourceConfiguration == null)
+				{
+					throw new ArgumentException(
+						string.Format("Could not effectively deserialize the 'Info' parameter {0}.", infoPlaceHolder.Value));
+				}
+
+				return resourceConfiguration;
+			}
+			catch (Exception)
+			{
+				// Whenever an invalid or empty JSON is passed, we should support the basic flow and retrieve parameters straight from the profile instance.
+				return new SrmResourceConfigurationInfo();
+			}
 		}
 	}
 }

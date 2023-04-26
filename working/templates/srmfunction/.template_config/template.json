@@ -53,14 +53,14 @@
       "type": "generated",
       "generator": "guid",
       "replaces": "$FUNCTIONID$",
-	  "description": "The Id of the SRM function."
+	  "description": "The ID of the SRM function."
     },
 	"ProtocolName": {
         "type": "parameter",
         "datatype": "string",
 		"defaultValue": "",
         "replaces": "$PROTOCOLNAME$",
-        "description": "The name of the connector associated with the SRM function."
+        "description": "The name of the connector associated with this SRM function."
     },
 	"ProfileDefinitionName": {
         "type": "parameter",
@@ -68,13 +68,13 @@
 		"defaultValue": "",
         "replaces": "$PROFILEDEFINITIONNAME$",
 		"FileRename": "ProfileDefinitionName",
-        "description": "The name of the profile definition associated with the SRM function."
+        "description": "The name of the profile definition associated with this SRM function."
     },
 	"ProfileDefinitionId": {
       "type": "generated",
       "generator": "guid",
       "replaces": "$PROFILEDEFINITIONID$",
-	  "description": "The Id of the profile definition."
+	  "description": "The ID of the profile definition."
     },
 	"ProfileCreatedAt": {
 	  "type": "generated",

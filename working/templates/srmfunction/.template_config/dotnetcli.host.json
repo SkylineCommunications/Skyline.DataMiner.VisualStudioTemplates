@@ -11,15 +11,15 @@
         },
 		"FunctionName": {
 			"longName": "function-name",
-            "shortName": "function-name"
+            "shortName": "function"
 		},
 		"ProtocolName": {
 			"longName": "protocol-name",
-            "shortName": "protocol-name"
+            "shortName": "protocol"
 		},
 		"ProfileDefinitionName": {
 			"longName": "profile-definition-name",
-            "shortName": "profile-definition-name"
+            "shortName": "definition"
 		},
     }
 }
