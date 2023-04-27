@@ -3,6 +3,6 @@
 	<Protocol>
 		<Name>$PROTOCOLNAME$</Name>
 	</Protocol>
-	<Function id="$FUNCTIONID$" name="$FUNCTIONNAME$" maxInstances="999" profile="$PROFILEDEFINITIONID$">
+	<Function id="$FUNCTIONID$" name="$FUNCTIONNAME$" maxInstances="0" profile="$PROFILEDEFINITIONID$">
 	</Function>
 </Functions>
