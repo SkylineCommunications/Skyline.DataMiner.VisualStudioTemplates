@@ -18,7 +18,7 @@ Visual Studio template that creates a Project containing pre-filled meta-data to
 
 
 1. Install the latest [.NET](https://dot.net)
-2. Run 'dotnet new install Skyline.DataMiner.VisualStudioTemplates' to install the templates.
+2. Run 'dotnet new --install Skyline.DataMiner.VisualStudioTemplates' to install the templates.
 
 > [!NOTE]
 > In the future, the above will be done automatically by DataMiner Integration Studio.
