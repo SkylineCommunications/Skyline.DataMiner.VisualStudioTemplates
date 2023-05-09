@@ -71,10 +71,8 @@ Any inquiries can be addressed to:
 	</Params>
 
 	<QActions>
-		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile">
-		</QAction>
-		<QAction id="2" name="After Startup" encoding="csharp" triggers="2">
-		</QAction>
+		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
+		<QAction id="2" name="After Startup" encoding="csharp" triggers="2" />
 	</QActions>
 
 	<Groups>

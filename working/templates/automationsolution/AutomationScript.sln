@@ -9,19 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{AEED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{0B4FC455-7B5E-4BB3-A0F4-9841F4D60D6C}"
 	ProjectSection(SolutionItems) = preProject
-		Dlls\AboutThisFolder.md = Dlls\AboutThisFolder.md
+		Dlls\About.md = Dlls\About.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CompanionFiles", "CompanionFiles", "{B25F1A08-DDF8-4579-A552-EC81190D8DD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Skyline DataMiner", "Skyline DataMiner", "{7027C535-EB99-4FDF-87C5-43B46A867C2E}"
 	ProjectSection(SolutionItems) = preProject
-		CompanionFiles\Skyline DataMiner\AboutThisFolder.md = CompanionFiles\Skyline DataMiner\AboutThisFolder.md
+		CompanionFiles\Skyline DataMiner\About.md = CompanionFiles\Skyline DataMiner\About.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{F8938D60-51A0-4880-9CFC-19C66379AE5D}"
 	ProjectSection(SolutionItems) = preProject
-		Documentation\AboutThisFolder.md = Documentation\AboutThisFolder.md
+		Documentation\About.md = Documentation\About.md
 		README.md = README.md
 	EndProjectSection
 EndProject
