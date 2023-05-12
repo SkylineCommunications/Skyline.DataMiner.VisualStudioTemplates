@@ -1,11 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
-    <AssemblyTitle>QAction_Helper</AssemblyTitle>
     <Company>Skyline Communications</Company>
     <Copyright>© Skyline Communications</Copyright>
-    <DocumentationFile>bin\$(Configuration)\QAction_Helper.xml</DocumentationFile>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Skyline.DataMiner.Dev.Protocol" Version="10.1.0.6" />
