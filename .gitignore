@@ -1,6 +1,6 @@
 **/bin/*
 **/obj/*
-.vs/*
+**/.vs/*
 packages/*
 **/.svn
 _git2_*
