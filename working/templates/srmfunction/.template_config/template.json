@@ -13,89 +13,94 @@
   "symbols": {
     "ScriptName": {
         "type": "parameter",
+        "isRequired": true,
         "datatype": "string",
-        "defaultValue": "ProfileLoadScript",
         "replaces": "$SCRIPTNAME$",
-		    "FileRename": "ProfileLoadScript",
+        "FileRename": "ProfileLoadScript",
         "description": "The name of the profile load script."
     },
     "Author": {
-      "type": "parameter",
-      "datatype": "string",
-      "defaultValue": "SKYLINE2\\",
-      "replaces": "$AUTHOR$",
-      "description": "The author."
-    },
-    "CopyrightYear": {
-      "type": "generated",
-      "generator": "now",
-      "replaces": "$COPYRIGHTYEAR$",
-      "parameters": {
-        "format": "yyyy"
-      }
-    },
-    "InitialVersionDate": {
-      "type": "generated",
-      "generator": "now",
-      "replaces": "$INITIALVERSIONDATE$",
-      "parameters": {
-        "format": "yyyy-MM-dd"
-      }
-	},
-	"FunctionName": {
+        "isRequired": true,
         "type": "parameter",
         "datatype": "string",
-		"defaultValue": "",
+        "defaultValue": "SKYLINE2\\",
+        "replaces": "$AUTHOR$",
+        "description": "The author."
+    },
+    "CopyrightYear": {
+        "type": "generated",
+        "generator": "now",
+        "replaces": "$COPYRIGHTYEAR$",
+        "parameters": {
+            "format": "yyyy"
+        }
+    },
+    "InitialVersionDate": {
+        "type": "generated",
+        "generator": "now",
+        "replaces": "$INITIALVERSIONDATE$",
+        "parameters": {
+            "format": "yyyy-MM-dd"
+        }
+    },
+	"FunctionName": {
+        "type": "parameter",
+        "isRequired": true,
+        "datatype": "string",
         "replaces": "$FUNCTIONNAME$",
         "description": "The name of the SRM function."
     },
-	"FunctionId": {
-      "type": "generated",
-      "generator": "guid",
-      "replaces": "$FUNCTIONID$",
-	  "description": "The ID of the SRM function."
+    "FunctionId": {
+        "type": "generated",
+        "generator": "guid",
+        "replaces": "$FUNCTIONID$",
+        "description": "The ID of the SRM function."
     },
-	"ProtocolName": {
+    "ProtocolName": {
         "type": "parameter",
+        "isRequired": true,
         "datatype": "string",
-		"defaultValue": "",
         "replaces": "$PROTOCOLNAME$",
         "description": "The name of the connector associated with this SRM function."
     },
-	"ProfileDefinitionName": {
+    "ProfileDefinitionName": {
         "type": "parameter",
+        "isRequired": true,
         "datatype": "string",
-		"defaultValue": "",
         "replaces": "$PROFILEDEFINITIONNAME$",
-		"FileRename": "ProfileDefinitionName",
+        "FileRename": "ProfileDefinitionName",
         "description": "The name of the profile definition associated with this SRM function."
     },
-	"ProfileDefinitionId": {
-      "type": "generated",
-      "generator": "guid",
-      "replaces": "$PROFILEDEFINITIONID$",
-	  "description": "The ID of the profile definition."
+    "ProfileDefinitionId": {
+        "type": "generated",
+        "generator": "guid",
+        "replaces": "$PROFILEDEFINITIONID$",
+        "description": "The ID of the profile definition."
     },
-	"ProfileCreatedAt": {
-	  "type": "generated",
-	  "generator": "now",
-	  "replaces": "$PROFILECREATEDAT$",
-	  "parameters": {
-		  "format": "yyyy-MM-ddTHH:mm:ss.fffffffZ"
-		  }
-	},
+    "ProfileCreatedAt": {
+        "type": "generated",
+        "generator": "now",
+        "replaces": "$PROFILECREATEDAT$",
+        "parameters": {
+            "format": "yyyy-MM-ddTHH:mm:ss.fffffffZ"
+        }
+    }
   },
-    "guids": [
-    "E36AC6BE-8DD5-4353-BB79-822B92FAF41A",
-    "BC89B906-BFA7-4178-AB35-1B3211D7E19E",
-	  "BC89B906-BFA7-4178-AB35-1B3211D7E19F",
-	  "5760BE30-3FBD-4869-B73C-F8E6854AA843",
-	  "62C82A52-AAA0-46CC-B3AE-5DF52B84A9C4",
-	  "D9DF9A8D-CC3E-4C79-BCD6-AFDA931CEC22",
-	  "510B47A0-A1C9-4AD1-A708-CF5E9EBE9571",
-	  "8A001798-583D-4A9E-8532-3F6055D10078",
-	  "C99E3ABD-DE32-45FA-9FB7-8C9B659E11C1"	
-  ],
+  "guids": [
+      "E36AC6BE-8DD5-4353-BB79-822B92FAF41A",
+      "BC89B906-BFA7-4178-AB35-1B3211D7E19E",
+      "BC89B906-BFA7-4178-AB35-1B3211D7E19F",
+      "5760BE30-3FBD-4869-B73C-F8E6854AA843",
+      "62C82A52-AAA0-46CC-B3AE-5DF52B84A9C4",
+      "D9DF9A8D-CC3E-4C79-BCD6-AFDA931CEC22",
+      "510B47A0-A1C9-4AD1-A708-CF5E9EBE9571",
+      "8A001798-583D-4A9E-8532-3F6055D10078",
+      "C99E3ABD-DE32-45FA-9FB7-8C9B659E11C1",
+      "0A65DF85-1067-44AA-B14B-451BEF792C9D",
+      "32075BA8-6E1E-476A-AA0F-5EB0933E15A2",
+      "37441868-41FC-42BB-9C33-3B53C1E47D3A",
+      "8655A8D5-58BB-41E7-A572-55EE00F07426"
+    ],
   "sources": [
     {
       "modifiers": [

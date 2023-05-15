@@ -11,12 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Profile Data", "Profile Dat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{5760BE30-3FBD-4869-B73C-F8E6854AA843}"
 	ProjectSection(SolutionItems) = preProject
-		Dlls\about.md = Dlls\about.md
+		Dlls\ABOUT.md = Dlls\ABOUT.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{62C82A52-AAA0-46CC-B3AE-5DF52B84A9C4}"
 	ProjectSection(SolutionItems) = preProject
-		Documentation\about.md = Documentation\about.md
+		Documentation\ABOUT.md = Documentation\ABOUT.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Analysis", "Code Analysis", "{D9DF9A8D-CC3E-4C79-BCD6-AFDA931CEC22}"
@@ -42,17 +42,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Definitions", "Definitions", "{32075BA8-6E1E-476A-AA0F-5EB0933E15A2}"
 	ProjectSection(SolutionItems) = preProject
 		Profile Data\Definitions\$PROFILEDEFINITIONNAME$.json = Profile Data\Definitions\$PROFILEDEFINITIONNAME$.json
-		Profile Data\Definitions\about.md = Profile Data\Definitions\about.md
+		Profile Data\Definitions\ABOUT.md = Profile Data\Definitions\ABOUT.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Instances", "Instances", "{37441868-41FC-42BB-9C33-3B53C1E47D3A}"
 	ProjectSection(SolutionItems) = preProject
-		Profile Data\Instances\about.md = Profile Data\Instances\about.md
+		Profile Data\Instances\ABOUT.md = Profile Data\Instances\ABOUT.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parameters", "Parameters", "{8655A8D5-58BB-41E7-A572-55EE00F07426}"
 	ProjectSection(SolutionItems) = preProject
-		Profile Data\Parameters\about.md = Profile Data\Parameters\about.md
+		Profile Data\Parameters\ABOUT.md = Profile Data\Parameters\ABOUT.md
 	EndProjectSection
 EndProject
 Global

@@ -20,6 +20,6 @@
 		"ProfileDefinitionName": {
 			"longName": "profile-definition-name",
             "shortName": "definition"
-		},
+		}
     }
 }

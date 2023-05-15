@@ -42,6 +42,6 @@
           "text": "The name of the profile definition."
         },
         "isVisible": true      
-      },
+      }
     ]
 }
