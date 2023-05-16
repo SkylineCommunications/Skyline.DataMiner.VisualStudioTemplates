@@ -27,6 +27,21 @@
         "replaces": "$AUTHOR$",
         "description": "The author."
     },
+    "AuthorJson": {
+        "isRequired": true,
+        "type": "generated",
+        "generator": "regex",
+        "parameters": {
+            "source": "Author",
+            "steps": [
+                {
+                    "regex": "\\\\",
+                    "replacement": "\\\\"
+                }
+            ]
+        },
+        "replaces": "$AUTHORJSON$"
+    },
     "CopyrightYear": {
         "type": "generated",
         "generator": "now",

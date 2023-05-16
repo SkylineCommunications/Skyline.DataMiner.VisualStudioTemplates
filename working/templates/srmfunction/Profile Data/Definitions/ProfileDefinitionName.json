@@ -13,8 +13,8 @@
     "ServiceProfileDefinitionID": "00000000-0000-0000-0000-000000000000",
     "TrackLastModified": "$PROFILECREATEDAT$",
     "Name": "$PROFILEDEFINITIONNAME$",
-    "CreatedBy": "$AUTHOR$",
+    "CreatedBy": "$AUTHORJSON$",
     "CreatedAt": "$PROFILECREATEDAT$",
-    "LastModifiedBy": "$AUTHOR$",
+    "LastModifiedBy": "$AUTHORJSON$",
     "LastModifiedAt": "$PROFILECREATEDAT$"
 }
