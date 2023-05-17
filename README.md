@@ -1,21 +1,28 @@
-# DataMiner Visual Studio Templates
+# DataMiner Visual Studio templates
 
 This repository contains DataMiner templates that can be used with Visual Studio and the dotnet CLI.
 
-## Solution Templates
+## Available templates
 
 The following section lists the currently available Visual Studio templates.
 
-### NuGet Solution
+### Connector solution
+
+Template that creates a new connector Visual Studio solution.
+
+### Automation script solution
+
+Template that creates a new Automation script Visual Studio solution.
+
+### NuGet solution
 
 Visual Studio template that creates a Solution containing pre-filled meta-data to handle NuGet creation.
 
-### NuGet Project
+### NuGet project
 
 Visual Studio template that creates a Project containing pre-filled meta-data to handle NuGet creation.
 
 ## How to install
-
 
 1. Install the latest [.NET](https://dot.net)
 2. Run 'dotnet new install Skyline.DataMiner.VisualStudioTemplates' to install the templates.
