@@ -60,6 +60,7 @@ Any inquiries can be addressed to:
 
 	<Compliancies>
 		<CassandraReady>true</CassandraReady>
+		<MinimumRequiredVersion>10.1.0.0 - 9966</MinimumRequiredVersion>
 	</Compliancies>
 
 	<Params>
