@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CompanionFiles", "Companion
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Skyline DataMiner", "Skyline DataMiner", "{7027C535-EB99-4FDF-87C5-43B46A867C2E}"
 	ProjectSection(SolutionItems) = preProject
-		CompanionFiles\Skyline DataMiner\About.md = CompanionFiles\Skyline DataMiner\About.md
+		CompanionFiles\Skyline DataMiner\AboutThisFolder.md = CompanionFiles\Skyline DataMiner\AboutThisFolder.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{F8938D60-51A0-4880-9CFC-19C66379AE5D}"
