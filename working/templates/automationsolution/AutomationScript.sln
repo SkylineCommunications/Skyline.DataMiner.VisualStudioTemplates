@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{AEED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{0B4FC455-7B5E-4BB3-A0F4-9841F4D60D6C}"
 	ProjectSection(SolutionItems) = preProject
-		Dlls\About.md = Dlls\About.md
+		Dlls\ABOUT.md = Dlls\ABOUT.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CompanionFiles", "CompanionFiles", "{B25F1A08-DDF8-4579-A552-EC81190D8DD7}"
@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Skyline DataMiner", "Skylin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{F8938D60-51A0-4880-9CFC-19C66379AE5D}"
 	ProjectSection(SolutionItems) = preProject
-		Documentation\About.md = Documentation\About.md
+		Documentation\ABOUT.md = Documentation\ABOUT.md
 		README.md = README.md
 	EndProjectSection
 EndProject
