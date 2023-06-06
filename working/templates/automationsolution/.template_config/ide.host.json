@@ -7,7 +7,7 @@
         "id": "ScriptName",
         "name": 
         {
-          "text": "The name of the Automation script."
+          "text": "Automation script name"
         },
         "isVisible": true
       },
@@ -15,7 +15,7 @@
         "id": "Author",
         "name": 
         {
-          "text": "The author."
+          "text": "Author"
         },
         "isVisible": true      
       }

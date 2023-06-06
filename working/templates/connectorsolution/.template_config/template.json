@@ -8,7 +8,7 @@
 	"editorTreatAs":"solution"
   },
   "identity": "Skyline.DataMiner.Connector.Solution.Template",
-  "name": "DataMiner Connector Solution",
+  "name": "DataMiner Connector Solution Test",
   "shortName": "dataminer-connector-solution",
   "sourceName": "SkylineDataMinerConnectorSolutionTemplate",
   "symbols": {
@@ -129,9 +129,9 @@
     "Author": {
           "type": "parameter",
           "datatype": "string",
-          "defaultValue": "SKYLINE2\\XXX",
+          "defaultValue": "XXX",
           "replaces": "$AUTHOR$",
-          "description": "The author."
+          "description": "The initials of the author."
       },
     "CopyrightYear": {
       "type": "generated",
@@ -161,7 +161,8 @@
 	"0AE1836F-A604-4DBC-83D0-8E7734874A0F",
 	"B1710A40-1D8A-4F10-9C09-10574F95268E",
 	"7CE8DFE1-219D-4437-ABF5-80781272986C",
-	"F2683535-3B81-4454-9E99-120E5016AACE"
+	"F2683535-3B81-4454-9E99-120E5016AACE",
+	"F8938D60-51A0-4880-9CFC-19C66379BB5D"
   ],
   "sources": [
     {

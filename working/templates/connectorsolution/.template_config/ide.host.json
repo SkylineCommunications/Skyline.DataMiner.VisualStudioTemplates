@@ -7,7 +7,7 @@
         "id": "ConnectorName",
         "name": 
         {
-          "text": "The name of the connector."
+          "text": "Connector name"
         },
         "isVisible": true
       },
@@ -15,7 +15,7 @@
         "id": "ProviderName",
         "name": 
         {
-          "text": "The name of the provider."
+          "text": "Provider name"
         },
         "isVisible": true      
       },
@@ -23,7 +23,7 @@
         "id": "VendorName",
         "name": 
         {
-          "text": "The name of the vendor."
+          "text": "Vendor name"
         },
         "isVisible": true      
       },
@@ -31,7 +31,7 @@
         "id": "VendorOid",
         "name": 
         {
-          "text": "The OID of the vendor."
+          "text": "Vendor OID"
         },
         "isVisible": true      
       },
@@ -39,7 +39,7 @@
         "id": "DeviceOid",
         "name": 
         {
-          "text": "The OID of the device."
+          "text": "Device OID"
         },
         "isVisible": true      
       },
@@ -47,7 +47,7 @@
         "id": "IntegrationId",
         "name": 
         {
-          "text": "The integration ID."
+          "text": "Integration ID"
         },
         "isVisible": true      
       },
@@ -55,7 +55,7 @@
         "id": "ElementType",
         "name": 
         {
-          "text": "The element type."
+          "text": "Element type"
         },
         "isVisible": true      
       },
@@ -63,7 +63,7 @@
         "id": "ConnectionType",
         "name": 
         {
-          "text": "The type of the first connection."
+          "text": "Type of the first connection"
         },
         "isVisible": true      
       },
@@ -71,7 +71,7 @@
         "id": "Author",
         "name": 
         {
-          "text": "The author."
+          "text": "Author"
         },
         "isVisible": true      
       },

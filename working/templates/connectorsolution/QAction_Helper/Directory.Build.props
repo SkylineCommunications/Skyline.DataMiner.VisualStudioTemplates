@@ -1,8 +1,2 @@
 <Project>
-	<PropertyGroup>
-		<PlatformTarget>x86</PlatformTarget>
-	</PropertyGroup>
-	<ItemGroup>
-        <Content Include="..\Internal\Code Analysis\.editorconfig" />
-    </ItemGroup>
 </Project>

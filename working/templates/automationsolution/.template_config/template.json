@@ -26,7 +26,7 @@
           "datatype": "string",
           "defaultValue": "SKYLINE2\\XXX",
           "replaces": "$AUTHOR$",
-          "description": "The author."
+          "description": "The domain name of the author."
       },
     "CopyrightYear": {
       "type": "generated",
