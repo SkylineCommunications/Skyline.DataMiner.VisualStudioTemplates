@@ -58,6 +58,21 @@
           }
         ]
       }
+	  },
+    "Namespace": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "replaces": "$NAMESPACE$",
+      "parameters": {
+        "source": "ScriptName",
+        "steps": [
+          {
+            "regex": "[\\s+]",
+            "replacement": "_"
+          }
+        ]
+      }
 	  }
   },
   "guids": [

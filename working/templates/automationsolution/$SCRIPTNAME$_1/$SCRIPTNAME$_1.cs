@@ -49,7 +49,7 @@ $INITIALVERSIONDATE$	1.0.0.1		$AUTHORVERSIONHISTORY$, Skyline	Initial version
 ****************************************************************************
 */
 
-namespace $SCRIPTNAME$_1
+namespace $NAMESPACE$_1
 {
 	using System;
 	using System.Collections.Generic;
