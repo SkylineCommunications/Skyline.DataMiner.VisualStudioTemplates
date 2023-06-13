@@ -8,7 +8,7 @@
 	"editorTreatAs":"solution"
   },
   "identity": "Skyline.DataMiner.Connector.Solution.Template",
-  "name": "DataMiner Connector Solution Test",
+  "name": "DataMiner Connector Solution",
   "shortName": "dataminer-connector-solution",
   "sourceName": "SkylineDataMinerConnectorSolutionTemplate",
   "symbols": {
