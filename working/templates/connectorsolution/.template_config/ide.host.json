@@ -1,0 +1,79 @@
+{
+    "$schema": "http://json.schemastore.org/vs-2017.3.host",
+    "order": 0,
+    "icon": "icon.png",
+    "symbolInfo": [
+	  {       
+        "id": "ConnectorName",
+        "name": 
+        {
+          "text": "Connector name"
+        },
+        "isVisible": true
+      },
+	  {       
+        "id": "ProviderName",
+        "name": 
+        {
+          "text": "Provider name"
+        },
+        "isVisible": true      
+      },
+      {       
+        "id": "VendorName",
+        "name": 
+        {
+          "text": "Vendor name"
+        },
+        "isVisible": true      
+      },
+      {       
+        "id": "VendorOid",
+        "name": 
+        {
+          "text": "Vendor OID"
+        },
+        "isVisible": true      
+      },
+	  {       
+        "id": "DeviceOid",
+        "name": 
+        {
+          "text": "Device OID"
+        },
+        "isVisible": true      
+      },
+	  {       
+        "id": "IntegrationId",
+        "name": 
+        {
+          "text": "Integration ID"
+        },
+        "isVisible": true      
+      },
+	  {       
+        "id": "ElementType",
+        "name": 
+        {
+          "text": "Element type"
+        },
+        "isVisible": true      
+      },
+	  {       
+        "id": "ConnectionType",
+        "name": 
+        {
+          "text": "Type of the first connection"
+        },
+        "isVisible": true      
+      },
+	  {       
+        "id": "Author",
+        "name": 
+        {
+          "text": "Author"
+        },
+        "isVisible": true      
+      },
+    ]
+}

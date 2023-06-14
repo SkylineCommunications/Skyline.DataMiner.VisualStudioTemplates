@@ -8,6 +8,7 @@
   },
   "identity": "Skyline.DataMiner.NuGetPackageProject",
   "name": "DataMiner NuGet Package Project",
+  "defaultName": "NuGetPackageProject1",
   "shortName": "dataminer-nuget-project",
   "sourceName": "DataMinerNuGetPackageProjectTemplate",
   "symbols": {

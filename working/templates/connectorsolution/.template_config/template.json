@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [ "DataMiner" ],
+  "tags": {
+	"language": "C#",
+	"type": "solution",
+	"editorTreatAs":"solution"
+  },
+  "identity": "Skyline.DataMiner.Connector.Solution.Template",
+  "name": "DataMiner Connector Solution",
+  "shortName": "dataminer-connector-solution",
+  "sourceName": "SkylineDataMinerConnectorSolutionTemplate",
+  "symbols": {
+    "ConnectorName": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "",
+        "replaces": "$CONNECTORNAME$",
+        "description": "The name of the connector.",
+		"isRequired": true
+    },
+    "ProviderName": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "Skyline Communications",
+        "replaces": "$PROVIDER$",
+        "description": "The provider name."
+    },
+	"VendorName": {
+        "type": "parameter",
+        "datatype": "string",
+        "replaces": "$VENDORNAME$",
+        "description": "The name of the vendor.",
+        "defaultValue": "",
+        "isRequired": true
+    },
+	"VendorOid": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "1.3.6.1.4.1.8813.2.",
+        "replaces": "$VENDOROID$",
+        "description": "The OID of the vendor.",
+        "isRequired": true
+    },
+	"DeviceOid": {
+        "type": "parameter",
+        "datatype": "string",
+        "replaces": "$DEVICEOID$",
+        "description": "The OID of the data source.",
+        "defaultValue": "",
+        "isRequired": true
+    },
+	"IntegrationId": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "DMS-DRV-",
+        "replaces": "$INTEGRATIONID$",
+        "description": "The integration ID."
+    },
+	"ElementType": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "",
+        "replaces": "$ELEMENTTYPE$",
+        "description": "The element type."
+    },
+	"ConnectionType": {
+        "type": "parameter",
+        "datatype": "choice",
+        "defaultValue": "virtual",
+        "replaces": "$CONNECTIONTYPE$",
+        "description": "The type of the main connection.",
+		    "choices": [
+        {
+          "choice": "gpib",
+          "description": "A GPIB connection."
+        },
+        {
+          "choice": "http",
+          "description": "An HTTP connection."
+        },
+        {
+          "choice": "opc",
+          "description": "An OPC connection."
+        },
+		    {
+          "choice": "serial",
+          "description": "A serial connection."
+        },
+        {
+          "choice": "serial single",
+          "description": "A serial single connection."
+        },
+		    {
+          "choice": "service",
+          "description": "A service."
+        },
+        {
+          "choice": "sla",
+          "description": "A service level agreement (SLA)."
+        },
+		    {
+          "choice": "smart-serial",
+          "description": "A smart serial connection."
+        },
+        {
+          "choice": "smart-serial single",
+          "description": "A dedicated smart serial connection."
+        },
+		    {
+          "choice": "snmp",
+          "description": "An SNMPv1 connection."
+        },
+        {
+          "choice": "snmpv2",
+          "description": "An SNMPv2c connection."
+        },
+		    {
+          "choice": "snmpv3",
+          "description": "An SNMPv3 connection."
+        },
+        {
+          "choice": "virtual",
+          "description": "A virtual connection."
+        }
+		]
+    },
+    "Author": {
+          "type": "parameter",
+          "datatype": "string",
+          "defaultValue": "XXX",
+          "replaces": "$AUTHOR$",
+          "description": "The initials of the author."
+      },
+    "CopyrightYear": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$COPYRIGHTYEAR$",
+      "parameters": {
+        "format": "yyyy"
+      }
+    },
+    "InitialVersionDate": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$INITIALVERSIONDATE$",
+      "parameters": {
+        "format": "yyyy-MM-dd"
+      }
+	  }
+  },
+  "guids": [
+    "1F2B2B24-15BE-4DE0-99F7-6531694672FB",
+	"81FC1C77-D739-4465-9327-5801075F1415",
+	"D04FCDE1-4B4C-4057-AAFC-6648C16AFA6D",
+	"AC30ABCF-8186-4D9D-861D-9C97113A5D7F",
+	"4FED5023-A264-444E-9E76-6845810D5CAA",
+	"35019015-5D5F-4281-B55C-91452FEF8BD5",
+	"DBC8E70F-9877-461A-936D-A1CF2148140A",
+	"0AE1836F-A604-4DBC-83D0-8E7734874A0F",
+	"B1710A40-1D8A-4F10-9C09-10574F95268E",
+	"7CE8DFE1-219D-4437-ABF5-80781272986C",
+	"F2683535-3B81-4454-9E99-120E5016AACE",
+	"F8938D60-51A0-4880-9CFC-19C66379BB5D"
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg" ]
+        }
+      ]
+    }
+  ]
+}
