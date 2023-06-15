@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [ "DataMiner" ],
+  "tags": {
+    "language": "C#",
+	 "type": "project"
+  },
+  "identity": "Skyline.DataMiner.NuGetPackageProject",
+  "name": "DataMiner NuGet Package Project",
+  "defaultName": "NuGetPackageProject1",
+  "shortName": "dataminer-nuget-project",
+  "sourceName": "DataMinerNuGetPackageProjectTemplate",
+  "symbols": {
+    "PackageId": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "Skyline.DataMiner.Utils.NAME",
+        "replaces": "$PackageId$",
+        "description": "The ID of the package. Must start with \"Skyline.DataMiner.\"",
+        "isRequired": true
+    },
+    "ProjectName": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "replaces": "$ProjectName$",
+      "FileRename": "$ProjectName$",
+      "parameters": {
+        "source": "PackageId",
+        "steps": [
+          {
+            "regex": "^Skyline\\.DataMiner\\.",
+            "replacement": ""
+          },
+          {
+            "regex": "test$",
+            "replacement": "[/Replaced]"
+          }
+        ]
+      }
+    },
+    "Description": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$PackageDescription$",
+      "description": "A short description about this NuGet package.",
+      "isRequired": true
+    },
+    "LicenseType": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "Skyline",
+      "description": "The type of license applicable for this package.",
+      "isRequired": true,
+      "choices": [
+        {
+          "choice": "Skyline",
+          "description": "Skyline license"
+        },
+        {
+          "choice": "MIT",
+          "description": "MIT license"
+        }
+      ]
+    },
+    "GitRepoUrl": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$GitRepoUrl$",
+      "description": "The URL of the Git repository. Leave empty if not hosted."
+    },
+    "isSkylineLicense": {
+      "type": "computed",
+      "value": "LicenseType == \"Skyline\""
+    },
+    "isMitLicense": {
+      "type": "computed",
+      "value": "LicenseType == \"MIT\""
+    },
+    "hasGitRepoUrl": {
+      "type": "computed",
+      "value": "GitRepoUrl != \"\""
+    },
+    "CopyrightYear": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$COPYRIGHTYEAR$",
+      "parameters": {
+        "format": "yyyy"
+      }
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg", "package/**" ]
+        }
+      ]
+    }
+  ] 
+}

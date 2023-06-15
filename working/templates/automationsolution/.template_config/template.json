@@ -24,16 +24,39 @@
     "Author": {
           "type": "parameter",
           "datatype": "string",
-          "defaultValue": "",
+          "defaultValue": "SKYLINE2\\XXX",
           "replaces": "$AUTHOR$",
-          "description": "The author."
+          "description": "The domain name of the author."
       },
+    "CopyrightYear": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$COPYRIGHTYEAR$",
+      "parameters": {
+        "format": "yyyy"
+      }
+    },
     "InitialVersionDate": {
       "type": "generated",
       "generator": "now",
       "replaces": "$INITIALVERSIONDATE$",
       "parameters": {
         "format": "dd/MM/yyyy"
+      }
+	  },
+    "AuthorVersionHistory": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "replaces": "$AUTHORVERSIONHISTORY$",
+      "parameters": {
+        "source": "Author",
+        "steps": [
+          {
+            "regex": "^SKYLINE2\\\\(.*?)$",
+            "replacement": "$1"
+          }
+        ]
       }
 	  },
     "Namespace": {
