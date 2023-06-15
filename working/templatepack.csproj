@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <PackageType>template</PackageType>
-    <PackageVersion>1.0.1</PackageVersion>
-    <PackageId>Skyline.DataMiner.VisualStudioTemplates.Internal</PackageId>
+    <PackageVersion>1.0.5</PackageVersion>
+    <PackageId>Skyline.DataMiner.VisualStudioTemplates</PackageId>
     <Title>DataMiner DotNet Templates</Title>
     <Authors>SkylineCommunications</Authors>
     <Description>This package contains DataMiner dotnet templates for use in Visual Studio and the dotnet CLI to be used by Skyline employees.</Description>
