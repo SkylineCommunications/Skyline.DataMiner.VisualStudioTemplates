@@ -14,14 +14,6 @@ Template that creates a new connector Visual Studio solution.
 
 Template that creates a new Automation script Visual Studio solution.
 
-### NuGet solution
-
-Visual Studio template that creates a Solution containing pre-filled meta-data to handle NuGet creation.
-
-### NuGet project
-
-Visual Studio template that creates a Project containing pre-filled meta-data to handle NuGet creation.
-
 ## How to install
 
 1. Install the latest [.NET](https://dot.net)
