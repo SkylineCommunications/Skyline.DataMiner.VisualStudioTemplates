@@ -16,11 +16,13 @@ Template that creates a new Automation script Visual Studio solution.
 
 ## How to install
 
+As of version 2.42, DataMiner Integration Studio (DIS) automatically installs the latest templates package when you open Visual Studio. If you don't have this version of DIS, then follow these steps:
+
 1. Install the latest [.NET](https://dot.net)
 2. Run 'dotnet new install Skyline.DataMiner.VisualStudioTemplates' to install the templates.
 
-> [!NOTE]
-> In the future, the above will be done automatically by DataMiner Integration Studio.
+> **Note**
+> *New to DIS?* If you haven’t used DIS before and want to find out all about this extension for Microsoft Visual Studio, visit our  [DIS expert Hub](https://pages.github.com/) on the DataMiner Dojo for more detailed information, downloads, and more.
 
 ## How to use
 
