@@ -14,21 +14,15 @@ Template that creates a new connector Visual Studio solution.
 
 Template that creates a new Automation script Visual Studio solution.
 
-### NuGet solution
-
-Visual Studio template that creates a Solution containing pre-filled meta-data to handle NuGet creation.
-
-### NuGet project
-
-Visual Studio template that creates a Project containing pre-filled meta-data to handle NuGet creation.
-
 ## How to install
+
+As of version 2.42, DataMiner Integration Studio (DIS) automatically installs the latest template package when you open Visual Studio. If you don't have this version of DIS, then follow these steps:
 
 1. Install the latest [.NET](https://dot.net)
 2. Run 'dotnet new install Skyline.DataMiner.VisualStudioTemplates' to install the templates.
 
-> [!NOTE]
-> In the future, the above will be done automatically by DataMiner Integration Studio.
+> **Note**
+> *New to DIS?* If you haven’t used DIS before and want to find out all about this extension for Microsoft Visual Studio, visit our  [DIS expert Hub](https://community.dataminer.services/exphub-dis/) on DataMiner Dojo for more detailed information, downloads, and more.
 
 ## How to use
 
