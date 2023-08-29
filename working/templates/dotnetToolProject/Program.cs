@@ -4,12 +4,12 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Checks what projects are Legacy style or SDK Style.
+    /// $PackageDescription$.
     /// </summary>
     public static class Program
     {
         /// <summary>
-        /// $PackageDescription$.
+        /// Code that will be called when running the tool.
         /// </summary>
         /// <param name="args">Extra arguments.</param>
         /// <returns>0 if successful.</returns>
