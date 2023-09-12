@@ -45,7 +45,7 @@
         "source": "ScriptName",
         "steps": [
           {
-            "regex": "[\\s+]",
+            "regex": "[\\s+-]",
             "replacement": "_"
           }
         ]
