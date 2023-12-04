@@ -4,6 +4,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<AssemblyName>$PackageId$</AssemblyName>
+		<RootNamespace>$PackageId$</RootNamespace>
 		<PackageVersion>1.0.1</PackageVersion>
 		<Version>1.0.1</Version>
 		<PackageTags>Skyline;DataMiner</PackageTags>
