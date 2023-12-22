@@ -55,7 +55,7 @@ jobs:
     steps:
       - name: Download Unsigned NuGet
         id: downloadUnsignedNuget
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: NugetPackages
           
@@ -95,7 +95,7 @@ jobs:
     steps:
       - name: Download Signed NuGet
         id: downloadSignedNuGet
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: NugetPackages
           
