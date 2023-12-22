@@ -29,9 +29,7 @@
 
             rootCommand.SetHandler(Process, exampleArgument);
 
-            await rootCommand.InvokeAsync(args);
-
-            return 0;
+            return await rootCommand.InvokeAsync(args);
         }
 
         private static async Task Process(string exampleArgument)
