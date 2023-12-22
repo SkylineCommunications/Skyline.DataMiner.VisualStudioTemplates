@@ -42,7 +42,7 @@ jobs:
         run: echo "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
         shell: bash
         
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: NugetPackages
           path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
@@ -83,7 +83,7 @@ jobs:
           dotnet nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --certificate-path "Skyline.pfx" --timestamper "http://timestamp.comodoca.com/rfc3161" --certificate-password ${{ secrets.SKYLINEPFXPASSWORD }}
         shell: bash
         
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: NugetPackages
           path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
