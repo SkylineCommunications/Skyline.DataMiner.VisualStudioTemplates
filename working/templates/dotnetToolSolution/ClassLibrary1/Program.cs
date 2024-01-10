@@ -8,6 +8,10 @@
     /// </summary>
     public static class Program
     {
+        /*
+         * Design guidelines for command line tools: https://learn.microsoft.com/en-us/dotnet/standard/commandline/syntax#design-guidance
+         */
+
         /// <summary>
         /// Code that will be called when running the tool.
         /// </summary>
@@ -16,7 +20,7 @@
         public static async Task<int> Main(string[] args)
         {
             var exampleArgument = new Option<string>(
-                name: "--exampleArgument",
+                name: "--example-argument",
                 description: "Just an example argument.")
             {
                 IsRequired = true
