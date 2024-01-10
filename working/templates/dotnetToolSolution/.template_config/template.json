@@ -40,10 +40,6 @@
           {
             "regex": "^Skyline\\.DataMiner\\.",
             "replacement": ""
-          },
-          {
-            "regex": "test$",
-            "replacement": "[/Replaced]"
           }
         ]
       }
