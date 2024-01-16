@@ -14,6 +14,10 @@ Template that creates a new connector Visual Studio solution.
 
 Template that creates a new Automation script Visual Studio solution.
 
+### User-defined APIs automation script solution
+
+Template that creates a new User-Defined API Automation script Visual Studio solution.
+
 ### NuGet solution
 
 Visual Studio template that creates a Solution containing pre-filled meta-data to handle NuGet creation.
