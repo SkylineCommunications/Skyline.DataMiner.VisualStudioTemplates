@@ -14,6 +14,10 @@ Template that creates a new connector Visual Studio solution.
 
 Template that creates a new Automation script Visual Studio solution.
 
+### User-defined APIs solution
+
+Template that creates a new User-Defined API Visual Studio solution.
+
 ## How to install
 
 As of version 2.42, DataMiner Integration Studio (DIS) automatically installs the latest template package when you open Visual Studio. If you don't have this version of DIS, then follow these steps:
