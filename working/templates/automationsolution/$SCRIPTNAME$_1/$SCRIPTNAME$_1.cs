@@ -74,23 +74,23 @@ namespace $NAMESPACE$_1
 			}
 			catch (ScriptAbortException)
 			{
-				// catch normal abort exceptions (engine.ExitFail or engine.ExitSuccess)
+				// Catch normal abort exceptions (engine.ExitFail or engine.ExitSuccess)
 				throw; // Comment if it should be treated as a normal exit of the script.
 			}
 			catch (ScriptForceAbortException)
 			{
-				// catch forced abort exceptions, caused via external maintenance messages
+				// Catch forced abort exceptions, caused via external maintenance messages.
 				throw;
 			}
 			catch (ScriptTimeoutException)
 			{
-				// catch timeout exceptions for when a script has been running for too long
+				// Catch timeout exceptions for when a script has been running for too long.
 				throw;
 			}
 			catch (InteractiveUserDetachedException)
 			{
-				// catch a user detaching from the interactive script by closing the window
-				// only applicable for interactive scripts, can be removed for non-interactive scripts.
+				// Catch a user detaching from the interactive script by closing the window.
+				// Only applicable for interactive scripts, can be removed for non-interactive scripts.
 				throw;
 			}
 			catch (Exception e)
