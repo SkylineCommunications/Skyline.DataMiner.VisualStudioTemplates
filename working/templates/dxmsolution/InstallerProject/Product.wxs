@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Reference of WIX: https://wixtoolset.org/docs/intro/
+  Tutorial: https://www.firegiant.com/wix/tutorial/
+  I highly recommend going through the whole tutorial to gain insight in how Windows Installer, MSIs and WIX function and how they work together.
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+	<Package Name="$FullDxmName$" Language="1033" Version="$(var.ProductVersion)" Manufacturer="Skyline Communications" UpgradeCode="f28ae971-b942-44e3-8b30-27faca79f8cb" InstallerVersion="200">
+		<SummaryInformation Manufacturer="Skyline Communications" />
+		<!--
+	      The product is currently configured to handle everything as a major upgrade. (see small vs minor vs major upgrades here https://www.firegiant.com/wix/tutorial/upgrades-and-modularization/ )
+	      This makes it easier to not have any mistakes introduced. As the product is also quite small (Just files & one service) the overhead of a major upgrade should be fine.
+	      Every time a new MSI is built, the product GUID and the Package GUID are re-generated.
+	      This together with the AllowSameVersionUpgrades and AllowDowngrades to yes means that even if the ProductVersion did not change, Windows will still handle it as a major upgrade.
+	      In the Jenkins pipeline the ProductVersion should be passed in as argument.
+	    -->
+		<Property Id="REINSTALLMODE" Value="amus" />
+		<MajorUpgrade AllowDowngrades="yes" />
+		<MediaTemplate EmbedCab="yes" />
+		<Feature Id="ProductFeature" Title="$FullDxmName$" Level="1">
+			<ComponentGroupRef Id="$DxmModuleName$ExeComponents" />
+			<ComponentGroupRef Id="$DxmModuleName$DotNetComponents" />
+			<ComponentGroupRef Id="$DxmModuleName$DotNetWinRuntimeComponents" />
+		</Feature>
+		<UI Id="WixUI_SkipLicenseAgreement">
+			<ui:WixUI Id="WixUI_InstallDir" />
+			<!--Skip license agreements & install dir dialog-->
+			<Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="PrepareDlg" Order="2" Condition="NOT Installed AND NOT PATCH" />
+			<Publish Dialog="PrepareDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" Condition="NOT Installed AND NOT PATCH" />
+		</UI>
+		<Icon Id="icon.ico" SourceFile="icon.ico" />
+		<Property Id="ARPPRODUCTICON" Value="icon.ico" />
+	</Package>
+	<Fragment>
+		<StandardDirectory Id="ProgramFiles64Folder">
+			<Directory Id="SKYLINEFOLDER" Name="Skyline Communications">
+				<Directory Id="INSTALLFOLDER" Name="$FullDxmName$">
+					<Directory Id="INSTALLFOLDERRUNTIMES" Name="runtimes" >
+						<Directory Id="INSTALLFOLDERRUNTIMESWIN" Name="win" />
+					</Directory>
+				</Directory>
+			</Directory>
+		</StandardDirectory>
+	</Fragment>
+	<?include $DxmModuleName$.wxi ?>
+</Wix>

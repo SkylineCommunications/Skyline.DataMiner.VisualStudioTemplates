@@ -1,0 +1,19 @@
+﻿<Include xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+	<Fragment>
+		<ComponentGroup Id="$DxmModuleName$ExeComponents" Directory="INSTALLFOLDER">
+
+			<Component Id="$DxmModuleName$ExeComponent" Guid="{942D1BB9-3A1A-4767-B53B-4076E4D0DB5B}" SharedDllRefCount="no" KeyPath="no" NeverOverwrite="no" Permanent="no" Transitive="no" Location="either" Bitness="always64">
+
+				<File Id="$FullDxmName$.exe" Name="$FullDxmName$.exe" Source="$(var.$ServiceName$.TargetDir)$FullDxmName$.exe" ReadOnly="no" KeyPath="yes" Vital="yes" Hidden="no" System="no" Checksum="no" />
+				
+				<ServiceInstall Id="$DxmModuleName$Install" DisplayName="$FullDxmName$" Name="$FullDxmName$" ErrorControl="normal" Start="auto" Type="ownProcess" Vital="yes">
+					<util:ServiceConfig RestartServiceDelayInSeconds="60" ResetPeriodInDays="1" FirstFailureActionType="restart" SecondFailureActionType="restart" ThirdFailureActionType="restart" />
+				</ServiceInstall>
+
+				<ServiceControl Id="$DxmModuleName$Control" Name="$FullDxmName$" Start="install" Stop="both" Remove="uninstall" />
+
+			</Component>
+
+		</ComponentGroup>
+	</Fragment>
+</Include>

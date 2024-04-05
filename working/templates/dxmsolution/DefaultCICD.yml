@@ -1,0 +1,16 @@
+trigger:
+  branches:
+    include:
+    - '*'
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: 'DataMiner Extension Modules (DXM)/Reusable Pipelines'
+
+variables:
+ - template: default-variables.yml@templates
+
+jobs:
+  - template: default.yml@templates
