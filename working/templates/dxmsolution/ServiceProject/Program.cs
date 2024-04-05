@@ -1,4 +1,4 @@
-namespace $ServiceName$
+namespace $ServiceNameFull$
 {
 	public class Program
 	{

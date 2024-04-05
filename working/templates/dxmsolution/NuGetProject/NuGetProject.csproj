@@ -3,8 +3,8 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<AssemblyName>$NuGetName$</AssemblyName>
-		<RootNamespace>$NuGetName$</RootNamespace>
+		<AssemblyName>$NuGetNameFull$</AssemblyName>
+		<RootNamespace>$NuGetNameFull$</RootNamespace>
 		<PackageVersion>1.0.1</PackageVersion>
 		<Version>1.0.1</Version>
 		<PackageTags>Skyline;DataMiner;DxM</PackageTags>

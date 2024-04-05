@@ -4,10 +4,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-DataTester-62852eab-befd-4bf5-96a0-b49639a2f070</UserSecretsId>
+    <UserSecretsId>dotnet-$ServiceName$-62852eab-befd-4bf5-96a0-b49639a2f070</UserSecretsId>
 	<AssemblyName>$FullDxmName$</AssemblyName>
 	<Version>1.0.1</Version>
-	<RootNamespace>$ServiceName$</RootNamespace>
+	<RootNamespace>$ServiceNameFull$</RootNamespace>
 	<ServerGarbageCollection>true</ServerGarbageCollection>
   </PropertyGroup>
 

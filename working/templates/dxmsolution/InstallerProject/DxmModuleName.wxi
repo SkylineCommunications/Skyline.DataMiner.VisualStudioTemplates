@@ -4,7 +4,7 @@
 
 			<Component Id="$DxmModuleName$ExeComponent" Guid="{942D1BB9-3A1A-4767-B53B-4076E4D0DB5B}" SharedDllRefCount="no" KeyPath="no" NeverOverwrite="no" Permanent="no" Transitive="no" Location="either" Bitness="always64">
 
-				<File Id="$FullDxmName$.exe" Name="$FullDxmName$.exe" Source="$(var.$ServiceName$.TargetDir)$FullDxmName$.exe" ReadOnly="no" KeyPath="yes" Vital="yes" Hidden="no" System="no" Checksum="no" />
+				<File Id="$FullDxmName$.exe" Name="$FullDxmName$.exe" Source="$(SolutionDir)$ServiceName$/bin/$(Configuration)/net8.0/$FullDxmName$.exe" ReadOnly="no" KeyPath="yes" Vital="yes" Hidden="no" System="no" Checksum="no" />
 				
 				<ServiceInstall Id="$DxmModuleName$Install" DisplayName="$FullDxmName$" Name="$FullDxmName$" ErrorControl="normal" Start="auto" Type="ownProcess" Vital="yes">
 					<util:ServiceConfig RestartServiceDelayInSeconds="60" ResetPeriodInDays="1" FirstFailureActionType="restart" SecondFailureActionType="restart" ThirdFailureActionType="restart" />

@@ -9,7 +9,7 @@
   },
   "identity": "Skyline.DataMiner.DataMinerExtensionModule",
   "name": "DataMiner Extension Module Solution",
-  "shortName": "dataminer-dxm",
+  "shortName": "dataminer-dxm-solution",
   "sourceName": "DataMinerExtensionModuleTemplate",
   "symbols": {    
     "FullDxmNameStart": {
@@ -30,7 +30,7 @@
   "ServiceNameEnd": {
     "type": "parameter",
     "dataType": "string",
-    "defaultValue": "Application"
+    "defaultValue": "Service"
   },
   "InstallerNameEnd": {
     "type": "parameter",
@@ -113,10 +113,6 @@
         {"symbols": [
           {
             "type": "ref",
-            "value": "ProjectNameStart"
-          },
-          {
-            "type": "ref",
             "value": "DxmModuleName"
           },
           {
@@ -136,10 +132,6 @@
         {"symbols": [
           {
             "type": "ref",
-            "value": "ProjectNameStart"
-          },
-          {
-            "type": "ref",
             "value": "DxmModuleName"
           },
           {
@@ -155,6 +147,71 @@
       "generator": "join",
       "replaces": "$InstallerName$",
       "FileRename": "InstallerProject",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          },
+          {
+            "type": "ref",
+            "value": "InstallerNameEnd"
+          }
+        ],
+        "separator": "."
+      }
+    },
+    "NuGetNameFull": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$NuGetNameFull$",
+      "FileRename": "NuGetProjectFull",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "ProjectNameStart"
+          },
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          },
+          {
+            "type": "ref",
+            "value": "NuGetNameEnd"
+          }
+        ],
+        "separator": "."
+      }
+    },
+    "ServiceNameFull": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$ServiceNameFull$",
+      "FileRename": "ServiceProjectFull",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "ProjectNameStart"
+          },
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          },
+          {
+            "type": "ref",
+            "value": "ServiceNameEnd"
+          }
+        ],
+        "separator": "."
+      }
+    }, 
+    "InstallerNameFull": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$InstallerNameFull$",
+      "FileRename": "InstallerProjectFull",
       "parameters": 
         {"symbols": [
           {
