@@ -29,7 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\$ServiceName$\$ServiceName$.csproj">
-      <Name>$DxmModuleName$</Name>
+      <Name>$ServiceName$</Name>
       <Project>{43695e16-1dc5-4a55-a915-04e1f7f8dab6}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
