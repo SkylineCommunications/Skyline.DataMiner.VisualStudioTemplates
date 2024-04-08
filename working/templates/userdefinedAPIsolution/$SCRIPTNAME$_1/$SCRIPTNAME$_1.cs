@@ -21,6 +21,7 @@ namespace $NAMESPACE$_1
 			var method = requestData.RequestMethod;
 			var route = requestData.Route;
 			var body = requestData.RawBody;
+			var parameters = requestData.Parameters;
 
 			return new ApiTriggerOutput
 			{
