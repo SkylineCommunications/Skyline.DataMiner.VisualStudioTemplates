@@ -1,5 +1,7 @@
 namespace $ServiceNameFull$
-{
+{	
+	using Skyline.DataMiner.CICD.FileSystem;
+
 	public class Worker : BackgroundService
 	{
 	private readonly ILogger<Worker> logger;
