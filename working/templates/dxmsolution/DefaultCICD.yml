@@ -14,5 +14,5 @@ resources:
 variables:
  - template: default-variables.yml@templates
 
-jobs:
+stages:
   - template: default.yml@templates
