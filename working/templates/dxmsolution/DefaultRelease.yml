@@ -16,9 +16,9 @@ parameters:
       - GitHub NuGet
 
 variables:
-# Email address of the person that is allowed to authorize a release. E.g.: aaa.bbb@skyline.be
+# Email address of the person to be informed about a release. E.g.: aaa.bbb@skyline.be
 # It is also possible to specify an Azure group e.g.: [DataMiner Extension Modules (DXM)]\\Release Administrators"
-  - name: authorizer
+  - name: notificationMail
     value: '[DataMiner Extension Modules (DXM)]\Release Administrators'
 
 resources:
@@ -27,9 +27,9 @@ resources:
       type: git
       name: 'DataMiner Extension Modules (DXM)/Reusable Pipelines'
 
-jobs:
+stages:
 - template: default-release.yml@templates
   parameters:
     releaseVersion: ${{ parameters.releaseVersion }}
     releaseDestination: ${{ parameters.releaseDestination }}
-    authorizer: $(authorizer)
+    notificationMail: $(notificationMail)
