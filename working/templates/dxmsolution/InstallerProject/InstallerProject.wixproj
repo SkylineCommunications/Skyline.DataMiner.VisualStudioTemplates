@@ -1,0 +1,75 @@
+﻿<Project Sdk="WixToolset.Sdk/4.0.5">
+	<Import Project="Sdk.props" Sdk="WixToolset.Sdk" Version="4.0.5"/>
+	<PropertyGroup>
+		<ProductVersion>1.0.0.0</ProductVersion>
+		<Name>$InstallerName$</Name>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DefineConstants>Debug;ProductVersion=$(ProductVersion)</DefineConstants>
+		<WixVariables>ProductVersion=$(ProductVersion)</WixVariables>
+		<OutputName>$FullDxmName$ $(ProductVersion) ($(Configuration))</OutputName>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<DefineConstants>ProductVersion=$(ProductVersion)</DefineConstants>
+		<WixVariables>ProductVersion=$(ProductVersion)</WixVariables>
+		<OutputName>$FullDxmName$ $(ProductVersion)</OutputName>
+		<SuppressPdbOutput>true</SuppressPdbOutput>
+	</PropertyGroup>
+	<ItemGroup>
+		<Content Include="icon.ico"/>
+		<Content Include="$DxmModuleName$.wxi"/>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="$DxmModuleName$.xslt"/>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="WixToolset.Util.wixext" Version="4.0.5"/>
+		<PackageReference Include="WixToolset.UI.wixext" Version="4.0.5"/>
+		<PackageReference Include="WixToolset.Heat" Version="4.0.5"/>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\$ServiceName$\$ServiceName$.csproj">
+			<Name>$ServiceName$</Name>
+			<Project>{43695e16-1dc5-4a55-a915-04e1f7f8dab6}</Project>
+			<Private>True</Private>
+			<DoNotHarvest>True</DoNotHarvest>
+			<RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+			<RefTargetDir>INSTALLFOLDER</RefTargetDir>
+		</ProjectReference>
+	</ItemGroup>
+	<!-- Make use of harvesting. For more info, refer to: https://wixtoolset.org/docs/tools/heat/ -->
+	<Import Project="Sdk.targets" Sdk="WixToolset.Sdk" Version="4.0.5"/>
+	<Target Name="BeforeBuild">
+		<!-- Optional publishing of webApp you actually want to install.-->
+		<!--<Exec Command="dotnet publish $(SolutionDir)Path\To\My\app.csproj -c $(Configuration) -p:PublishProfile=$(Configuration)" />-->
+		<PropertyGroup>
+			<HarvestDirectoryAutogenerateGuids>true</HarvestDirectoryAutogenerateGuids>
+			<HarvestDirectorySuppressFragments>true</HarvestDirectorySuppressFragments>
+			<!-- HarvestDirectorySuppressUniqueIds: Makes it more readable, set to false if you have problems -->
+			<HarvestDirectorySuppressUniqueIds>false</HarvestDirectorySuppressUniqueIds>
+		</PropertyGroup>
+		<ItemGroup>
+			<HarvestDirectory Include="$(SolutionDir)$ServiceName$/bin/$(Configuration)/net8.0">
+				<!--<PreprocessorVariable>var.publishDir</PreprocessorVariable>-->
+				<Transforms>$(ProjectDir)$DxmModuleName$.xslt</Transforms>
+				<SuppressRegistry>true</SuppressRegistry>
+				<SuppressRootDirectory>true</SuppressRootDirectory>
+				<SuppressCom>true</SuppressCom>
+				<KeepEmptyDirectories>false</KeepEmptyDirectories>
+				<ComponentGroupName>$DxmModuleName$DotNetComponents</ComponentGroupName>
+				<DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
+			</HarvestDirectory>
+		</ItemGroup>
+		<ItemGroup>
+			<HarvestDirectory Include="$(SolutionDir)$ServiceName$/bin/$(Configuration)/net8.0/runtimes/win">
+				<SuppressRegistry>true</SuppressRegistry>
+				<SuppressRootDirectory>true</SuppressRootDirectory>
+				<SuppressCom>true</SuppressCom>
+				<KeepEmptyDirectories>false</KeepEmptyDirectories>
+				<ComponentGroupName>$DxmModuleName$DotNetWinRuntimeComponents</ComponentGroupName>
+				<DirectoryRefId>INSTALLFOLDERRUNTIMESWIN</DirectoryRefId>
+			</HarvestDirectory>
+			<BindPath Include="$(SolutionDir)$ServiceName$/bin/$(Configuration)/net8.0/runtimes/win"/>
+		</ItemGroup>
+	</Target>
+</Project>

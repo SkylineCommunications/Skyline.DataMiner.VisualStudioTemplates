@@ -1,0 +1,35 @@
+# Release should always be manual
+trigger: none
+
+parameters:
+  - name: releaseVersion
+    displayName: Release Version for NuGet packages and DXM
+    type: string
+    default: 0.0.0
+  - name: releaseDestination
+    displayName: Release Destination for NuGet packages
+    type: string
+    default: Azure NuGet
+    values:
+      - Azure NuGet
+      - NuGet.org
+      - GitHub NuGet
+
+variables:
+# Email address of the person to be informed about a release. E.g.: aaa.bbb@skyline.be
+# It is also possible to specify an Azure group e.g.: [DataMiner Extension Modules (DXM)]\\Release Administrators"
+  - name: notificationMail
+    value: '[DataMiner Extension Modules (DXM)]\Release Administrators'
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: 'DataMiner Extension Modules (DXM)/Reusable Pipelines'
+
+stages:
+- template: default-release.yml@templates
+  parameters:
+    releaseVersion: ${{ parameters.releaseVersion }}
+    releaseDestination: ${{ parameters.releaseDestination }}
+    notificationMail: $(notificationMail)

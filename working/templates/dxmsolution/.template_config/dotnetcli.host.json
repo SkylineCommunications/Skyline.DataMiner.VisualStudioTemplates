@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json.schemastore.org/dotnetcli.host",
+    "symbolInfo": {
+        "DxmModuleName": {
+            "longName": "dxm-name",
+            "shortName": "name"
+        },       
+		"Description": {
+            "longName": "description",
+            "shortName": "desc"
+        },
+        "LicenseType": {
+            "longName": "license-type",
+            "shortName": "lic"
+        },
+        "GitRepoUrl": {
+            "longName": "repo-url",
+            "shortName": "url"
+        }
+    }
+}

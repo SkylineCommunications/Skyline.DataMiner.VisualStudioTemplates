@@ -1,0 +1,42 @@
+//#if (isSkylineLicense)
+SKYLINE LIBRARY LICENSE
+
+1.	Applicability
+The software in this repository (hereafter the “Software”) is owned by Skyline Communications (hereafter “Skyline”). The terms of this license govern your use of the Software. If you do not agree with the terms of this license, you may not use or exploit the Software in any other manner.
+2.	Grant of rights
+You may use the Software for the development, testing and validation of DataMiner packages and components only.
+You may not use this Software in any other manner unless you have obtained Skyline’s prior written authorization to do so.
+It is forbidden to create derivative works of the Software.
+3.	Intellectual property
+Skyline owns the intellectual property rights vested in the Software. Skyline granting you access to the Software does not entail permission to utilize or otherwise manipulate the Software in contravention to this Library License. Skyline reserves the right to pursue legal action against you in case of breach of its intellectual property rights. 
+4.	No warranty
+Skyline provides the Software ‘as is’, without any warranty of any kind.
+5.	Limitation of liability
+Within the maximum possible extent under the applicable laws, Skyline disclaims all liability for the Software. 
+6.	Applicable laws and jurisdiction
+This license shall be governed by the laws of Belgium. Any dispute shall be submitted to the exclusive jurisdiction of the competent courts of Gent, division Kortrijk, Belgium
+//#endif
+//#if (isMitLicense)
+MIT License
+
+Copyright (c) $COPYRIGHTYEAR$ Skyline Communications
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+//#endif
+

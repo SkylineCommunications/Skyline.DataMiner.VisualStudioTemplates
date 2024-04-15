@@ -1,0 +1,272 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [ "DataMiner" ],
+  "tags": {
+    "language": "C#",
+	  "type": "solution",
+    "editorTreatAs":"solution"
+  },
+  "identity": "Skyline.DataMiner.DataMinerExtensionModule",
+  "name": "DataMiner Extension Module Solution",
+  "shortName": "dataminer-dxm-solution",
+  "sourceName": "DataMinerExtensionModuleTemplate",
+  "symbols": {    
+    "FullDxmNameStart": {
+      "type": "parameter",
+      "dataType": "string",
+      "defaultValue": "DataMiner"
+    },
+    "ProjectNameStart": {
+    "type": "parameter",
+    "dataType": "string",
+    "defaultValue": "Skyline.DataMiner.Dxm"
+  },
+  "NuGetNameEnd": {
+    "type": "parameter",
+    "dataType": "string",
+    "defaultValue": "Api"
+  },
+  "ServiceNameEnd": {
+    "type": "parameter",
+    "dataType": "string",
+    "defaultValue": "Service"
+  },
+  "InstallerNameEnd": {
+    "type": "parameter",
+    "dataType": "string",
+    "defaultValue": "Installer"
+  },
+    "DxmModuleName": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "PascalCaseModuleNameShouldNotIncludeSL",
+        "replaces": "$DxmModuleName$",
+        "FileRename": "DxmModuleName",
+        "description": "The name of the DxM in PascalCase and not include \"SL\" in the name. DataMiner will automatically be prefixed.",
+        "isRequired": true
+    },
+    "Description": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$PackageDescription$",
+      "description": "A short description about this DxM.",
+      "isRequired": true
+    },
+    "LicenseType": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "Skyline",
+      "description": "The type of license applicable for this DxM.",
+      "isRequired": true,
+      "choices": [
+        {
+          "choice": "Skyline",
+          "description": "Skyline license"
+        },
+        {
+          "choice": "MIT",
+          "description": "MIT license"
+        }
+      ]
+    },
+    "GitRepoUrl": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$GitRepoUrl$",
+      "description": "The URL of the Git repository. Leave empty if not hosted."
+    },
+    "DxmId":{
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "$DxmId$",
+      "parameters": {
+        "defaultFormat":"D"
+      }
+    },
+    "FullDxmName": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$FullDxmName$",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "FullDxmNameStart"
+          },
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          }
+        ],
+        "separator": " "
+      }
+    },
+    "NuGetName": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$NuGetName$",
+      "FileRename": "NuGetProject",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          },
+          {
+            "type": "ref",
+            "value": "NuGetNameEnd"
+          }
+        ],
+        "separator": "."
+      }
+    },
+    "ServiceName": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$ServiceName$",
+      "FileRename": "ServiceProject",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          },
+          {
+            "type": "ref",
+            "value": "ServiceNameEnd"
+          }
+        ],
+        "separator": "."
+      }
+    }, 
+    "InstallerName": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$InstallerName$",
+      "FileRename": "InstallerProject",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          },
+          {
+            "type": "ref",
+            "value": "InstallerNameEnd"
+          }
+        ],
+        "separator": "."
+      }
+    },
+    "NuGetNameFull": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$NuGetNameFull$",
+      "FileRename": "NuGetProjectFull",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "ProjectNameStart"
+          },
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          },
+          {
+            "type": "ref",
+            "value": "NuGetNameEnd"
+          }
+        ],
+        "separator": "."
+      }
+    },
+    "ServiceNameFull": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$ServiceNameFull$",
+      "FileRename": "ServiceProjectFull",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "ProjectNameStart"
+          },
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          },
+          {
+            "type": "ref",
+            "value": "ServiceNameEnd"
+          }
+        ],
+        "separator": "."
+      }
+    }, 
+    "InstallerNameFull": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "$InstallerNameFull$",
+      "FileRename": "InstallerProjectFull",
+      "parameters": 
+        {"symbols": [
+          {
+            "type": "ref",
+            "value": "ProjectNameStart"
+          },
+          {
+            "type": "ref",
+            "value": "DxmModuleName"
+          },
+          {
+            "type": "ref",
+            "value": "InstallerNameEnd"
+          }
+        ],
+        "separator": "."
+      }
+    },
+    "isSkylineLicense": {
+      "type": "computed",
+      "value": "LicenseType == \"Skyline\""
+    },
+    "isMitLicense": {
+      "type": "computed",
+      "value": "LicenseType == \"MIT\""
+    },
+    "hasGitRepoUrl": {
+      "type": "computed",
+      "value": "GitRepoUrl != \"\""
+    },
+    "CopyrightYear": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$COPYRIGHTYEAR$",
+      "parameters": {
+        "format": "yyyy"
+      }
+    }
+  },
+    "guids": [
+    "43695E16-1DC5-4A55-A915-04E1F7F8DAB6",
+    "42201877-4DAB-4C36-B4BA-A944CA495A62",
+    "7CEC5EE1-F450-4E51-8253-7EB37F08CC8E",
+    "35CB26C6-7C74-4B45-80AB-C115A40C7B93",
+    "A5C42DF2-BA32-4745-BE0D-6B58D55BE6C3",
+    "942D1BB9-3A1A-4767-B53B-4076E4D0DB5B",
+    "f28ae971-b942-44e3-8b30-27faca79f8cb"
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg", "package/**" ]
+        }
+      ]
+    }
+  ]
+}
