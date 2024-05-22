@@ -20,8 +20,8 @@
 		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.3.6" />
 	</ItemGroup>
 	<ProjectExtensions>
-	    <VisualStudio>
-		    <UserProperties DisLinkedXmlFile="..\$SCRIPTNAME$.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
-        </VisualStudio>
+		<VisualStudio>
+			<UserProperties DisLinkedXmlFile="..\$SCRIPTNAME$.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
+		</VisualStudio>
 	</ProjectExtensions>
 </Project>

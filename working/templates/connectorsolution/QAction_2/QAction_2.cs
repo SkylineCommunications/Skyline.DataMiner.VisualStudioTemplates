@@ -10,19 +10,19 @@ using Skyline.DataMiner.Scripting;
 /// </summary>
 public static class QAction
 {
-    /// <summary>
-    /// The QAction entry point.
-    /// </summary>
-    /// <param name="protocol">Link with SLProtocol process.</param>
-    public static void Run(SLProtocol protocol)
-    {
-        try
-        {
+	/// <summary>
+	/// The QAction entry point.
+	/// </summary>
+	/// <param name="protocol">Link with SLProtocol process.</param>
+	public static void Run(SLProtocol protocol)
+	{
+		try
+		{
 
-        }
-        catch (Exception ex)
-        {
-            protocol.Log($"QA{protocol.QActionID}|{protocol.GetTriggerParameter()}|Run|Exception thrown:{Environment.NewLine}{ex}", LogType.Error, LogLevel.NoLogging);
-        }
-    }
+		}
+		catch (Exception ex)
+		{
+			protocol.Log($"QA{protocol.QActionID}|{protocol.GetTriggerParameter()}|Run|Exception thrown:{Environment.NewLine}{ex}", LogType.Error, LogLevel.NoLogging);
+		}
+	}
 }
