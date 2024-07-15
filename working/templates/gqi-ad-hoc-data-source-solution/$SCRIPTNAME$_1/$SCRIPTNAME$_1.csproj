@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugType>full</DebugType>
+		<CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-debug.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+	<PropertyGroup>
+		<DefineConstants>$(DefineConstants);DCFv1;DBInfo;ALARM_SQUASHING</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup>
+<!--#if (IGQIUpdateable)-->
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.4.2" />
+<!--#else-->
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.2.5.5" />
+<!--#endif-->
+	</ItemGroup>
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties DisLinkedXmlFile="..\$SCRIPTNAME$.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
+		</VisualStudio>
+	</ProjectExtensions>
+</Project>

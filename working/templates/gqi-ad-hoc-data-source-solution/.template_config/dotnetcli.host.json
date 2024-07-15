@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json.schemastore.org/dotnetcli.host",
+  "symbolInfo": {
+    "ScriptName": {
+      "longName": "ad-hoc-data-source-name",
+      "shortName": "name"
+    },
+    "Author": {
+      "longName": "author",
+      "shortName": "auth"
+    },
+    "IGQIInputArguments": {
+      "shortName": "input-arguments"
+    },
+    "IGQIOnInit": {
+      "shortName": "on-init"
+    },
+    "IGQIOnDestroy": {
+      "shortName": "on-destroy"
+    },
+    "IGQIOnPrepareFetch": {
+      "shortName": "on-prepare-fetch"
+    },
+    "IGQIUpdateable": {
+      "shortName": "updateable"
+    }
+  }
+}
