@@ -5,7 +5,7 @@ namespace $NAMESPACE$_1
 
 	/// <summary>
 	/// Represents a data source.
-	/// See: https://aka.dataminer.services/gqi-external-data-source
+	/// See: https://aka.dataminer.services/gqi-external-data-source for a complete example.
 	/// </summary>
 	[GQIMetaData(Name = "$SCRIPTNAME$")]
 	public sealed class $NAMESPACE$ : IGQIDataSource
