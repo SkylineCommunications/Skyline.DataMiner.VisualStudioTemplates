@@ -62,19 +62,27 @@
       }
     },
     "Namespace": {
-      "type": "generated",
-      "generator": "regex",
-      "dataType": "string",
-      "replaces": "$NAMESPACE$",
-      "parameters": {
-        "source": "ScriptName",
-        "steps": [
-          {
-            "regex": "[\\s+-]",
-            "replacement": "_"
-          }
-        ]
-      }
+      "type": "derived",
+      "valueSource": "ScriptName",
+      "valueTransform": "pascalCase",
+      "replaces": "$NAMESPACE$"
+    }
+  },
+  "forms": {
+    "titleCase": {
+      "identifier": "titleCase"
+    },
+    "invalidChars": {
+      "identifier": "replace",
+      "pattern": "([\\-_\\.\\ ])",
+      "replacement": ""
+    },
+    "pascalCase": {
+      "identifier": "chain",
+      "steps": [
+        "titleCase",
+        "invalidChars"
+      ]
     }
   },
   "guids": [
@@ -89,7 +97,7 @@
     "2BF9AFEF-11BA-4037-827E-A7C4408DD5E0",
     "54EEBDD9-1D2F-41E5-9654-EB47544FF03D",
     "37D054BA-8A8F-489C-B707-D45D9F6AF17E",
-	"F2683535-3B81-4454-9E99-120E5016BBCE"
+    "F2683535-3B81-4454-9E99-120E5016BBCE"
   ],
   "sources": [
     {

@@ -3,9 +3,9 @@
   "author": "Skyline Communications",
   "classifications": [ "DataMiner" ],
   "tags": {
-	"language": "C#",
-	"type": "solution",
-	"editorTreatAs":"solution"
+    "language": "C#",
+    "type": "solution",
+    "editorTreatAs":"solution"
   },
   "identity": "Skyline.DataMiner.UserDefinedApi.Solution.Template",
   "name": "DataMiner User-Defined API Solution",
@@ -17,9 +17,9 @@
         "datatype": "string",
         "defaultValue": "",
         "replaces": "$SCRIPTNAME$",
-		"FileRename": "$SCRIPTNAME$",
+        "FileRename": "$SCRIPTNAME$",
         "description": "The name of the Automation script.",
-		    "isRequired": true
+          "isRequired": true
     },
     "Author": {
           "type": "parameter",
@@ -35,22 +35,30 @@
       "parameters": {
         "format": "dd/MM/yyyy"
       }
-	  },
+    },
     "Namespace": {
-      "type": "generated",
-      "generator": "regex",
-      "dataType": "string",
-      "replaces": "$NAMESPACE$",
-      "parameters": {
-        "source": "ScriptName",
-        "steps": [
-          {
-            "regex": "[\\s+-]",
-            "replacement": "_"
-          }
-        ]
-      }
-	  }
+      "type": "derived",
+      "valueSource": "ScriptName",
+      "valueTransform": "pascalCase",
+      "replaces": "$NAMESPACE$"
+    }
+  },
+  "forms": {
+    "titleCase": {
+      "identifier": "titleCase"
+    },
+    "invalidChars": {
+      "identifier": "replace",
+      "pattern": "([\\-_\\.\\ ])",
+      "replacement": ""
+    },
+    "pascalCase": {
+      "identifier": "chain",
+      "steps": [
+        "titleCase",
+        "invalidChars"
+      ]
+    }
   },
   "guids": [
     "30ECB5E3-395D-4674-9EF8-8B07C6B1AD50",

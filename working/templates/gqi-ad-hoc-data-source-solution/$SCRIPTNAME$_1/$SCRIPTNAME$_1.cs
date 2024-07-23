@@ -3,6 +3,10 @@ namespace $NAMESPACE$_1
 	using System;
 	using Skyline.DataMiner.Analytics.GenericInterface;
 
+	/// <summary>
+	/// Represents a data source.
+	/// See: https://aka.dataminer.services/gqi-external-data-source
+	/// </summary>
 	[GQIMetaData(Name = "$SCRIPTNAME$")]
 	public sealed class $NAMESPACE$ : IGQIDataSource
 #if (IGQIInputArguments)
