@@ -83,6 +83,14 @@ namespace $NAMESPACE$_1
 				HasNextPage = false,
 			};
 		}
+#if (IGQIUpdateable)
+
+		public void OnStopUpdates()
+		{
+			// Stop sending updates
+			// See: https://aka.dataminer.services/igqiupdateable-onstopupdates
+		}
+#endif
 #if (IGQIOnDestroy)
 
 		public OnDestroyOutputArgs OnDestroy(OnDestroyInputArgs args)
@@ -90,14 +98,6 @@ namespace $NAMESPACE$_1
 			// Clean up the data source
 			// See: https://aka.dataminer.services/igqiondestroy-ondestroy
 			return default;
-		}
-#endif
-#if (IGQIUpdateable)
-
-		public void OnStopUpdates()
-		{
-			// Stop sending updates
-			// See: https://aka.dataminer.services/igqiupdateable-onstopupdates
 		}
 #endif
 	}

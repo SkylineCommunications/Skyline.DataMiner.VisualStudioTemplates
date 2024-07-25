@@ -15,10 +15,10 @@
     "ScriptName": {
       "type": "parameter",
       "datatype": "string",
-      "defaultValue": "",
+      "defaultValue": "DataSource1",
       "replaces": "$SCRIPTNAME$",
       "FileRename": "$SCRIPTNAME$",
-      "description": "The name of the ad hoc data source.",
+      "description": "The name of the ad hoc data source. This will be used for the ad hoc data source, file, project, class, and library name.",
       "isRequired": true
     },
     "Author": {
@@ -51,7 +51,7 @@
     "IGQIUpdateable": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Implement this interface to provide real-time updates."
+      "description": "Implement this interface to provide real-time updates. Available from DataMiner 10.4.4/10.5.0 onwards."
     },
     "InitialVersionDate": {
       "type": "generated",
@@ -64,25 +64,15 @@
     "Namespace": {
       "type": "derived",
       "valueSource": "ScriptName",
-      "valueTransform": "pascalCase",
+      "valueTransform": "invalidChars",
       "replaces": "$NAMESPACE$"
     }
   },
   "forms": {
-    "titleCase": {
-      "identifier": "titleCase"
-    },
     "invalidChars": {
       "identifier": "replace",
       "pattern": "([\\-_\\.\\ ])",
       "replacement": ""
-    },
-    "pascalCase": {
-      "identifier": "chain",
-      "steps": [
-        "titleCase",
-        "invalidChars"
-      ]
     }
   },
   "guids": [

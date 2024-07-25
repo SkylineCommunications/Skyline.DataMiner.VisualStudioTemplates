@@ -15,7 +15,7 @@
     "ScriptName": {
         "type": "parameter",
         "datatype": "string",
-        "defaultValue": "",
+        "defaultValue": "AutomationScript1",
         "replaces": "$SCRIPTNAME$",
         "FileRename": "$SCRIPTNAME$",
         "description": "The name of the Automation script.",
@@ -39,25 +39,15 @@
     "Namespace": {
       "type": "derived",
       "valueSource": "ScriptName",
-      "valueTransform": "pascalCase",
+      "valueTransform": "invalidChars",
       "replaces": "$NAMESPACE$"
     }
   },
   "forms": {
-    "titleCase": {
-      "identifier": "titleCase"
-    },
     "invalidChars": {
       "identifier": "replace",
       "pattern": "([\\-_\\.\\ ])",
       "replacement": ""
-    },
-    "pascalCase": {
-      "identifier": "chain",
-      "steps": [
-        "titleCase",
-        "invalidChars"
-      ]
     }
   },
   "guids": [
