@@ -1,46 +1,27 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches:
       - main
-      - master
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
       - '[0-9]+.[0-9]+.[0-9]+-[0-9a-zA-Z]+'
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # Creates from a Nuspec file called template.nuspec located in the root of workspace"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v4
       
       - name: Create NuGet Package
-        run: |
-         dotnet pack ./working
+        run: dotnet pack ./working
          
       - name: Find created nuget
         id: findcreatednuget        
-        run: |
-          #cd ./working/bin/Debug/
-          #echo nugetPackageName=$(dir *.nupkg) >> $GITHUB_OUTPUT
-          echo nugetPackageName=$(find . -type f -name '*.nupkg') >> $GITHUB_OUTPUT
-        shell: bash        
-        
-      - name: Echo Found Package
-        id: echoFoundPackage
-        run: echo "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
+        run: echo nugetPackageName=$(find . -type f -name '*.nupkg') >> $GITHUB_OUTPUT
         shell: bash
         
       - uses: actions/upload-artifact@v4
@@ -48,12 +29,13 @@ jobs:
           name: NugetPackages
           path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
 
-    # Signing cannot be done from linux environment (https://github.com/dotnet/runtime/issues/48794)
   sign:
-      # The type of runner that the job will run on
     runs-on: windows-latest
     needs: build
     steps:
+      - name: Install Sign CLI tool
+        run: dotnet tool install sign -g --prerelease
+
       - name: Download Unsigned NuGet
         id: downloadUnsignedNuget
         uses: actions/download-artifact@v4
@@ -62,32 +44,28 @@ jobs:
           
       - name: Find Nuget
         id: findcreatednuget        
-        run: |
-          echo nugetPackageName=$(find . -type f -name '*.nupkg') >> $GITHUB_OUTPUT
-        shell: bash  
-        
-      - name: Download Encrypted Signature File
-        id: downloadSignatureFile
-        env:
-          CERTIFICATE_BASE64: ${{ secrets.SKYLINEPFX }}
-        run: 'echo "$CERTIFICATE_BASE64" > encodedSignatureFile'
+        run: echo nugetPackageName=$(find . -type f -name '*.nupkg') >> $GITHUB_OUTPUT
         shell: bash
 
-      - name: Decrypt Signature File
-        id: decryptSignatureFile
-        run: certutil -decode encodedSignatureFile Skyline.pfx
-        shell: bash
-    
       - name: Sign NuGet Package
-        run: |
-          #nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" -NonInteractive -CertificatePath "Skyline.pfx" -Timestamper "http://timestamp.comodoca.com/rfc3161" -CertificatePassword ${{ secrets.SKYLINEPFXPASSWORD }}
-          dotnet nuget sign "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --certificate-path "Skyline.pfx" --timestamper "http://timestamp.comodoca.com/rfc3161" --certificate-password ${{ secrets.SKYLINEPFXPASSWORD }}
-        shell: bash
+        shell: pwsh
+        run: >
+          sign code azure-key-vault
+          ${{ steps.findcreatednuget.outputs.nugetPackageName }}
+          --publisher-name "Skyline Communications"
+          --description "Skyline Signing"
+          --description-url "https://www.skyline.be/"
+          --azure-key-vault-tenant-id "5f175691-8d1c-4932-b7c8-ce990839ac40"
+          --azure-key-vault-client-id "a7ff072c-5bc8-4fa0-9e0c-bb9e40d59b0b"
+          --azure-key-vault-client-secret "${{ secrets.PFXPASSWORD }}"
+          --azure-key-vault-certificate "Skyline-CodeSigning"
+          --azure-key-vault-url "https://kv-slc-codesigning.vault.azure.net/"
         
       - uses: actions/upload-artifact@v4
         with:
           name: SignedNugetPackages
           path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
+  
   push:
     if: github.ref_type == 'tag'
     name: push
@@ -101,12 +79,10 @@ jobs:
           name: SignedNugetPackages
           
       - name: Find Nuget
-        id: findcreatednuget        
-        run: |
-          echo nugetPackageName=$(find . -type f -name '*.nupkg') >> $GITHUB_OUTPUT
+        id: findcreatednuget
+        run: echo nugetPackageName=$(find . -type f -name '*.nupkg') >> $GITHUB_OUTPUT
         shell: bash
         
       - name: Push to NuGet.org
-        run: |
-          dotnet nuget push "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --api-key ${{ secrets.NUGETAPIKEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push "${{ steps.findcreatednuget.outputs.nugetPackageName }}" --api-key ${{ secrets.NUGETAPIKEY }} --source https://api.nuget.org/v3/index.json
         shell: bash
