@@ -3,9 +3,9 @@
   "author": "Skyline Communications",
   "classifications": [ "DataMiner" ],
   "tags": {
-	"language": "C#",
-	"type": "solution",
-	"editorTreatAs":"solution"
+    "language": "C#",
+    "type": "solution",
+    "editorTreatAs":"solution"
   },
   "identity": "Skyline.DataMiner.AutomationScript.Solution.Template",
   "name": "DataMiner Automation Script Solution",
@@ -15,11 +15,11 @@
     "ScriptName": {
         "type": "parameter",
         "datatype": "string",
-        "defaultValue": "",
+        "defaultValue": "AutomationScript1",
         "replaces": "$SCRIPTNAME$",
-		"FileRename": "$SCRIPTNAME$",
+        "FileRename": "$SCRIPTNAME$",
         "description": "The name of the Automation script.",
-		    "isRequired": true
+          "isRequired": true
     },
     "Author": {
           "type": "parameter",
@@ -35,22 +35,20 @@
       "parameters": {
         "format": "dd/MM/yyyy"
       }
-	  },
+     },
     "Namespace": {
-      "type": "generated",
-      "generator": "regex",
-      "dataType": "string",
-      "replaces": "$NAMESPACE$",
-      "parameters": {
-        "source": "ScriptName",
-        "steps": [
-          {
-            "regex": "[\\s+-]",
-            "replacement": "_"
-          }
-        ]
-      }
-	  }
+      "type": "derived",
+      "valueSource": "ScriptName",
+      "valueTransform": "invalidChars",
+      "replaces": "$NAMESPACE$"
+    }
+  },
+  "forms": {
+    "invalidChars": {
+      "identifier": "replace",
+      "pattern": "([\\-_\\.\\ ])",
+      "replacement": ""
+    }
   },
   "guids": [
     "30ECB5E3-395D-4674-9EF8-8B07C6B1AD50",
@@ -64,7 +62,7 @@
     "2BF9AFEF-11BA-4037-827E-A7C4408DD5E0",
     "54EEBDD9-1D2F-41E5-9654-EB47544FF03D",
     "37D054BA-8A8F-489C-B707-D45D9F6AF17E",
-	"F2683535-3B81-4454-9E99-120E5016BBCE"
+    "F2683535-3B81-4454-9E99-120E5016BBCE"
   ],
   "sources": [
     {

@@ -2,17 +2,16 @@
 
   <PropertyGroup>
     <PackageType>template</PackageType>
-    <PackageVersion>1.0.13</PackageVersion>
+    <PackageVersion>1.0.14</PackageVersion>
     <PackageId>Skyline.DataMiner.VisualStudioTemplates</PackageId>
     <Title>DataMiner DotNet Templates</Title>
     <Authors>SkylineCommunications</Authors>
     <Description>This package contains DataMiner dotnet templates for use in Visual Studio and the dotnet CLI.</Description>
     <PackageTags>dotnet-new;templates;DataMiner</PackageTags>
-	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-	<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-	<PackageIcon>Icon.png</PackageIcon>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
-	
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <PackageIcon>Icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
@@ -21,24 +20,15 @@
     <NoDefaultExcludes>true</NoDefaultExcludes>
   </PropertyGroup>
   
-	<ItemGroup>
-		<None Include="..\nuget\Icon.png">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<None Include="..\LICENSE.txt">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		 <None Include="..\README.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		 </None>
-	</ItemGroup>
-	
-	<ItemGroup>
-		<Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
-		<Compile Remove="**\*" />
-	</ItemGroup>
+  <ItemGroup>
+    <None Include="..\nuget\Icon.png" Pack="true" PackagePath="" />
+    <None Include="..\LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="..\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
 
 </Project>
