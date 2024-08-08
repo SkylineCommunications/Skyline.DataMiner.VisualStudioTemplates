@@ -15,7 +15,7 @@
     "ConnectorName": {
         "type": "parameter",
         "datatype": "string",
-        "defaultValue": "",
+        "defaultValue": "Connector1",
         "replaces": "$CONNECTORNAME$",
         "description": "The name of the connector.",
 		"isRequired": true
