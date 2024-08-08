@@ -28,30 +28,30 @@
       "replaces": "$AUTHOR$",
       "description": "The author."
     },
-    "IGQIInputArguments": {
-      "type": "parameter",
-      "datatype": "bool",
-      "description": "Implement this interface to receive external inputs."
-    },
     "IGQIOnInit": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Implement this interface to initialize the data source and access dependencies like the DMS or logger."
+      "description": "Initialize the data source and get access to additional capabilities such as logging and fetching information from the DataMiner system."
     },
-    "IGQIOnDestroy": {
+    "IGQIInputArguments": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Implement this interface to clean up the datasource and release resources."
+      "description": "Enable arguments to pass along inputs to the data source."
     },
     "IGQIOnPrepareFetch": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Implement this interface to execute custom logic right before executing a query."
+      "description": "Execute custom logic immediately before a user starts receiving data."
     },
     "IGQIUpdateable": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Implement this interface to provide real-time updates. Available from DataMiner 10.4.4/10.5.0 onwards."
+      "description": "Provide real-time updates on your data. Available from DataMiner 10.4.4/10.5.0 onwards."
+    },
+    "IGQIOnDestroy": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Tear down your data source to release all resources."
     },
     "InitialVersionDate": {
       "type": "generated",

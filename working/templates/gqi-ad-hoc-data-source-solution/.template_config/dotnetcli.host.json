@@ -9,20 +9,20 @@
       "longName": "author",
       "shortName": "auth"
     },
-    "IGQIInputArguments": {
-      "shortName": "input-arguments"
-    },
     "IGQIOnInit": {
       "shortName": "on-init"
     },
-    "IGQIOnDestroy": {
-      "shortName": "on-destroy"
+    "IGQIInputArguments": {
+      "shortName": "input-arguments"
     },
     "IGQIOnPrepareFetch": {
       "shortName": "on-prepare-fetch"
     },
     "IGQIUpdateable": {
       "shortName": "updateable"
+    },
+    "IGQIOnDestroy": {
+      "shortName": "on-destroy"
     }
   }
 }

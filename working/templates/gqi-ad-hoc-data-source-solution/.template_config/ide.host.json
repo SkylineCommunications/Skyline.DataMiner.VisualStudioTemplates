@@ -20,14 +20,6 @@
         "isVisible": true
       },
       {
-        "id": "IGQIInputArguments",
-        "name":
-        {
-          "text": "Add the IGQIInputArguments interface"
-        },
-        "isVisible": true
-      },
-      {
         "id": "IGQIOnInit",
         "name":
         {
@@ -36,10 +28,10 @@
         "isVisible": true
       },
       {
-        "id": "IGQIOnDestroy",
+        "id": "IGQIInputArguments",
         "name":
         {
-          "text": "Add the IGQIOnDestroy interface"
+          "text": "Add the IGQIInputArguments interface"
         },
         "isVisible": true
       },
@@ -56,6 +48,14 @@
         "name":
         {
           "text": "Add the IGQIUpdateable interface"
+        },
+        "isVisible": true
+      },
+      {
+        "id": "IGQIOnDestroy",
+        "name":
+        {
+          "text": "Add the IGQIOnDestroy interface"
         },
         "isVisible": true
       }

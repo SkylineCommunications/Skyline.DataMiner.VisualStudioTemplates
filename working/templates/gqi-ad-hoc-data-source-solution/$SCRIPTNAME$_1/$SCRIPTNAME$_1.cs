@@ -9,20 +9,20 @@ namespace $NAMESPACE$_1
 	/// </summary>
 	[GQIMetaData(Name = "$SCRIPTNAME$")]
 	public sealed class $NAMESPACE$ : IGQIDataSource
-#if (IGQIInputArguments)
-		, IGQIInputArguments
-#endif
 #if (IGQIOnInit)
 		, IGQIOnInit
 #endif
-#if (IGQIOnDestroy)
-		, IGQIOnDestroy
+#if (IGQIInputArguments)
+		, IGQIInputArguments
 #endif
 #if (IGQIOnPrepareFetch)
 		, IGQIOnPrepareFetch
 #endif
 #if (IGQIUpdateable)
 		, IGQIUpdateable
+#endif
+#if (IGQIOnDestroy)
+		, IGQIOnDestroy
 #endif
 	{
 #if (IGQIOnInit)
