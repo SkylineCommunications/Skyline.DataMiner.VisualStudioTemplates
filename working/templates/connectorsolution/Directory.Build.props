@@ -15,7 +15,7 @@
 		<CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 	<ItemGroup>
-		<AdditionalFiles Include="..\Internal\Code Analysis\stylecop.json">
+		<AdditionalFiles Include="..\Internal\Code Analysis\stylecop.json" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(MSBuildProjectName), '^QAction_([0-9]+)$'))">
 			<Link>Properties\stylecop.json</Link>
 		</AdditionalFiles>
 		<Content Include="..\Internal\.editorconfig">
@@ -23,7 +23,7 @@
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(MSBuildProjectName), '^QAction_([0-9]+)$'))">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
