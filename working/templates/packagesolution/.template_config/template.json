@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [ "DataMiner" ],
+  "tags": {
+    "language": "C#",
+    "type": "solution",
+    "editorTreatAs":"solution"
+  },
+  "identity": "Skyline.DataMiner.AutomationScript.Solution.Template",
+  "name": "DataMiner Automation Script Solution",
+  "shortName": "dataminer-automation-solution",
+  "sourceName": "SkylineDataMinerAutomationScriptSolutionTemplate",
+  "symbols": {
+    "ScriptName": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "AutomationScript1",
+        "replaces": "$SCRIPTNAME$",
+        "FileRename": "$SCRIPTNAME$",
+        "description": "The name of the Automation script.",
+          "isRequired": true
+    },
+    "Author": {
+          "type": "parameter",
+          "datatype": "string",
+          "defaultValue": "",
+          "replaces": "$AUTHOR$",
+          "description": "The author."
+      },
+    "InitialVersionDate": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$INITIALVERSIONDATE$",
+      "parameters": {
+        "format": "dd/MM/yyyy"
+      }
+     },
+    "Namespace": {
+      "type": "derived",
+      "valueSource": "ScriptName",
+      "valueTransform": "invalidChars",
+      "replaces": "$NAMESPACE$"
+    }
+  },
+  "forms": {
+    "invalidChars": {
+      "identifier": "replace",
+      "pattern": "([\\-_\\.\\ ])",
+      "replacement": ""
+    }
+  },
+  "guids": [
+    "30ECB5E3-395D-4674-9EF8-8B07C6B1AD50",
+    "AEED6A80-C0F3-479D-8871-9F36F10F11EA",
+    "0B4FC455-7B5E-4BB3-A0F4-9841F4D60D6C",
+    "B25F1A08-DDF8-4579-A552-EC81190D8DD7",
+    "7027C535-EB99-4FDF-87C5-43B46A867C2E",
+    "F8938D60-51A0-4880-9CFC-19C66379AE5D",
+    "D8DA8E2C-A4AE-45BE-A120-A18B7078E027",
+    "1AC41DF3-81F2-4A62-8945-DBBB8DC54021",
+    "2BF9AFEF-11BA-4037-827E-A7C4408DD5E0",
+    "54EEBDD9-1D2F-41E5-9654-EB47544FF03D",
+    "37D054BA-8A8F-489C-B707-D45D9F6AF17E",
+    "F2683535-3B81-4454-9E99-120E5016BBCE"
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg" ]
+        }
+      ]
+    }
+  ]
+}
