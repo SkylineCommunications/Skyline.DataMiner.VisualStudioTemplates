@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [ "DataMiner" ],
+  "tags": {
+    "language": "C#",
+    "type": "project",
+    "editorTreatAs":"project"
+  },
+  "identity": "Skyline.DataMiner.Gqi.AdHocDataSource.Project.Template",
+  "name": "DataMiner Ad Hoc Data Source Project",
+  "shortName": "dataminer-gqi-ad-hoc-data-source-project",
+  "sourceName": "SkylineDataMinerGqiAdHocDataSourceProjectTemplate",
+  "symbols": {
+    "ScriptName": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "DataSource1",
+      "replaces": "$SCRIPTNAME$",
+      "FileRename": "$SCRIPTNAME$",
+      "description": "The name of the ad hoc data source. This will be used for the ad hoc data source, file, project, class, and library name.",
+      "isRequired": true
+    },
+    "Author": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$AUTHOR$",
+      "description": "The author."
+    },
+    "IGQIOnInit": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Initialize the data source and get access to additional capabilities such as logging and fetching information from the DataMiner system."
+    },
+    "IGQIInputArguments": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Enable arguments to pass along inputs to the data source."
+    },
+    "IGQIOnPrepareFetch": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Execute custom logic immediately before a user starts receiving data."
+    },
+    "IGQIUpdateable": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Provide real-time updates on your data. Available from DataMiner 10.4.4/10.5.0 onwards."
+    },
+    "IGQIOnDestroy": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Tear down your data source to release all resources."
+    },
+    "InitialVersionDate": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$INITIALVERSIONDATE$",
+      "parameters": {
+        "format": "dd/MM/yyyy"
+      }
+    },
+    "Namespace": {
+      "type": "derived",
+      "valueSource": "ScriptName",
+      "valueTransform": "invalidChars",
+      "replaces": "$NAMESPACE$"
+    }
+  },
+  "forms": {
+    "invalidChars": {
+      "identifier": "replace",
+      "pattern": "([\\-_\\.\\ ])",
+      "replacement": ""
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg" ]
+        }
+      ]
+    }
+  ]
+}

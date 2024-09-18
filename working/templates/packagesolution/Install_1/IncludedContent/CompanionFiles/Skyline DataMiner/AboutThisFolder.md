@@ -1,1 +1,0 @@
-This folder can contain any file you would like to add under the Skyline DataMiner folder. Warning, it will overwrite any file with the same name.

@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [ "DataMiner" ],
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "identity": "Skyline.DataMiner.AutomationScriptLibrary.Project.Template",
+  "name": "DataMiner Automation Script Library Project",
+  "shortName": "dataminer-automation-library-project",
+  "sourceName": "SkylineDataMinerAutomationScriptLibraryProjectTemplate",
+  "symbols": {
+    "ScriptName": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "AutomationScript1",
+        "replaces": "$SCRIPTNAME$",
+        "FileRename": "$SCRIPTNAME$",
+        "description": "The name of the Automation script library.",
+          "isRequired": true
+    },
+    "Author": {
+          "type": "parameter",
+          "datatype": "string",
+          "defaultValue": "",
+          "replaces": "$AUTHOR$",
+          "description": "The author."
+      },
+    "InitialVersionDate": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$INITIALVERSIONDATE$",
+      "parameters": {
+        "format": "dd/MM/yyyy"
+      }
+     },
+    "Namespace": {
+      "type": "derived",
+      "valueSource": "ScriptName",
+      "valueTransform": "invalidChars",
+      "replaces": "$NAMESPACE$"
+    }
+  },
+  "forms": {
+    "invalidChars": {
+      "identifier": "replace",
+      "pattern": "([\\-_\\.\\ ])",
+      "replacement": ""
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg" ]
+        }
+      ]
+    }
+  ]
+}
