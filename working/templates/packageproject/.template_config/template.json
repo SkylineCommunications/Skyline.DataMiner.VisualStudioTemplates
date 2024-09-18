@@ -9,17 +9,8 @@
   "identity": "Skyline.DataMiner.Package.Project.Template",
   "name": "DataMiner Package Project",
   "shortName": "dataminer-package-project",
-  "sourceName": "SkylineDataMinerPackageProjectTemplate",
+  "sourceName": "$SCRIPTNAME$",
   "symbols": {
-    "ScriptName": {
-        "type": "parameter",
-        "datatype": "string",
-        "defaultValue": "DataMiner Application Package",
-        "replaces": "$PACKAGENAME$",
-        "FileRename": "$PACKAGENAME$",
-        "description": "The name of the DataMiner Application Package.",
-          "isRequired": true
-    },
     "Author": {
           "type": "parameter",
           "datatype": "string",
@@ -37,7 +28,7 @@
      },
     "Namespace": {
       "type": "derived",
-      "valueSource": "ScriptName",
+      "valueSource": "name",
       "valueTransform": "invalidChars",
       "replaces": "$NAMESPACE$"
     }

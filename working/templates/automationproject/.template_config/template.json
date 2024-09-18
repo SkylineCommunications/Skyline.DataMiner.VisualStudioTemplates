@@ -9,17 +9,8 @@
   "identity": "Skyline.DataMiner.AutomationScript.Project.Template",
   "name": "DataMiner Automation Script Project",
   "shortName": "dataminer-automation-project",
-  "sourceName": "SkylineDataMinerAutomationScriptProjectTemplate",
+  "sourceName": "$SCRIPTNAME$",
   "symbols": {
-    "ScriptName": {
-        "type": "parameter",
-        "datatype": "string",
-        "defaultValue": "AutomationScript1",
-        "replaces": "$SCRIPTNAME$",
-        "FileRename": "$SCRIPTNAME$",
-        "description": "The name of the Automation script.",
-          "isRequired": true
-    },
     "Author": {
           "type": "parameter",
           "datatype": "string",
@@ -37,7 +28,7 @@
      },
     "Namespace": {
       "type": "derived",
-      "valueSource": "ScriptName",
+      "valueSource": "name",
       "valueTransform": "invalidChars",
       "replaces": "$NAMESPACE$"
     }

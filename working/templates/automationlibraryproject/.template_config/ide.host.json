@@ -4,14 +4,6 @@
     "icon": "icon.png",
     "symbolInfo": [
 	  {       
-        "id": "ScriptName",
-        "name": 
-        {
-          "text": "Automation script library name"
-        },
-        "isVisible": true
-      },
-	  {       
         "id": "Author",
         "name": 
         {

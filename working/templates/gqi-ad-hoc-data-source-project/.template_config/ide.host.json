@@ -4,14 +4,6 @@
     "icon": "icon.png",
     "symbolInfo": [
       {
-        "id": "ScriptName",
-        "name":
-        {
-          "text": "Ad Hoc Data Source Name"
-        },
-        "isVisible": true
-      },
-      {
         "id": "Author",
         "name":
         {

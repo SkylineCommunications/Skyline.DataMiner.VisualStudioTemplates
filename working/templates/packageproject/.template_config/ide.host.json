@@ -4,14 +4,6 @@
     "icon": "icon.png",
     "symbolInfo": [
 	  {       
-        "id": "PackageName",
-        "name": 
-        {
-          "text": "DataMiner Installation Package name"
-        },
-        "isVisible": true
-      },
-	  {       
         "id": "Author",
         "name": 
         {

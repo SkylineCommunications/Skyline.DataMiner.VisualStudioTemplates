@@ -10,17 +10,8 @@
   "identity": "Skyline.DataMiner.Gqi.AdHocDataSource.Project.Template",
   "name": "DataMiner Ad Hoc Data Source Project",
   "shortName": "dataminer-gqi-ad-hoc-data-source-project",
-  "sourceName": "SkylineDataMinerGqiAdHocDataSourceProjectTemplate",
+  "sourceName": "$SCRIPTNAME$",
   "symbols": {
-    "ScriptName": {
-      "type": "parameter",
-      "datatype": "string",
-      "defaultValue": "DataSource1",
-      "replaces": "$SCRIPTNAME$",
-      "FileRename": "$SCRIPTNAME$",
-      "description": "The name of the ad hoc data source. This will be used for the ad hoc data source, file, project, class, and library name.",
-      "isRequired": true
-    },
     "Author": {
       "type": "parameter",
       "datatype": "string",
@@ -63,7 +54,7 @@
     },
     "Namespace": {
       "type": "derived",
-      "valueSource": "ScriptName",
+      "valueSource": "name",
       "valueTransform": "invalidChars",
       "replaces": "$NAMESPACE$"
     }
