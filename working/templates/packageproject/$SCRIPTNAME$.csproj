@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+  	<DataMinerType>Package</DataMinerType>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugType>full</DebugType>
+		<CodeAnalysisRuleSet>Internal\Code Analysis\qaction-debug.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<CodeAnalysisRuleSet>Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+  </ItemGroup>
+  <ItemGroup>
+	  <PackageReference Include="Skyline.DataMiner.Core.AppPackageInstaller" Version="1.0.0.34" />
+    <PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.2.0.6" />
+  </ItemGroup>
+</Project>
