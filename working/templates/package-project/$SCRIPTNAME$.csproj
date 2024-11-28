@@ -1,15 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Skyline.DataMiner.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net48</TargetFramework>
 		<OutputType>Library</OutputType>
+	</PropertyGroup>
+	<PropertyGroup>
+		<DataMinerType>Package</DataMinerType>
+		<GenerateDataMinerPackage>true</GenerateDataMinerPackage>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Skyline.DataMiner.Core.AppPackageInstaller" Version="1.0.4" />
 		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.2.0.6" />
 	</ItemGroup>
-	<ProjectExtensions>
-		<VisualStudio>
-			<UserProperties DataMinerType="Package" />
-		</VisualStudio>
-	</ProjectExtensions>
 </Project>
