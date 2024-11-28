@@ -53,10 +53,10 @@ Any inquiries can be addressed to:
 	<Vendor>$VENDORNAME$</Vendor>
 	<VendorOID>$VENDOROID$</VendorOID>
 	<DeviceOID>$DEVICEOID$</DeviceOID>
+	<SNMP includepages="true">auto</SNMP>
 	<ElementType>$ELEMENTTYPE$</ElementType>
 	<Type relativeTimers="true">$CONNECTIONTYPE$</Type>
 	<Display defaultPage="General" pageOrder="General"/>
-	<SNMP includepages="true">auto</SNMP>
 
 	<Compliancies>
 		<CassandraReady>true</CassandraReady>
