@@ -1,0 +1,16 @@
+﻿<Project Sdk="Skyline.DataMiner.Sdk/1.0.0-automation">
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup>
+		<DataMinerType>AdHocDataSource</DataMinerType>
+	</PropertyGroup>
+	<ItemGroup>
+<!--#if (IGQIUpdateable)-->
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.4.2" />
+<!--#else-->
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.2.5.5" />
+<!--#endif-->
+	</ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+﻿<Project Sdk="Skyline.DataMiner.Sdk/1.0.0-automation1">
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup>
+		<DataMinerType>AutomationScript</DataMinerType>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.2.0.25" />
+	</ItemGroup>
+</Project>
