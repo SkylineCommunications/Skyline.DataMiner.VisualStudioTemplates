@@ -1,1 +1,0 @@
-This folder contains DLL files that are used in projects for this package.
