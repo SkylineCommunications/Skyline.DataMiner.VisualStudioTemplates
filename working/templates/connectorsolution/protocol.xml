@@ -55,7 +55,7 @@ Any inquiries can be addressed to:
 	<DeviceOID>$DEVICEOID$</DeviceOID>
 	<SNMP includepages="true">auto</SNMP>
 	<ElementType>$ELEMENTTYPE$</ElementType>
-	<Type relativeTimers="true">$CONNECTIONTYPE$</Type>
+	<Type relativeTimers="true" options=";unicode">$CONNECTIONTYPE$</Type>
 	<Display defaultPage="General" pageOrder="General"/>
 
 	<Compliancies>
