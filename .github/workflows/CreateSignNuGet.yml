@@ -17,8 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Create NuGet Package
-        run: dotnet pack ./working
+      - name: Create NuGet Package (Branch)
+        if: github.ref_type != 'tag'
+        run: dotnet pack ./working --version-suffix "ci-${{ github.run_number }}" -c Release
+      
+      - name: Create NuGet Package (Tag)
+        if: github.ref_type == 'tag'
+        run: dotnet pack ./working -p:PackageVersion=${{ github.ref_name }} -c Release
          
       - name: Find created nuget
         id: findcreatednuget        
