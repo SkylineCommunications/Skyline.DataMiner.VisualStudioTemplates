@@ -8,10 +8,10 @@
 	<Vendor>$VENDORNAME$</Vendor>
 	<VendorOID>$VENDOROID$</VendorOID>
 	<DeviceOID>$DEVICEOID$</DeviceOID>
-	<ElementType>$ELEMENTTYPE$</ElementType>
-	<Type relativeTimers="true">$CONNECTIONTYPE$</Type>
-	<Display defaultPage="General" pageOrder="General"/>
 	<SNMP includepages="true">auto</SNMP>
+	<ElementType>$ELEMENTTYPE$</ElementType>
+	<Type relativeTimers="true" options=";unicode">$CONNECTIONTYPE$</Type>
+	<Display defaultPage="General" pageOrder="General"/>
 
 	<Compliancies>
 		<CassandraReady>true</CassandraReady>
