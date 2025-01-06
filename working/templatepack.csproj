@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>template</PackageType>
-    <Version Condition="'$(Configuration)' == 'Debug'">1.0.0</Version> 
+    <PackageVersion>1.0.18-alpha</PackageVersion>
     <PackageId>Skyline.DataMiner.VisualStudioTemplates.Internal</PackageId>
     <Title>DataMiner DotNet Templates</Title>
     <Authors>SkylineCommunications</Authors>
