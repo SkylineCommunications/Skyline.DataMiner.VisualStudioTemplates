@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Skyline.DataMiner.Sdk/1.0.0-package1">
 	<PropertyGroup>
 		<TargetFramework>net48</TargetFramework>
-		<OutputType>Library</OutputType>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 	<PropertyGroup>
 		<DataMinerType>Package</DataMinerType>
