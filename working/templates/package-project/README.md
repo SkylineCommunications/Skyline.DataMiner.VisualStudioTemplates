@@ -1,1 +1,1 @@
-# $SCRIPTNAME$
+# Technical Documentation for $SCRIPTNAME$

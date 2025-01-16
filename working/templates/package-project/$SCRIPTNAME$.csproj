@@ -1,4 +1,4 @@
-﻿<Project Sdk="Skyline.DataMiner.Sdk/1.0.0-package1">
+﻿<Project Sdk="Skyline.DataMiner.Sdk/0.1.0">
 	<PropertyGroup>
 		<TargetFramework>net48</TargetFramework>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -8,7 +8,7 @@
 		<GenerateDataMinerPackage>true</GenerateDataMinerPackage>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Skyline.DataMiner.Core.AppPackageInstaller" Version="1.0.4" />
+		<PackageReference Include="Skyline.DataMiner.Core.AppPackageInstaller" Version="2.0.0-alpha2" />
 		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.2.0.6" />
 	</ItemGroup>
 </Project>
