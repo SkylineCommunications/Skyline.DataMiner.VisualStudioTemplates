@@ -1,3 +1,3 @@
 # $SCRIPTNAME$
 
-![WIP](./Images/wip.PNG)
+![WIP](./images/wip.png)
