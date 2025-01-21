@@ -3,13 +3,21 @@
     "order": 0,
     "icon": "icon.png",
     "symbolInfo": [
-	  {       
+      {       
         "id": "Author",
         "name": 
         {
           "text": "Author"
         },
         "isVisible": true      
+      },
+      {
+        "id": "IncludeCatalogInformation",
+        "name":
+        {
+          "text": "Include Catalog Information"
+        },
+        "isVisible": true
       }
     ]
 }

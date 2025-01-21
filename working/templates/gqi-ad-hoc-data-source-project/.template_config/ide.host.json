@@ -50,6 +50,14 @@
           "text": "Add the IGQIOnDestroy interface"
         },
         "isVisible": true
+      },
+      {
+        "id": "IncludeCatalogInformation",
+        "name":
+        {
+          "text": "Include Catalog Information"
+        },
+        "isVisible": true
       }
     ]
 }

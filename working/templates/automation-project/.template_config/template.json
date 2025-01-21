@@ -17,7 +17,12 @@
           "defaultValue": "",
           "replaces": "$AUTHOR$",
           "description": "The author."
-      },
+    },
+    "IncludeCatalogInformation": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Include Catalog Information."
+    },
     "InitialVersionDate": {
       "type": "generated",
       "generator": "now",
@@ -41,13 +46,21 @@
     }
   },
   "guids": [
-	"4c5d14ab-9cec-4c0b-8b58-af379fdb4123"
+    "4c5d14ab-9cec-4c0b-8b58-af379fdb4123"
   ],
   "sources": [
     {
       "modifiers": [
         {
           "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg" ]
+        },
+        {
+          "condition": "IncludeCatalogInformation",
+          "include": [ "CatalogInformation/**", "Properties/PublishProfiles/**" ]
+        },
+        {
+          "condition": "!IncludeCatalogInformation",
+          "exclude": [ "CatalogInformation/**", "Properties/PublishProfiles/**" ]
         }
       ]
     }

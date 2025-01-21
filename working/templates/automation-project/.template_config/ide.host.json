@@ -10,6 +10,14 @@
           "text": "Author"
         },
         "isVisible": true      
+      },
+      {
+        "id": "IncludeCatalogInformation",
+        "name":
+        {
+          "text": "Include Catalog Information"
+        },
+        "isVisible": true
       }
     ]
 }
