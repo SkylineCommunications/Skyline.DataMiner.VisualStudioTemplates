@@ -22,6 +22,12 @@
       "type": "parameter",
       "datatype": "bool",
       "description": "Include Catalog Information."
+    },    
+    "IncludeGitHubWorkflow": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Include GitHub Workflow.",
+	  "defaultValue": "false"
     },
     "InitialVersionDate": {
       "type": "generated",
@@ -36,6 +42,10 @@
       "valueSource": "name",
       "valueTransform": "invalidChars",
       "replaces": "$NAMESPACE$"
+    },
+    "WillCreateSolution": {
+      "type": "bind",
+      "binding": "context:createsolutiondirectory"
     }
   },
   "forms": {
@@ -52,7 +62,7 @@
     {
       "modifiers": [
         {
-          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg" ]
+          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg",".github/**" ]
         },
         {
           "condition": "IncludeCatalogInformation",
@@ -61,6 +71,34 @@
         {
           "condition": "!IncludeCatalogInformation",
           "exclude": [ "CatalogInformation/**", "Properties/PublishProfiles/**" ]
+        }
+      ]
+    },{
+      "source": ".github",
+      "target": "../.github/",
+      "condition": "WillCreateSolution",
+      "modifiers": [
+        {
+          "condition": "IncludeGitHubWorkflow",
+          "include": [ ".github/**" ]
+        },
+        {
+          "condition": "!IncludeGitHubWorkflow",
+          "exclude": [ ".github/**"]
+        }
+      ]
+    },
+    {
+      "source": ".github",
+      "condition": "!WillCreateSolution",
+      "modifiers": [
+        {
+          "condition": "IncludeGitHubWorkflow",
+          "include": [ ".github/**" ]
+        },
+        {
+          "condition": "!IncludeGitHubWorkflow",
+          "exclude": [ ".github/**"]
         }
       ]
     }

@@ -18,6 +18,14 @@
           "text": "Include Catalog Information"
         },
         "isVisible": true
+      },
+      {
+        "id": "IncludeGitHubWorkflow",
+        "name":
+        {
+          "text": "Include GitHub Workflow"
+        },
+        "isVisible": true
       }
     ]
 }
