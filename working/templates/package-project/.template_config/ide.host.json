@@ -20,6 +20,14 @@
         "isVisible": true
       },
       {
+        "id": "CreateDataMinerPackage",
+        "name":
+        {
+          "text": "Create DataMiner Package"
+        },
+        "isVisible": true
+      },
+      {
         "id": "IncludeGitHubWorkflow",
         "name":
         {
@@ -27,5 +35,6 @@
         },
         "isVisible": true
       }
+      
     ]
 }
