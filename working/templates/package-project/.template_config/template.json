@@ -22,31 +22,24 @@
       "type": "parameter",
       "datatype": "bool",
       "description": "Include Catalog Information.",
-	  "defaultValue": "true"
+	    "defaultValue": "true"
     },     
     "CreateDataMinerPackage": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Allows this project to create a .dmapp. This can be adjusted afterwards as well.",
-	  "defaultValue": "true"
+      "description": "Enables this project to generate a .dmapp. This setting can be modified later if needed.",
+	    "defaultValue": "true",
+      "replaces": "$CREATEPACKAGE$"
     },    
     "IncludeGitHubWorkflow": {
       "type": "parameter",
       "datatype": "choice",
-      "description": "Include GitHub Workflow. Selecting Skyline will add a reusable workflow provided by Skyline that includes additional quality checks.",
+      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate).",
       "choices":[
         {"choice":"None", "description":"None"},
-        {"choice":"Basic", "description":"Basic"},
-        {"choice":"Skyline", "description":"Skyline"}]
+        {"choice":"Basic", "description":"Basic (build, test, publish)"},
+        {"choice":"Complete", "description":"Complete (Skyline Quality Gate)"}]
     },
-    "InitialVersionDate": {
-      "type": "generated",
-      "generator": "now",
-      "replaces": "$INITIALVERSIONDATE$",
-      "parameters": {
-        "format": "dd/MM/yyyy"
-      }
-     },
     "Namespace": {
       "type": "derived",
       "valueSource": "name",
@@ -56,6 +49,10 @@
     "WillCreateSolution": {
       "type": "bind",
       "binding": "context:createsolutiondirectory"
+    },
+    "IsExclusive": {
+      "type": "bind",
+      "binding": "context:isexclusive"
     }
   },
   "forms": {
@@ -70,47 +67,50 @@
   ],
   "sources": [
     {
+      "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg"]
+    },{
+      "source": "../SharedItems/CatalogInformation",
+      "target": "CatalogInformation",
+      "condition": "IncludeCatalogInformation"
+    },{
+      "source": "../SharedItems/Properties",
+      "target": "Properties",
+      "condition": "IncludeCatalogInformation"
+    },{
+      "source": "../SharedItems/.github",
+      "target": "../.github/",
+      "exclude": [ "**" ],
+      "condition": "(WillCreateSolution || !IsExclusive) && !(IncludeGitHubWorkflow == None)",
       "modifiers": [
         {
-          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg",".github/**" ]
+          "condition": "IncludeGitHubWorkflow == Basic",
+          "include": [ "workflows/basic.yml" ]
         },
         {
-          "condition": "IncludeCatalogInformation",
-          "include": [ "CatalogInformation/**", "Properties/PublishProfiles/**" ]
-        },
-        {
-          "condition": "!IncludeCatalogInformation",
-          "exclude": [ "CatalogInformation/**", "Properties/PublishProfiles/**" ]
+          "condition": "IncludeGitHubWorkflow == Complete",
+          "include": [ "workflows/complete.yml" ]
         }
       ]
     },{
-      "source": ".github",
-      "target": "../.github/",
-      "condition": "WillCreateSolution",
+      "source": "../SharedItems/.github",
+      "target": ".github/",
+      "exclude": [ "**" ],
+      "condition": "!WillCreateSolution && !(IncludeGitHubWorkflow == None) && IsExclusive",
       "modifiers": [
         {
-          "condition": "IncludeGitHubWorkflow",
-          "include": [ ".github/**" ]
+          "condition": "IncludeGitHubWorkflow == Basic",
+          "include": [ "workflows/basic.yml" ]
         },
         {
-          "condition": "!IncludeGitHubWorkflow",
-          "exclude": [ ".github/**"]
+          "condition": "IncludeGitHubWorkflow == Complete",
+          "include": [ "workflows/complete.yml" ]
         }
       ]
-    },
-    {
-      "source": ".github",
-      "condition": "!WillCreateSolution",
-      "modifiers": [
-        {
-          "condition": "IncludeGitHubWorkflow",
-          "include": [ ".github/**" ]
-        },
-        {
-          "condition": "!IncludeGitHubWorkflow",
-          "exclude": [ ".github/**"]
-        }
-      ]
+    },{
+      "source": "../SharedItems/StyleCopAndEditor",
+      "target": "../",
+      "include": [ "**" ],
+      "condition": "(WillCreateSolution || !IsExclusive)"
     }
   ]
 }

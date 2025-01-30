@@ -31,7 +31,7 @@
         "id": "IncludeGitHubWorkflow",
         "name":
         {
-          "text": "Include GitHub Workflow"
+          "text": "Add GitHub Workflow (Overwrite Existing)"
         },
         "isVisible": true
       }

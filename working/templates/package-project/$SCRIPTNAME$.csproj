@@ -5,7 +5,7 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<DataMinerType>Package</DataMinerType>
-		<GenerateDataMinerPackage>true</GenerateDataMinerPackage>
+		<GenerateDataMinerPackage>$CREATEPACKAGE$</GenerateDataMinerPackage>
 		<Version>1.0.0</Version>
 		<VersionComment>Initial Version</VersionComment>
 <!--#if (IncludeCatalogInformation)-->
