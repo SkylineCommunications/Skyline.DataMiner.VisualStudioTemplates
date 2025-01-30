@@ -52,10 +52,10 @@
         "isVisible": true
       },
       {
-        "id": "IncludeCatalogInformation",
+        "id": "CreateDataMinerPackage",
         "name":
         {
-          "text": "Include Catalog Information"
+          "text": "Create DataMiner Package"
         },
         "isVisible": true
       },

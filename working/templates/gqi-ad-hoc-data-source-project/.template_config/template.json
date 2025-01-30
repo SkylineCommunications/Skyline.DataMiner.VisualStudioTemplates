@@ -43,17 +43,22 @@
       "type": "parameter",
       "datatype": "bool",
       "description": "Tear down your data source to release all resources."
-    },
-    "IncludeCatalogInformation": {
+    },    
+    "CreateDataMinerPackage": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Include Catalog Information."
+      "description": "Enables this project to generate a .dmapp and optionally publish to the online catalog as a stand-alone item. For multi-artifact packages please leave this empty and use an additional DataMiner Package Project .",
+	    "defaultValue": "false",
+      "replaces": "$CREATEPACKAGE$"
     },    
     "IncludeGitHubWorkflow": {
       "type": "parameter",
-      "datatype": "bool",
-      "description": "Include GitHub Workflow.",
-	  "defaultValue": "false"
+      "datatype": "choice",
+      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: this is on Solution level.",
+      "choices":[
+        {"choice":"None", "description":"None"},
+        {"choice":"Basic", "description":"Basic (build, test, publish)"},
+        {"choice":"Complete", "description":"Complete (Skyline Quality Gate)"}]
     },
     "InitialVersionDate": {
       "type": "generated",
@@ -72,6 +77,26 @@
     "WillCreateSolution": {
       "type": "bind",
       "binding": "context:createsolutiondirectory"
+    },
+    "IsExclusive": {
+      "type": "bind",
+      "binding": "context:isexclusive"
+    },
+    "IsCatalogNoCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == None"
+    },
+    "IsCatalogBasicCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Basic"
+    },
+    "IsCatalogCompleteCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Complete"
+    },
+    "ShowGettingStarted": {
+      "type": "computed",
+      "value": "(WillCreateSolution) || (CreateDataMinerPackage)"
     }
   },
   "forms": {
@@ -86,47 +111,66 @@
   ],
   "sources": [
     {
+      "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg"]
+    },{
+      "source": "../SharedItems/SkylineDevopsHelp",
+      "condition": "ShowGettingStarted"
+    },{
+      "source": "../SharedItems/CatalogInformation",
+      "target": "CatalogInformation",
+      "condition": "CreateDataMinerPackage"
+    },{
+      "source": "../SharedItems/Properties",
+      "target": "Properties",
+      "condition": "CreateDataMinerPackage"
+    },{
+      "source": "../SharedItems/.github",
+      "target": "../.github/",
+      "exclude": [ "**" ],
+      "condition": "(WillCreateSolution || !IsExclusive) && !(IncludeGitHubWorkflow == None)",
       "modifiers": [
         {
-          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg",".github/**" ]
+          "condition": "IncludeGitHubWorkflow == Basic",
+          "include": [ "workflows/basic.yml" ]
         },
         {
-          "condition": "IncludeCatalogInformation",
-          "include": [ "CatalogInformation/**", "Properties/PublishProfiles/**" ]
-        },
-        {
-          "condition": "!IncludeCatalogInformation",
-          "exclude": [ "CatalogInformation/**", "Properties/PublishProfiles/**" ]
+          "condition": "IncludeGitHubWorkflow == Complete",
+          "include": [ "workflows/complete.yml" ]
         }
       ]
     },{
-      "source": ".github",
-      "target": "../.github/",
-      "condition": "WillCreateSolution",
+      "source": "../SharedItems/.github",
+      "target": ".github/",
+      "exclude": [ "**" ],
+      "condition": "!WillCreateSolution && !(IncludeGitHubWorkflow == None) && IsExclusive",
       "modifiers": [
         {
-          "condition": "IncludeGitHubWorkflow",
-          "include": [ ".github/**" ]
+          "condition": "IncludeGitHubWorkflow == Basic",
+          "include": [ "workflows/basic.yml" ]
         },
         {
-          "condition": "!IncludeGitHubWorkflow",
-          "exclude": [ ".github/**"]
-        }
-      ]
-    },
-    {
-      "source": ".github",
-      "condition": "!WillCreateSolution",
-      "modifiers": [
-        {
-          "condition": "IncludeGitHubWorkflow",
-          "include": [ ".github/**" ]
-        },
-        {
-          "condition": "!IncludeGitHubWorkflow",
-          "exclude": [ ".github/**"]
+          "condition": "IncludeGitHubWorkflow == Complete",
+          "include": [ "workflows/complete.yml" ]
         }
       ]
     }
-  ]
+  ],
+  "primaryOutputs": [
+  {
+    "condition": "(HostIdentifier != \"dotnetcli\") && ShowGettingStarted",
+    "path": "GettingStarted.md"
+  }
+],
+"postActions": [
+  {
+    "condition": "(HostIdentifier != \"dotnetcli\") && ShowGettingStarted",
+    "description": "Opens GettingStarted.md in the editor",
+    "manualInstructions": [ ],
+    "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+    "args": {
+      "files": "0"
+    },
+    "continueOnError": true
+  }
+]
 }

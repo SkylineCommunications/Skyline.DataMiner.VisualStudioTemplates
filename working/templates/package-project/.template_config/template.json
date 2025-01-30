@@ -17,24 +17,18 @@
           "defaultValue": "",
           "replaces": "$AUTHOR$",
           "description": "The author."
-    },
-    "IncludeCatalogInformation": {
-      "type": "parameter",
-      "datatype": "bool",
-      "description": "Include Catalog Information.",
-	    "defaultValue": "true"
-    },     
+    },    
     "CreateDataMinerPackage": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Enables this project to generate a .dmapp. This setting can be modified later if needed.",
+      "description": "Enables this project to generate a .dmapp and optionally publish to the online catalog as a stand-alone item. For multi-artifact packages please leave this empty and use an additional DataMiner Package Project .",
 	    "defaultValue": "true",
       "replaces": "$CREATEPACKAGE$"
     },    
     "IncludeGitHubWorkflow": {
       "type": "parameter",
       "datatype": "choice",
-      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate).",
+      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: this is on Solution level.",
       "choices":[
         {"choice":"None", "description":"None"},
         {"choice":"Basic", "description":"Basic (build, test, publish)"},
@@ -53,6 +47,18 @@
     "IsExclusive": {
       "type": "bind",
       "binding": "context:isexclusive"
+    },
+    "IsCatalogNoCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == None"
+    },
+    "IsCatalogBasicCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Basic"
+    },
+    "IsCatalogCompleteCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Complete"
     }
   },
   "forms": {
@@ -106,11 +112,24 @@
           "include": [ "workflows/complete.yml" ]
         }
       ]
-    },{
-      "source": "../SharedItems/StyleCopAndEditor",
-      "target": "../",
-      "include": [ "**" ],
-      "condition": "(WillCreateSolution || !IsExclusive)"
     }
-  ]
+  ],
+  "primaryOutputs": [
+  {
+    "condition": "(HostIdentifier != \"dotnetcli\")",
+    "path": "GettingStarted.md"
+  }
+],
+"postActions": [
+  {
+    "condition": "(HostIdentifier != \"dotnetcli\")",
+    "description": "Opens GettingStarted.md in the editor",
+    "manualInstructions": [ ],
+    "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+    "args": {
+      "files": "0"
+    },
+    "continueOnError": true
+  }
+]
 }

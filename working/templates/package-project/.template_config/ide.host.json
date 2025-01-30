@@ -12,14 +12,6 @@
         "isVisible": true
       },
       {
-        "id": "IncludeCatalogInformation",
-        "name":
-        {
-          "text": "Include Catalog Information"
-        },
-        "isVisible": true
-      },
-      {
         "id": "CreateDataMinerPackage",
         "name":
         {
@@ -34,7 +26,6 @@
           "text": "Add GitHub Workflow (Overwrite Existing)"
         },
         "isVisible": true
-      }
-      
+      }     
     ]
 }
