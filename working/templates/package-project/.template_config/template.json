@@ -98,12 +98,12 @@
     {
       "source": "../SharedItems/CatalogInformation",
       "target": "CatalogInformation",
-      "condition": "IncludeCatalogInformation"
+      "condition": "CreateDataMinerPackage"
     },
     {
       "source": "../SharedItems/Properties",
       "target": "Properties",
-      "condition": "IncludeCatalogInformation"
+      "condition": "CreateDataMinerPackage"
     },
     {
       "source": "../SharedItems/.github",
