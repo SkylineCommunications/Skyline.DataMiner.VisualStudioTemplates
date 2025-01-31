@@ -33,7 +33,7 @@ jobs:
       run: |
         if [[ -z "${{ secrets.DATAMINER_TOKEN }}" ]]; then
           echo "Error: DATAMINER_TOKEN is not set. Release not possible!"
-          echo "Please create or re-use an admin.dataminer.services Token by visiting: https://admin.dataminer.services/."
+          echo "Please create or re-use an admin.dataminer.services token by visiting: https://admin.dataminer.services/."
           echo "Navigate to the right Organization then go to Keys and create/find a key with permissions to Register Catalog Items."
           echo "Copy the value of the token."
           repo_url="https://github.com/${{ github.repository }}/settings/secrets/actions"
