@@ -5,7 +5,7 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<DataMinerType>AutomationScript</DataMinerType>
-		<GenerateDataMinerPackage>false</GenerateDataMinerPackage>
+		<GenerateDataMinerPackage>$CREATEPACKAGE$</GenerateDataMinerPackage>
 		<Version>1.0.0</Version>
 		<VersionComment>Initial Version</VersionComment>
 <!--#if (IncludeCatalogInformation)-->

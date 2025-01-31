@@ -77,7 +77,7 @@ jobs:
       shell: pwsh
       run: |
         dotnet publish `
-          -p:Version="0.0.${{ github.run_number }}-prerelease" `
+          -p:Version="0.0.${{ github.run_number }}" `
           -p:VersionComment="${{ steps.findVersionComment.outputs.versionComment }}" `
           -p:CatalogPublishKeyName="DATAMINER_TOKEN" `
 

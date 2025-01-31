@@ -19,6 +19,12 @@
     },
     "IGQIOnDestroy": {
       "shortName": "on-destroy"
+    },
+    "CreateDataMinerPackage": {
+      "longName": "create-dataminer-package"
+    },
+    "IncludeGitHubWorkflow": {
+      "longname": "include-github-workflow"
     }
   }
 }

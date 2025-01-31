@@ -1,7 +1,9 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Skyline Communications",
-  "classifications": [ "DataMiner" ],
+  "classifications": [
+    "DataMiner"
+  ],
   "tags": {
     "language": "C#",
     "type": "project"
@@ -12,27 +14,37 @@
   "sourceName": "$SCRIPTNAME$",
   "symbols": {
     "Author": {
-          "type": "parameter",
-          "datatype": "string",
-          "defaultValue": "",
-          "replaces": "$AUTHOR$",
-          "description": "The author."
-    },    
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$AUTHOR$",
+      "description": "The author."
+    },
     "CreateDataMinerPackage": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Enables this project to generate a .dmapp and optionally publish to the online catalog as a stand-alone item. For multi-artifact packages please leave this empty and use an additional DataMiner Package Project .",
-	    "defaultValue": "true",
+      "description": "Enables this project to generate a .dmapp and optionally publish to the online catalog as a stand-alone item. For multi-artifact packages please leave this empty and use an additional DataMiner Package Project.",
+      "defaultValue": "true",
       "replaces": "$CREATEPACKAGE$"
-    },    
+    },
     "IncludeGitHubWorkflow": {
       "type": "parameter",
       "datatype": "choice",
       "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: this is on Solution level.",
-      "choices":[
-        {"choice":"None", "description":"None"},
-        {"choice":"Basic", "description":"Basic (build, test, publish)"},
-        {"choice":"Complete", "description":"Complete (Skyline Quality Gate)"}]
+      "choices": [
+        {
+          "choice": "None",
+          "description": "None"
+        },
+        {
+          "choice": "Basic",
+          "description": "Basic (build, test, publish)"
+        },
+        {
+          "choice": "Complete",
+          "description": "Complete (Skyline Quality Gate)"
+        }
+      ]
     },
     "Namespace": {
       "type": "derived",
@@ -73,63 +85,87 @@
   ],
   "sources": [
     {
-      "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg"]
-    },{
+      "exclude": [
+        "./[Content_Types].xml",
+        "src/.vs/**",
+        ".template_config/**",
+        "[Content_Types].xml",
+        "_rels/**",
+        "*.nuspec",
+        "*.nupkg"
+      ]
+    },
+    {
       "source": "../SharedItems/CatalogInformation",
       "target": "CatalogInformation",
       "condition": "IncludeCatalogInformation"
-    },{
+    },
+    {
       "source": "../SharedItems/Properties",
       "target": "Properties",
       "condition": "IncludeCatalogInformation"
-    },{
+    },
+    {
       "source": "../SharedItems/.github",
       "target": "../.github/",
-      "exclude": [ "**" ],
+      "exclude": [
+        "**"
+      ],
       "condition": "(WillCreateSolution || !IsExclusive) && !(IncludeGitHubWorkflow == None)",
       "modifiers": [
         {
           "condition": "IncludeGitHubWorkflow == Basic",
-          "include": [ "workflows/basic.yml" ]
+          "include": [
+            "workflows/basic.yml"
+          ]
         },
         {
           "condition": "IncludeGitHubWorkflow == Complete",
-          "include": [ "workflows/complete.yml" ]
+          "include": [
+            "workflows/complete.yml"
+          ]
         }
       ]
-    },{
+    },
+    {
       "source": "../SharedItems/.github",
       "target": ".github/",
-      "exclude": [ "**" ],
+      "exclude": [
+        "**"
+      ],
       "condition": "!WillCreateSolution && !(IncludeGitHubWorkflow == None) && IsExclusive",
       "modifiers": [
         {
           "condition": "IncludeGitHubWorkflow == Basic",
-          "include": [ "workflows/basic.yml" ]
+          "include": [
+            "workflows/basic.yml"
+          ]
         },
         {
           "condition": "IncludeGitHubWorkflow == Complete",
-          "include": [ "workflows/complete.yml" ]
+          "include": [
+            "workflows/complete.yml"
+          ]
         }
       ]
     }
   ],
   "primaryOutputs": [
-  {
-    "condition": "(HostIdentifier != \"dotnetcli\")",
-    "path": "GettingStarted.md"
-  }
-],
-"postActions": [
-  {
-    "condition": "(HostIdentifier != \"dotnetcli\")",
-    "description": "Opens GettingStarted.md in the editor",
-    "manualInstructions": [ ],
-    "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
-    "args": {
-      "files": "0"
-    },
-    "continueOnError": true
-  }
-]
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "path": "GettingStarted.md"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "description": "Opens GettingStarted.md in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    }
+  ]
 }
