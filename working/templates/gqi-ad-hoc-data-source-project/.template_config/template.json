@@ -144,7 +144,7 @@
       "source": "../SharedItems/OnSolutionLevel",
       "target": "../",
       "condition": "(HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)"
-    },    
+    },
     {
       "source": "../SharedItems/OnSolutionLevel",
       "target": "/",

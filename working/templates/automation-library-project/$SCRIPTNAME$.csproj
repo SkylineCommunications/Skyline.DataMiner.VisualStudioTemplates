@@ -9,7 +9,7 @@
 		<GenerateDataMinerPackage>$CREATEPACKAGE$</GenerateDataMinerPackage>
 		<Version>1.0.0</Version>
 		<VersionComment>Initial Version</VersionComment>
-<!--#if (IncludeCatalogInformation)-->
+<!--#if (CreateDataMinerPackage)-->
 		<!-- Do NOT fill in the Organization Token here. This points to either an Environment Variable skyline__sdk__catalogpublishtoken holding the organization token or a Visual Studio User Secret holding the token. -->
 		<CatalogPublishKeyName>skyline:sdk:catalogpublishtoken</CatalogPublishKeyName>
 <!--#endif-->
