@@ -6,21 +6,13 @@
   ],
   "tags": {
     "language": "C#",
-    "type": "project",
-    "editorTreatAs": "project"
+    "type": "project"
   },
   "identity": "Skyline.DataMiner.Gqi.AdHocDataSource.Project.Template",
   "name": "DataMiner Ad Hoc Data Source Project",
   "shortName": "dataminer-gqi-ad-hoc-data-source-project",
   "sourceName": "$SCRIPTNAME$",
   "symbols": {
-    "Author": {
-      "type": "parameter",
-      "datatype": "string",
-      "defaultValue": "",
-      "replaces": "$AUTHOR$",
-      "description": "The author."
-    },
     "IGQIOnInit": {
       "type": "parameter",
       "datatype": "bool",
@@ -46,6 +38,13 @@
       "datatype": "bool",
       "description": "Tear down your data source to release all resources."
     },
+    "Author": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$AUTHOR$",
+      "description": "The author."
+    },
     "CreateDataMinerPackage": {
       "type": "parameter",
       "datatype": "bool",
@@ -56,7 +55,7 @@
     "IncludeGitHubWorkflow": {
       "type": "parameter",
       "datatype": "choice",
-      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: this is on Solution level.",
+      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: When adding a new Project to an existing solution or for dotnet-cli this will always be one folder up from your OUTPUT_DIRECTORY.",
       "choices": [
         {
           "choice": "None",
@@ -86,13 +85,17 @@
       "valueTransform": "invalidChars",
       "replaces": "$NAMESPACE$"
     },
-    "WillCreateSolution": {
+    "WillCreateSolutionOneLevelHigher": {
       "type": "bind",
       "binding": "context:createsolutiondirectory"
     },
-    "IsExclusive": {
+    "CreatingNewVSSolution": {
       "type": "bind",
       "binding": "context:isexclusive"
+    },
+    "HostIdentifier": {
+      "type": "bind",
+      "binding": "host:HostIdentifier"
     },
     "IsCatalogNoCICD": {
       "type": "computed",
@@ -108,7 +111,11 @@
     },
     "ShowGettingStarted": {
       "type": "computed",
-      "value": "(WillCreateSolution) || (CreateDataMinerPackage)"
+      "value": "(WillCreateSolutionOneLevelHigher) || (CreateDataMinerPackage)"
+    },
+    "PlaceSolutionFilesHigh": {
+      "type": "computed",
+      "value": "(WillCreateSolutionOneLevelHigher && CreatingNewVSSolution) || !CreatingNewVSSolution"
     }
   },
   "forms": {
@@ -134,6 +141,16 @@
       ]
     },
     {
+      "source": "../SharedItems/OnSolutionLevel",
+      "target": "../",
+      "condition": "(HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)"
+    },    
+    {
+      "source": "../SharedItems/OnSolutionLevel",
+      "target": "/",
+      "condition": "!(HostIdentifier == dotnetcli) && !PlaceSolutionFilesHigh"
+    },
+    {
       "source": "../SharedItems/SkylineDevopsHelp",
       "condition": "ShowGettingStarted"
     },
@@ -153,18 +170,20 @@
       "exclude": [
         "**"
       ],
-      "condition": "(WillCreateSolution || !IsExclusive) && !(IncludeGitHubWorkflow == None)",
+      "condition": "!(IncludeGitHubWorkflow == None) && (HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)",
       "modifiers": [
         {
           "condition": "IncludeGitHubWorkflow == Basic",
           "include": [
-            "workflows/basic.yml"
+            "workflows/basic.yml",
+            "dependabot.yml"
           ]
         },
         {
           "condition": "IncludeGitHubWorkflow == Complete",
           "include": [
-            "workflows/complete.yml"
+            "workflows/complete.yml",
+            "dependabot.yml"
           ]
         }
       ]
@@ -175,18 +194,20 @@
       "exclude": [
         "**"
       ],
-      "condition": "!WillCreateSolution && !(IncludeGitHubWorkflow == None) && IsExclusive",
+      "condition": "!(IncludeGitHubWorkflow == None) && !(HostIdentifier == dotnetcli) && !PlaceSolutionFilesHigh",
       "modifiers": [
         {
           "condition": "IncludeGitHubWorkflow == Basic",
           "include": [
-            "workflows/basic.yml"
+            "workflows/basic.yml",
+            "dependabot.yml"
           ]
         },
         {
           "condition": "IncludeGitHubWorkflow == Complete",
           "include": [
-            "workflows/complete.yml"
+            "workflows/complete.yml",
+            "dependabot.yml"
           ]
         }
       ]

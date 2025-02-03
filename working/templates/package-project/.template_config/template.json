@@ -30,7 +30,7 @@
     "IncludeGitHubWorkflow": {
       "type": "parameter",
       "datatype": "choice",
-      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: this is on Solution level.",
+      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: When adding a new Project to an existing solution or for dotnet-cli this will always be one folder up from your OUTPUT_DIRECTORY.",
       "choices": [
         {
           "choice": "None",
@@ -46,19 +46,31 @@
         }
       ]
     },
+    "InitialVersionDate": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$INITIALVERSIONDATE$",
+      "parameters": {
+        "format": "dd/MM/yyyy"
+      }
+    },
     "Namespace": {
       "type": "derived",
       "valueSource": "name",
       "valueTransform": "invalidChars",
       "replaces": "$NAMESPACE$"
     },
-    "WillCreateSolution": {
+    "WillCreateSolutionOneLevelHigher": {
       "type": "bind",
       "binding": "context:createsolutiondirectory"
     },
-    "IsExclusive": {
+    "CreatingNewVSSolution": {
       "type": "bind",
       "binding": "context:isexclusive"
+    },
+    "HostIdentifier": {
+      "type": "bind",
+      "binding": "host:HostIdentifier"
     },
     "IsCatalogNoCICD": {
       "type": "computed",
@@ -71,6 +83,10 @@
     "IsCatalogCompleteCICD": {
       "type": "computed",
       "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Complete"
+    },
+    "PlaceSolutionFilesHigh": {
+      "type": "computed",
+      "value": "(WillCreateSolutionOneLevelHigher && CreatingNewVSSolution) || !CreatingNewVSSolution"
     }
   },
   "forms": {
@@ -96,6 +112,16 @@
       ]
     },
     {
+      "source": "../SharedItems/OnSolutionLevel",
+      "target": "../",
+      "condition": "(HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)"
+    },    
+    {
+      "source": "../SharedItems/OnSolutionLevel",
+      "target": "/",
+      "condition": "!(HostIdentifier == dotnetcli) && !PlaceSolutionFilesHigh"
+    },
+    {
       "source": "../SharedItems/CatalogInformation",
       "target": "CatalogInformation",
       "condition": "CreateDataMinerPackage"
@@ -111,18 +137,20 @@
       "exclude": [
         "**"
       ],
-      "condition": "(WillCreateSolution || !IsExclusive) && !(IncludeGitHubWorkflow == None)",
+      "condition": "!(IncludeGitHubWorkflow == None) && (HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)",
       "modifiers": [
         {
           "condition": "IncludeGitHubWorkflow == Basic",
           "include": [
-            "workflows/basic.yml"
+            "workflows/basic.yml",
+            "dependabot.yml"
           ]
         },
         {
           "condition": "IncludeGitHubWorkflow == Complete",
           "include": [
-            "workflows/complete.yml"
+            "workflows/complete.yml",
+            "dependabot.yml"
           ]
         }
       ]
@@ -133,18 +161,20 @@
       "exclude": [
         "**"
       ],
-      "condition": "!WillCreateSolution && !(IncludeGitHubWorkflow == None) && IsExclusive",
+      "condition": "!(IncludeGitHubWorkflow == None) && !(HostIdentifier == dotnetcli) && !PlaceSolutionFilesHigh",
       "modifiers": [
         {
           "condition": "IncludeGitHubWorkflow == Basic",
           "include": [
-            "workflows/basic.yml"
+            "workflows/basic.yml",
+            "dependabot.yml"
           ]
         },
         {
           "condition": "IncludeGitHubWorkflow == Complete",
           "include": [
-            "workflows/complete.yml"
+            "workflows/complete.yml",
+            "dependabot.yml"
           ]
         }
       ]
@@ -152,13 +182,13 @@
   ],
   "primaryOutputs": [
     {
-      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "condition": "(HostIdentifier != \"dotnetcli\") && ShowGettingStarted",
       "path": "GettingStarted.md"
     }
   ],
   "postActions": [
     {
-      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "condition": "(HostIdentifier != \"dotnetcli\") && ShowGettingStarted",
       "description": "Opens GettingStarted.md in the editor",
       "manualInstructions": [],
       "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
