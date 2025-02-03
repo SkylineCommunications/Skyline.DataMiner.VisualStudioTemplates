@@ -20,7 +20,7 @@
     {
       "id": "IncludeGitHubWorkflow",
       "name": {
-        "text": "Add GitHub Workflow (Overwrite Existing)"
+          "text": "Add GitHub CI/CD Workflow (Overwrite Existing)"
       },
       "isVisible": true
     }
