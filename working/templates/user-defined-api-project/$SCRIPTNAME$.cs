@@ -5,7 +5,7 @@ namespace $NAMESPACE$
 	using Skyline.DataMiner.Net.Apps.UserDefinableApis.Actions;
 
 	/// <summary>
-	/// Represents a DataMiner User-Defined API.
+	/// Represents a DataMiner user-defined API.
 	/// </summary>
 	public class Script
 	{
