@@ -8,9 +8,9 @@ For more details and comprehensive instructions, please visit [DataMiner Docs](h
 ## Creating a DataMiner Application Package
 
 This project was configured to create a `.dmapp` file every time you build the project.  
-Simply compile or build the project, and you will find the generated `.dmapp` in the standard output folder, typically the `bin` folder of your project.
+When you compile or build the project, you will find the generated `.dmapp` in the standard output folder, typically the `bin` folder of your project.
 
-When Publishing (see Publishing topic below), this project will become its own item on the online catalog.
+When Publishing (see Publishing topic below), this project will become its own item on the online DataMiner Catalog.
 
 <!--#else-->
 ## Enabling the Creation of a DataMiner Application Package
@@ -32,16 +32,16 @@ Follow the provided **Getting Started** guide in the new project for further ins
 <!--#if (IsCatalogNoCICD)-->
 ## Publishing to the Catalog
 
-This project was created with support for publishing to the DataMiner catalog.  
+This project was created with support for publishing to the DataMiner Catalog.  
 You can publish your artifact either manually via the Visual Studio IDE or by setting up a CI/CD workflow.
 
 ### Manual Publishing
 
 1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
-   - **Register catalog items**
-   - **Read catalog items**
-   
-2. Securely store the key using Visual Studio User Secrets:
+   - **Register Catalog items**
+   - **Read Catalog items**
+
+1. Securely store the key using Visual Studio User Secrets:
    - Right-click the project and select **Manage User Secrets**.
    - Add the key in the following format:
 
@@ -49,13 +49,13 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
     {
       "skyline": {
         "sdk": {
-          "catalogpublishtoken": "MyKeyHere"
+          "Catalogpublishtoken": "MyKeyHere"
         }
       }
     }
     ```
 
-3. Publish the package by right clicking your project in Visual Studio and then selecting the **Publish** option. This will open a new window, where you'll find a Publish button and a link where your item will eventually be registered.
+1. Publish the package by right clicking your project in Visual Studio and then selecting the **Publish** option. This will open a new window, where you'll find a Publish button and a link where your item will eventually be registered.
 
 ### Releasing a Specific Version
 
@@ -80,7 +80,7 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
 <!--#elseif (IsCatalogBasicCICD)-->
 ## Publishing to the Catalog with Basic CI/CD Workflow
 
-This project includes a basic GitHub workflow for catalog publishing.  
+This project includes a basic GitHub workflow for Catalog publishing.  
 Follow these steps to set it up:
 
 1. Create a GitHub repository. Via **Git > Create Git Repository**, Selecting GitHub and filling in the wizard before clicking **Create and Push**.
@@ -102,8 +102,8 @@ Then set a DATAMINER_TOKEN secret in your repository settings: **Dynamic Link**
 You can use the links from the actual error to better address the next couple of steps.
 
 1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
-   - **Register catalog items**
-   - **Read catalog items**
+   - **Register Catalog items**
+   - **Read Catalog items**
 
 1. Add the key as a secret in your GitHub repository:
    - Navigate to **Settings > Secrets and variables > Actions** and create a secret named `DATAMINER_TOKEN`.
@@ -115,7 +115,7 @@ With this setup, any push with new content (including the initial creation) to t
 
 - Navigate to the **<> Code** tab in your GitHub repository.
 - Select **Releases** from the right-hand menu.
-- Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the catalog.)
+- Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the Catalog.)
 
 <!--#elseif (IsCatalogCompleteCICD)-->
 
