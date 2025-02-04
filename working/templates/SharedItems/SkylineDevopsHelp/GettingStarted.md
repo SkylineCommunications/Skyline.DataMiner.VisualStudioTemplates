@@ -117,6 +117,9 @@ With this setup, any push with new content (including the initial creation) to t
 - Select **Releases** from the right-hand menu.
 - Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the Catalog.)
 
+> [!NOTE]
+> The description will be visible on the DataMiner Catalog.
+
 <!--#elseif (IsCatalogCompleteCICD)-->
 
 ## Publishing to the Catalog with Complete CI/CD Workflow
@@ -167,6 +170,9 @@ The following secrets and variables will have been added to your repository afte
 - Navigate to the **<> Code** tab in your GitHub repository.
 - Select **Releases** from the right-hand menu.
 - Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the Catalog.)
+
+> [!NOTE]
+> The description will be visible on the DataMiner Catalog.
 
 <!--#else-->
 ## Enabling Publishing to the Catalog

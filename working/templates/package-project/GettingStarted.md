@@ -20,7 +20,8 @@ This project is designed to create multi-artifact packages in a straightforward 
 
 You can right-click the solution and select **Add** and then **New Project**. This will allow you to select DataMiner Project Templates. (e.g. adding additional Automation Scripts)
 
-[!Note]: Connectors are currently not supported.
+> [!NOTE]
+> Connectors are currently not supported.
 
 Every **Skyline.DataMiner.SDK** project, except other DataMiner Package Projects, will by default be included within the `.dmapp` created by this project.  
 You can customize this behavior using the **PackageContent/ProjectReferences.xml** file. This allows you to add filters to include or exclude projects as needed.
@@ -49,6 +50,7 @@ Open the **$SCRIPTNAME$.cs** file to write custom installation code. Common acti
 You can add configuration files (e.g. `.json`, `.xml`) to the **SetupContent** folder, which can be accessed during installation.
 
 Access them in your code using:
+
 ```csharp
 string setupContentPath = installer.GetSetupContentDirectory();
 ```
@@ -153,6 +155,9 @@ With this setup, any push with new content (including the initial creation) to t
 - Select **Releases** from the right-hand menu.
 - Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the Catalog.)
 
+> [!NOTE]
+> The description will be visible on the DataMiner Catalog.
+
 <!--#elseif (IsCatalogCompleteCICD)-->
 ## Publishing to the Catalog with Complete CI/CD Workflow
 
@@ -204,7 +209,8 @@ The following secrets and variables will have been added to your repository afte
 - Select **Releases** from the right-hand menu.
 - Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the Catalog.)
 
-[!Note] The description will be visible on the DataMiner Catalog.
+> [!NOTE]
+> The description will be visible on the DataMiner Catalog.
 
 <!--#else-->
 ## Enabling Publishing to the Catalog
