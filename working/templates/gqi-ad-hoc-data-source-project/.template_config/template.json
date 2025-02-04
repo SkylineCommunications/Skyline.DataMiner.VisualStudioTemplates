@@ -16,7 +16,7 @@
     "IGQIOnInit": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Initialize the data source and get access to additional capabilities such as logging and fetching information from the DataMiner system."
+      "description": "Initialize the data source and get access to additional capabilities such as logging and fetching information from the DataMiner System."
     },
     "IGQIInputArguments": {
       "type": "parameter",
