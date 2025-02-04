@@ -1,1 +1,1 @@
-This folder can contain .zip files containing Dashboards exported from DataMiner. They will be imported during installation of a .dmapp.
+This folder can contain .zip files containing dashboards exported from DataMiner. They will be imported during installation of a .dmapp.
