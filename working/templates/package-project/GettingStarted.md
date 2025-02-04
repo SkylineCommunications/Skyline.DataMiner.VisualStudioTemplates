@@ -95,7 +95,7 @@ You can publish your artifact manually through Visual Studio or by setting up a 
 
 1. Publish the package by right clicking your project in Visual Studio and then selecting the **Publish** option. This will open a new window, where you'll find a Publish button and a link where your item will eventually be registered.
 
-### Releasing a Specific Version
+### Changing The Version
 
 - Navigate to your project in Visual Studio, right click and select properties
 
@@ -103,7 +103,7 @@ You can publish your artifact manually through Visual Studio or by setting up a 
 
 - You can now adjust this value
 
-### Releasing a Specific Version - Alternative
+### Changing The Version - Alternative
 
 - Navigate and double click on your project in Visual Studio.
 
@@ -153,7 +153,7 @@ With this setup, any push with new content (including the initial creation) to t
 
 - Navigate to the **<> Code** tab in your GitHub repository.
 - Select **Releases** from the right-hand menu.
-- Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the Catalog.)
+- Create a new release, select the desired version as a **Tag**, and provide a title and description.
 
 > [!NOTE]
 > The description will be visible on the DataMiner Catalog.
@@ -207,7 +207,7 @@ The following secrets and variables will have been added to your repository afte
 
 - Navigate to the **<> Code** tab in your GitHub repository.
 - Select **Releases** from the right-hand menu.
-- Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the Catalog.)
+- Create a new release, select the desired version as a **Tag**, and provide a title and description.
 
 > [!NOTE]
 > The description will be visible on the DataMiner Catalog.
