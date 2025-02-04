@@ -8,7 +8,7 @@ For more details and comprehensive instructions, please visit [DataMiner Docs](h
 ## Creating a DataMiner Application Package
 
 This project was configured to create a `.dmapp` file every time you build the project.  
-Simply compile or build the project, and you will find the generated `.dmapp` in the standard output folder, typically the `bin` folder of your project.
+When you compile or build the project, you will find the generated `.dmapp` in the standard output folder, typically the `bin` folder of your project.
 
 When Publishing (see Publishing topic below), this project will become its own item on the online catalog.
 
@@ -32,14 +32,14 @@ Follow the provided **Getting Started** guide in the new project for further ins
 <!--#if (IsCatalogNoCICD)-->
 ## Publishing to the Catalog
 
-This project was created with support for publishing to the DataMiner catalog.  
+This project was created with support for publishing to the DataMiner Catalog.  
 You can publish your artifact either manually via the Visual Studio IDE or by setting up a CI/CD workflow.
 
 ### Manual Publishing
 
 1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
-   - **Register catalog items**
-   - **Read catalog items**
+   - **Register Catalog items**
+   - **Read Catalog items**
    
 2. Securely store the key using Visual Studio User Secrets:
    - Right-click the project and select **Manage User Secrets**.
@@ -80,7 +80,7 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
 <!--#elseif (IsCatalogBasicCICD)-->
 ## Publishing to the Catalog with Basic CI/CD Workflow
 
-This project was created with a basic GitHub workflow for catalog publishing.  
+This project was created with a basic GitHub workflow for publishing to the DataMiner Catalog.  
 Follow these steps to get started:
 
 1. Create a GitHub repository and push your project.
@@ -96,9 +96,9 @@ Follow these steps to get started:
 With this setup, any push to the main/master branch will generate a new pre-release version, using the latest commit message as the version description.
 
 ### Releasing a Specific Version:
-- Navigate to the **<> Code** tab in your repository.
-- Select **Releases** from the right-hand menu.
-- Draft a new release, select the desired version, and provide a description.
+1. Navigate to the **<> Code** tab in your repository.
+1. Select **Releases** in the menu on the right.
+1. Draft a new release, select the desired version, and provide a description.
 
 <!--#elseif (IsCatalogCompleteCICD)-->
 
@@ -107,7 +107,7 @@ With this setup, any push to the main/master branch will generate a new pre-rele
 This project was created with a comprehensive GitHub workflow that adheres to Skyline Communications' quality standards, including static code analysis, custom validation, and unit testing.
 
 ### Prerequisite:  
-You need a **SonarCloud Organization**. If you don't yet have access to one, you can create one [here](https://sonarcloud.io/create-organization).
+You need a **SonarCloud Organization**. If you don't have access to one yet, you can create one [here](https://sonarcloud.io/create-organization).
 
 ### Steps:
 1. Create a GitHub repository and push your project.  
@@ -124,9 +124,9 @@ The following secrets and variables will have been added to your repository afte
 | `SONAR_NAME`     | VARIABLE: SonarCloud project ID                             | Visit [SonarCloud](https://sonarcloud.io/projects/create), copy the project ID, and add it as a variable. |
 
 ### Releasing a Version:
-- Navigate to the **<> Code** tab in your GitHub repository.
-- Select **Releases** from the right-hand menu.
-- Draft a new release, select the desired version, and provide a description.
+1. Navigate to the **<> Code** tab in your GitHub repository.
+1. Select **Releases** in the menu on the right.
+1. Draft a new release, select the desired version, and provide a description.
 
 <!--#else-->
 ## Enabling Catalog Publishing

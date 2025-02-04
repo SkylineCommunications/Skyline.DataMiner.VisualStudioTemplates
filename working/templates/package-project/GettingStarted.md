@@ -8,7 +8,7 @@ For more details and comprehensive instructions, please visit [DataMiner Docs](h
 ## Creating a DataMiner Application Package
 
 This project is configured to create a `.dmapp` file every time you build the project.  
-Simply compile or build the project, and you will find the generated `.dmapp` in the standard output folder, typically the `bin` folder of your project.
+When you compile or build the project, you will find the generated `.dmapp` in the standard output folder, typically the `bin` folder of your project.
 
 When publishing, this project will become its own item on the online catalog.
 
@@ -23,13 +23,13 @@ You can customize this behavior using the **PackageContent/ProjectReferences.xml
 
 ### Adding Content from the Catalog
 
-You can reference and include additional content from the catalog using the **PackageContent/CatalogReferences.xml** file provided in this project.
+You can reference and include additional content from the Catalog using the **PackageContent/CatalogReferences.xml** file provided in this project.
 
 ### Importing from DataMiner
 
-You can import specific items directly from a DataMiner agent:  
+You can import specific items directly from a DataMiner Agent:  
 
-1. Connect to an agent via **Extensions > DIS > DMA > Connect**.
+1. Connect to an Agent via **Extensions > DIS > DMA > Connect**.
 2. Once connected, you can import specific DataMiner artifacts.
 3. Navigate to folders such as **PackageContent/Dashboards** or **PackageContent/LowCodeApps**, right-click, select **Add**, and choose **Import DataMiner Dashboard/LowCodeApp** or the equivalent.
 
@@ -37,7 +37,7 @@ You can import specific items directly from a DataMiner agent:
 
 Open the **$SCRIPTNAME$.cs** file to write custom installation code. Common actions include creating elements, services, or views.
 
-**Quick Tip:** Type `clGetDms` in the `.cs` file and press **Tab** twice to insert a snippet that gives you access to the **IDms** classes, making DataMiner manipulation easier.
+**Quick tip:** Type `clGetDms` in the `.cs` file and press **Tab** twice to insert a snippet that gives you access to the **IDms** classes, making DataMiner manipulation easier.
 
 ## Does Your Installation Code Need Configuration Files?
 
@@ -62,14 +62,14 @@ Please consider the following options:
 <!--#if (IsCatalogNoCICD)-->
 ## Publishing to the Catalog
 
-This project was created with support for publishing to the DataMiner catalog.  
+This project was created with support for publishing to the DataMiner Catalog.  
 You can publish your artifact manually through Visual Studio or by setting up a CI/CD workflow.
 
 ### Manual Publishing
 
 1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
-   - **Register catalog items**
-   - **Read catalog items**
+   - **Register Catalog items**
+   - **Read Catalog items**
 
 2. Securely store the key using Visual Studio User Secrets:
    - Right-click the project and select **Manage User Secrets**.
