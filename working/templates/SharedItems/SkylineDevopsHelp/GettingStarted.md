@@ -10,7 +10,7 @@ For more details and comprehensive instructions, please visit [DataMiner Docs](h
 This project was configured to create a `.dmapp` file every time you build the project.  
 Simply compile or build the project, and you will find the generated `.dmapp` in the standard output folder, typically the `bin` folder of your project.
 
-When Publishing, this project will become its own item on the online catalog.
+When Publishing (see Publishing topic below), this project will become its own item on the online catalog.
 
 <!--#else-->
 ## Enabling the Creation of a DataMiner Application Package
@@ -55,7 +55,25 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
 }
 ```
 
-3. Publish the package using the **Publish** option in Visual Studio.
+3. Publish the package by right clicking your project in Visual Studio and then selecting the **Publish** option. This will open a new window, where you'll find a Publish button and a link where your item will eventually be registered.
+
+### Releasing a Specific Version
+
+- Navigate to your project in Visual Studio, right click and select properties
+
+- Search for Package Version
+
+- You can now adjust this value
+
+### Releasing a Specific Version - Alternative
+
+- Navigate and double click on your project in Visual Studio.
+
+- Adjust the XML tag Version to the version you want to register.
+
+```xml
+<Version>1.0.0.1</Version>
+```
 
 **Recommendation:** For stable releases, consider using a CI/CD setup to run **dotnet publish** only after passing quality checks.
 
