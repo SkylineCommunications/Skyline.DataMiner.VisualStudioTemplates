@@ -30,9 +30,9 @@ You can reference and include additional content from the Catalog using the **Pa
 
 ### Importing from DataMiner
 
-You can import specific items directly from a DataMiner agent:  
+You can import specific items directly from a DataMiner Agent:  
 
-1. Connect to an agent via **Extensions > DIS > DMA > Connect**.
+1. Connect to an Agent via **Extensions > DIS > DMA > Connect**.
 1. If your agent is not present, you can add a new agent via **Extensions > DIS > Settings**, and selecting Add on the DMA tab.
 1. Once connected, you can import specific DataMiner artifacts.
 1. Navigate to folders such as **PackageContent/Dashboards** or **PackageContent/LowCodeApps**, right-click, select **Add**, and choose **Import DataMiner Dashboard/LowCodeApp** or the equivalent.
@@ -41,7 +41,7 @@ You can import specific items directly from a DataMiner agent:
 
 Open the **$SCRIPTNAME$.cs** file to write custom installation code. Common actions include creating elements, services, or views.
 
-**Quick Tip:** Type `clGetDms` in the `.cs` file and press **Tab** twice to insert a snippet that gives you access to the **IDms** classes, making DataMiner manipulation easier.
+**Quick tip:** Type `clGetDms` in the `.cs` file and press **Tab** twice to insert a snippet that gives you access to the **IDms** classes, making DataMiner manipulation easier.
 
 ## Does Your Installation Code Need Configuration Files?
 
@@ -199,9 +199,9 @@ The following secrets and variables will have been added to your repository afte
 
 ### Releasing a Version
 
-- Navigate to the **<> Code** tab in your repository.
-- Select **Releases** from the right-hand menu.
-- Draft a new release, select the desired version, and provide a description.
+1. Navigate to the **<> Code** tab in your repository.
+1. Select **Releases** in the menu on the right.
+1. Draft a new release, select the desired version, and provide a description.
 
 <!--#else-->
 ## Enabling Publishing to the Catalog
