@@ -151,7 +151,7 @@ You can use the links from the actual error to better address the next couple of
    - **Read Catalog items**
 
 1. Add the key as a secret in your GitHub repository:
-   - Navigate to **Settings > Secrets and variables > Actions** and create a secret named `DATAMINER_TOKEN`.
+   - Navigate to **Settings > Secrets and variables > Actions** and create secrets or variables with the required names.
 1. Re-run the workflow.
 
 The following secrets and variables will have been added to your repository after all issues are resolved:
@@ -164,9 +164,9 @@ The following secrets and variables will have been added to your repository afte
 
 ### Releasing a Version
 
-- Navigate to the **<> Code** tab in your repository.
+- Navigate to the **<> Code** tab in your GitHub repository.
 - Select **Releases** from the right-hand menu.
-- Draft a new release, select the desired version, and provide a description.
+- Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the Catalog.)
 
 <!--#else-->
 ## Enabling Publishing to the Catalog

@@ -16,10 +16,11 @@ When publishing, this project will become its own item on the online DataMiner C
 
 This project is designed to create multi-artifact packages in a straightforward manner.
 
-### Adding New Artifacts in the Same Solution
+### Adding Extra Artifacts in the Same Solution
 
-You can right-click the solution and select Add and then New Project. This will allow you to select other DataMiner Project Templates. (e.g. adding additional Automation Scripts)
-Important: Connectors are currently not supported.
+You can right-click the solution and select **Add** and then **New Project**. This will allow you to select DataMiner Project Templates. (e.g. adding additional Automation Scripts)
+
+[!Note]: Connectors are currently not supported.
 
 Every **Skyline.DataMiner.SDK** project, except other DataMiner Package Projects, will by default be included within the `.dmapp` created by this project.  
 You can customize this behavior using the **PackageContent/ProjectReferences.xml** file. This allows you to add filters to include or exclude projects as needed.
@@ -33,9 +34,9 @@ You can reference and include additional content from the Catalog using the **Pa
 You can import specific items directly from a DataMiner Agent:  
 
 1. Connect to an Agent via **Extensions > DIS > DMA > Connect**.
-1. If your agent is not present, you can add a new agent via **Extensions > DIS > Settings**, and selecting Add on the DMA tab.
+1. If your agent is not present, you can add a new agent via **Extensions > DIS > Settings**, and selecting **Add** on the DMA tab.
 1. Once connected, you can import specific DataMiner artifacts.
-1. Navigate to folders such as **PackageContent/Dashboards** or **PackageContent/LowCodeApps**, right-click, select **Add**, and choose **Import DataMiner Dashboard/LowCodeApp** or the equivalent.
+1. Navigate in your **Solution Explorer** to folders such as **PackageContent/Dashboards** or **PackageContent/LowCodeApps**, right-click, select **Add**, and choose **Import DataMiner Dashboard/LowCodeApp** or the equivalent.
 
 ## Execute Additional Code on Installation
 
@@ -186,7 +187,7 @@ You can use the links from the actual error to better address the next couple of
    - **Read Catalog items**
 
 1. Add the key as a secret in your GitHub repository:
-   - Navigate to **Settings > Secrets and variables > Actions** and create a secret named `DATAMINER_TOKEN`.
+   - Navigate to **Settings > Secrets and variables > Actions** and create secrets or variables with the required names.
 1. Re-run the workflow.
 
 The following secrets and variables will have been added to your repository after all issues are resolved:
@@ -199,9 +200,11 @@ The following secrets and variables will have been added to your repository afte
 
 ### Releasing a Version
 
-1. Navigate to the **<> Code** tab in your repository.
-1. Select **Releases** in the menu on the right.
-1. Draft a new release, select the desired version, and provide a description.
+- Navigate to the **<> Code** tab in your GitHub repository.
+- Select **Releases** from the right-hand menu.
+- Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the Catalog.)
+
+[!Note] The description will be visible on the DataMiner Catalog.
 
 <!--#else-->
 ## Enabling Publishing to the Catalog
