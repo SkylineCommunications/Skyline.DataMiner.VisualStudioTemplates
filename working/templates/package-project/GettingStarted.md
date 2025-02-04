@@ -16,7 +16,10 @@ When publishing, this project will become its own item on the online catalog.
 
 This project is designed to create multi-artifact packages in a straightforward manner.
 
-### Other DataMiner Projects in the Same Solution
+### Adding New Artifacts in the Same Solution
+
+You can right-click the solution and select Add and then New Project. This will allow you to select other DataMiner Project Templates. (e.g. adding additional Automation Scripts)
+Important: Connectors are currently not supported.
 
 Every **Skyline.DataMiner.SDK** project, except other DataMiner Package Projects, will by default be included within the `.dmapp` created by this project.  
 You can customize this behavior using the **PackageContent/ProjectReferences.xml** file. This allows you to add filters to include or exclude projects as needed.
@@ -30,8 +33,9 @@ You can reference and include additional content from the catalog using the **Pa
 You can import specific items directly from a DataMiner agent:  
 
 1. Connect to an agent via **Extensions > DIS > DMA > Connect**.
-2. Once connected, you can import specific DataMiner artifacts.
-3. Navigate to folders such as **PackageContent/Dashboards** or **PackageContent/LowCodeApps**, right-click, select **Add**, and choose **Import DataMiner Dashboard/LowCodeApp** or the equivalent.
+1. If your agent is not present, you can add a new agent via **Extensions > DIS > Settings**, and selecting Add on the DMA tab.
+1. Once connected, you can import specific DataMiner artifacts.
+1. Navigate to folders such as **PackageContent/Dashboards** or **PackageContent/LowCodeApps**, right-click, select **Add**, and choose **Import DataMiner Dashboard/LowCodeApp** or the equivalent.
 
 ## Execute Additional Code on Installation
 
@@ -41,7 +45,7 @@ Open the **$SCRIPTNAME$.cs** file to write custom installation code. Common acti
 
 ## Does Your Installation Code Need Configuration Files?
 
-You can add configuration files (e.g., `.json`, `.xml`) to the **SetupContent** folder, which can be accessed during installation.
+You can add configuration files (e.g. `.json`, `.xml`) to the **SetupContent** folder, which can be accessed during installation.
 
 Access them in your code using:
 ```csharp
@@ -55,8 +59,9 @@ string setupContentPath = installer.GetSetupContentDirectory();
 If you intended to create a `.dmapp` file, you may have set up the project incorrectly.
 
 Please consider the following options:
-1. Remove this project and create a new DataMiner Application Project with `.dmapp` generation enabled.
-2. If you don’t require `.dmapp` creation, review your project setup to ensure it aligns with your goals.
+
+- Remove this project and create a new DataMiner Application Project with `.dmapp` generation enabled.
+- If you don’t require `.dmapp` creation, review your project setup to ensure it aligns with your goals.
 <!--#endif-->
 
 <!--#if (IsCatalogNoCICD)-->
@@ -70,24 +75,42 @@ You can publish your artifact manually through Visual Studio or by setting up a 
 1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
    - **Register catalog items**
    - **Read catalog items**
-
+   
 2. Securely store the key using Visual Studio User Secrets:
    - Right-click the project and select **Manage User Secrets**.
    - Add the key in the following format:
 
-```json
-{
-  "skyline": {
-    "sdk": {
-      "catalogpublishtoken": "MyKeyHere"
+    ```json
+    {
+      "skyline": {
+        "sdk": {
+          "catalogpublishtoken": "MyKeyHere"
+        }
+      }
     }
-  }
-}
+    ```
+
+3. Publish the package by right clicking your project in Visual Studio and then selecting the **Publish** option. This will open a new window, where you'll find a Publish button and a link where your item will eventually be registered.
+
+### Releasing a Specific Version
+
+- Navigate to your project in Visual Studio, right click and select properties
+
+- Search for Package Version
+
+- You can now adjust this value
+
+### Releasing a Specific Version - Alternative
+
+- Navigate and double click on your project in Visual Studio.
+
+- Adjust the XML tag Version to the version you want to register.
+
+```xml
+<Version>1.0.0.1</Version>
 ```
 
-3. Publish the package using the **Publish** option in Visual Studio.
-
-**Recommendation:** For stable releases, consider using a CI/CD setup to run **dotnet publish** after passing quality checks.
+**Recommendation:** For stable releases, consider using a CI/CD setup to run **dotnet publish** only after passing quality checks.
 
 <!--#elseif (IsCatalogBasicCICD)-->
 ## Publishing to the Catalog with Basic CI/CD Workflow
@@ -95,23 +118,39 @@ You can publish your artifact manually through Visual Studio or by setting up a 
 This project includes a basic GitHub workflow for catalog publishing.  
 Follow these steps to set it up:
 
-1. Create a GitHub repository and push your project.
-2. The first workflow run may fail due to missing secrets. View the error details on the **Actions** page of your repository.
-3. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
+1. Create a GitHub repository. Via **Git > Create Git Repository**, Selecting GitHub and filling in the wizard before clicking **Create and Push**.
+
+1. On GitHub, go to the *Actions* tab.
+
+1. Click on the workflow run that failed (usually called *Add project files*)
+
+1. Click on the "build" step that failed and read the failing error
+
+``` text
+Error: DATAMINER_TOKEN is not set. Release not possible!
+Please create or re-use an admin.dataminer.services token by visiting: https://admin.dataminer.services/.
+Navigate to the right Organization then go to Keys and create/find a key with permissions to Register Catalog Items.
+Copy the value of the token.
+Then set a DATAMINER_TOKEN secret in your repository settings: **Dynamic Link**
+```
+
+You can use the links from the actual error to better address the next couple of steps.
+
+1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
    - **Register catalog items**
    - **Read catalog items**
 
-4. Add the key as a secret in your GitHub repository:
+1. Add the key as a secret in your GitHub repository:
    - Navigate to **Settings > Secrets and variables > Actions** and create a secret named `DATAMINER_TOKEN`.
-5. Re-run the workflow.
+1. Re-run the workflow.
 
-With this setup, any push to the main/master branch will generate a new pre-release version, using the latest commit message as the version description.
+With this setup, any push with new content (including the initial creation) to the main/master branch will generate a new pre-release version, using the latest commit message as the version description.
 
 ### Releasing a Specific Version
 
-- Navigate to the **<> Code** tab in your repository.
+- Navigate to the **<> Code** tab in your GitHub repository.
 - Select **Releases** from the right-hand menu.
-- Draft a new release, select the desired version, and provide a description.
+- Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the catalog.)
 
 <!--#elseif (IsCatalogCompleteCICD)-->
 ## Publishing to the Catalog with Complete CI/CD Workflow
@@ -122,18 +161,40 @@ This project includes a comprehensive GitHub workflow that adheres to Skyline Co
 You need a **SonarCloud Organization**. If you don’t have one, you can create it [here](https://sonarcloud.io/create-organization).
 
 ### Steps:
-1. Create a GitHub repository and push your project.  
-   Note: For free SonarCloud accounts, your repository must be public.
 
-2. The first workflow run may fail due to missing secrets and variables. Follow the error messages on the **Actions** tab to resolve each issue and re-run the workflow multiple times as needed.
+1. Create a GitHub repository. Via **Git > Create Git Repository**, Selecting GitHub and filling in the wizard before clicking **Create and Push**.
 
-After resolving the issues, the following secrets and variables should be added to your repository:
+1. On GitHub, go to the *Actions* tab.
+
+1. Click on the workflow run that failed (usually called *Add project files*)
+
+1. Click on the "build" step that failed and read the failing error
+
+``` text
+Error: DATAMINER_TOKEN is not set. Release not possible!
+Please create or re-use an admin.dataminer.services token by visiting: https://admin.dataminer.services/.
+Navigate to the right Organization then go to Keys and create/find a key with permissions to Register Catalog Items.
+Copy the value of the token.
+Then set a DATAMINER_TOKEN secret in your repository settings: **Dynamic Link**
+```
+
+You can use the links from the actual error to better address the next couple of steps.
+
+1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
+   - **Register Catalog items**
+   - **Read Catalog items**
+
+1. Add the key as a secret in your GitHub repository:
+   - Navigate to **Settings > Secrets and variables > Actions** and create a secret named `DATAMINER_TOKEN`.
+1. Re-run the workflow.
+
+The following secrets and variables will have been added to your repository after all issues are resolved:
 
 | Name            | Type    | Description                                        | Setup Guide                                                                                 |
 |-----------------|---------|----------------------------------------------------|---------------------------------------------------------------------------------------------|
-| `DATAMINER_TOKEN` | Secret  | Organization key for catalog publishing           | Obtain from [admin.dataminer.services](https://admin.dataminer.services/) and add it as a secret. |
+| `DATAMINER_TOKEN` | Secret  | Organization key for publishing to the Catalog   | Obtain from [admin.dataminer.services](https://admin.dataminer.services/) and add it as a secret. |
 | `SONAR_TOKEN`    | Secret  | Token for SonarCloud authentication               | Obtain from [SonarCloud Security](https://sonarcloud.io/account/security) and add it as a secret.  |
-| `SONAR_NAME`     | Variable | SonarCloud project ID                             | Visit [SonarCloud](https://sonarcloud.io/projects/create), copy the project ID, and add it as a variable. |
+| `SONAR_NAME`     | Variable | SonarCloud project ID                            | Visit [SonarCloud](https://sonarcloud.io/projects/create), copy the project ID, and add it as a variable. |
 
 ### Releasing a Version
 

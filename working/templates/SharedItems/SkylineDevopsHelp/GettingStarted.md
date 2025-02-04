@@ -45,15 +45,15 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
    - Right-click the project and select **Manage User Secrets**.
    - Add the key in the following format:
 
-```json
-{
-  "skyline": {
-    "sdk": {
-      "catalogpublishtoken": "MyKeyHere"
+    ```json
+    {
+      "skyline": {
+        "sdk": {
+          "catalogpublishtoken": "MyKeyHere"
+        }
+      }
     }
-  }
-}
-```
+    ```
 
 3. Publish the package by right clicking your project in Visual Studio and then selecting the **Publish** option. This will open a new window, where you'll find a Publish button and a link where your item will eventually be registered.
 
@@ -80,58 +80,98 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
 <!--#elseif (IsCatalogBasicCICD)-->
 ## Publishing to the Catalog with Basic CI/CD Workflow
 
-This project was created with a basic GitHub workflow for catalog publishing.  
-Follow these steps to get started:
+This project includes a basic GitHub workflow for catalog publishing.  
+Follow these steps to set it up:
 
-1. Create a GitHub repository and push your project.
-2. The first workflow run will fail due to missing secrets. View the error details on the **Actions** page of your repository.
-3. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the required scopes:
+1. Create a GitHub repository. Via **Git > Create Git Repository**, Selecting GitHub and filling in the wizard before clicking **Create and Push**.
+
+1. On GitHub, go to the *Actions* tab.
+
+1. Click on the workflow run that failed (usually called *Add project files*)
+
+1. Click on the "build" step that failed and read the failing error
+
+``` text
+Error: DATAMINER_TOKEN is not set. Release not possible!
+Please create or re-use an admin.dataminer.services token by visiting: https://admin.dataminer.services/.
+Navigate to the right Organization then go to Keys and create/find a key with permissions to Register Catalog Items.
+Copy the value of the token.
+Then set a DATAMINER_TOKEN secret in your repository settings: **Dynamic Link**
+```
+
+You can use the links from the actual error to better address the next couple of steps.
+
+1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
    - **Register catalog items**
    - **Read catalog items**
 
-4. Add the key as a secret in your GitHub repository:
+1. Add the key as a secret in your GitHub repository:
    - Navigate to **Settings > Secrets and variables > Actions** and create a secret named `DATAMINER_TOKEN`.
-5. Re-run the workflow.
+1. Re-run the workflow.
 
-With this setup, any push to the main/master branch will generate a new pre-release version, using the latest commit message as the version description.
+With this setup, any push with new content (including the initial creation) to the main/master branch will generate a new pre-release version, using the latest commit message as the version description.
 
-### Releasing a Specific Version:
-- Navigate to the **<> Code** tab in your repository.
+### Releasing a Specific Version
+
+- Navigate to the **<> Code** tab in your GitHub repository.
 - Select **Releases** from the right-hand menu.
-- Draft a new release, select the desired version, and provide a description.
+- Create a new release, select the desired version as a **Tag**, and provide a title and description. (The description will be visible in the catalog.)
 
 <!--#elseif (IsCatalogCompleteCICD)-->
 
 ## Publishing to the Catalog with Complete CI/CD Workflow
 
-This project was created with a comprehensive GitHub workflow that adheres to Skyline Communications' quality standards, including static code analysis, custom validation, and unit testing.
+This project includes a comprehensive GitHub workflow that adheres to Skyline Communications' quality standards, including static code analysis, custom validation, and unit testing.
 
 ### Prerequisite:  
-You need a **SonarCloud Organization**. If you don't yet have access to one, you can create one [here](https://sonarcloud.io/create-organization).
+You need a **SonarCloud Organization**. If you don’t have one, you can create it [here](https://sonarcloud.io/create-organization).
 
 ### Steps:
-1. Create a GitHub repository and push your project.  
-   Note: For free SonarCloud accounts, your repository must be public.
 
-2. The first few workflow run will fail due to missing secrets and variables. Follow the error messages in the **Actions** tab to resolve each issue. You can re-run the workflow multiple times.
+1. Create a GitHub repository. Via **Git > Create Git Repository**, Selecting GitHub and filling in the wizard before clicking **Create and Push**.
 
-The following secrets and variables will have been added to your repository after resolving all issues:
+1. On GitHub, go to the *Actions* tab.
 
-| Name            | Description                                        | Setup Guide                                                                                 |
-|-----------------|----------------------------------------------------|---------------------------------------------------------------------------------------------|
-| `DATAMINER_TOKEN` | SECRET: Organization key for catalog publishing           | Obtain from [admin.dataminer.services](https://admin.dataminer.services/) and add it as a secret. |
-| `SONAR_TOKEN`    | SECRET: Token for SonarCloud authentication               | Obtain from [SonarCloud Security](https://sonarcloud.io/account/security) and add it as a secret.  |
-| `SONAR_NAME`     | VARIABLE: SonarCloud project ID                             | Visit [SonarCloud](https://sonarcloud.io/projects/create), copy the project ID, and add it as a variable. |
+1. Click on the workflow run that failed (usually called *Add project files*)
 
-### Releasing a Version:
-- Navigate to the **<> Code** tab in your GitHub repository.
+1. Click on the "build" step that failed and read the failing error
+
+``` text
+Error: DATAMINER_TOKEN is not set. Release not possible!
+Please create or re-use an admin.dataminer.services token by visiting: https://admin.dataminer.services/.
+Navigate to the right Organization then go to Keys and create/find a key with permissions to Register Catalog Items.
+Copy the value of the token.
+Then set a DATAMINER_TOKEN secret in your repository settings: **Dynamic Link**
+```
+
+You can use the links from the actual error to better address the next couple of steps.
+
+1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
+   - **Register Catalog items**
+   - **Read Catalog items**
+
+1. Add the key as a secret in your GitHub repository:
+   - Navigate to **Settings > Secrets and variables > Actions** and create a secret named `DATAMINER_TOKEN`.
+1. Re-run the workflow.
+
+The following secrets and variables will have been added to your repository after all issues are resolved:
+
+| Name            | Type    | Description                                        | Setup Guide                                                                                 |
+|-----------------|---------|----------------------------------------------------|---------------------------------------------------------------------------------------------|
+| `DATAMINER_TOKEN` | Secret  | Organization key for publishing to the Catalog   | Obtain from [admin.dataminer.services](https://admin.dataminer.services/) and add it as a secret. |
+| `SONAR_TOKEN`    | Secret  | Token for SonarCloud authentication               | Obtain from [SonarCloud Security](https://sonarcloud.io/account/security) and add it as a secret.  |
+| `SONAR_NAME`     | Variable | SonarCloud project ID                            | Visit [SonarCloud](https://sonarcloud.io/projects/create), copy the project ID, and add it as a variable. |
+
+### Releasing a Version
+
+- Navigate to the **<> Code** tab in your repository.
 - Select **Releases** from the right-hand menu.
 - Draft a new release, select the desired version, and provide a description.
 
 <!--#else-->
-## Enabling Catalog Publishing
+## Enabling Publishing to the Catalog
 
-This project was created without support for catalog publishing.  
+This project was created without support for publishing to the DataMiner Catalog.  
 To enable this, add a **Skyline DataMiner Package Project** to your solution and follow the **Getting Started** guide provided in that project.
 
 <!--#endif-->
