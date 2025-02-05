@@ -55,7 +55,7 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
       {
         "skyline": {
           "sdk": {
-            "Catalogpublishtoken": "MyKeyHere"
+            "catalogpublishtoken": "MyKeyHere"
           }
         }
       }

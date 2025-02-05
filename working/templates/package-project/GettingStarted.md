@@ -92,7 +92,7 @@ You can publish your artifact manually through Visual Studio or by setting up a 
       { 
         "skyline": {
           "sdk": {
-            "Catalogpublishtoken": "MyKeyHere"
+            "catalogpublishtoken": "MyKeyHere"
           }
         }
       }
