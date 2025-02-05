@@ -31,11 +31,13 @@ If you need to combine additional components in your `.dmapp` file, you should:
 
 Follow the provided **Getting Started** guide in the new project for further instructions.
 
-<!--#if (IsCatalogNoCICD)-->
+<!--#if (CreateDataMinerPackage)-->
 ## Publishing to the Catalog
 
 This project was created with support for publishing to the DataMiner Catalog.  
 You can publish your artifact either manually via the Visual Studio IDE or by setting up a CI/CD workflow.
+<!--#endif-->
+<!--#if (IsCatalogNoCICD)-->
 
 ### Manual Publishing
 
@@ -63,6 +65,8 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
 
    This will open a new window, where you will find a *Publish* button and a link where your item will eventually be registered.
 
+**Recommendation:** To safeguard the quality of your product, consider using a CI/CD setup to run **dotnet publish** only after passing quality checks.
+
 ### Changing the Version
 
 1. Navigate to your project in Visual Studio, right-click, and select Properties.
@@ -80,8 +84,6 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
    ```xml
    <Version>1.0.0.1</Version>
    ```
-
-**Recommendation:** For stable releases, consider using a CI/CD setup to run **dotnet publish** only after passing quality checks.
 
 <!--#elseif (IsCatalogBasicCICD)-->
 ## Publishing to the Catalog with Basic CI/CD Workflow
