@@ -30,7 +30,7 @@
     "IncludeGitHubWorkflow": {
       "type": "parameter",
       "datatype": "choice",
-      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: When adding a new Project to an existing solution or for dotnet-cli this will always be one folder up from your OUTPUT_DIRECTORY.",
+      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: When a new project is added to an existing solution or when dotnet-cli is used, this will always be the parent folder of your OUTPUT_DIRECTORY.",
       "choices": [
         {
           "choice": "None",
