@@ -42,13 +42,13 @@ short_description: This is a custom solution for DataMiner.
 # A valid URL that points to the source code.
 #   A valid URL
 #   Max length: 2048 characters
-#   Note: When using Skyline Communications Reusable GitHub workflows this will be automatically filled in.
+#   Note: When Skyline Communications Reusable GitHub workflows are used, this will be automatically filled in.
 source_code_url:
 # [Optional]
 # A valid URL that points to documentation.
 #   A valid URL
 #   Max length: 2048 characters
-#   Note: When using Skyline Communications Reusable GitHub workflows this will be automatically filled in.
+#   Note: When Skyline Communications Reusable GitHub workflows are used, this will be automatically filled in.
 documentation_url: 
 # [Optional]
 # People who are responsible for this Catalog item. Might be developers, but this is not required.
