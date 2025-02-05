@@ -82,7 +82,7 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
 1. Adjust the "Version" XML tag to the version you want to register.
 
    ```xml
-   <Version>1.0.0.1</Version>
+   <Version>1.0.1</Version>
    ```
 
 <!--#elseif (IsCatalogBasicCICD)-->

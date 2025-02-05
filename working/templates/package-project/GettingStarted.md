@@ -26,9 +26,11 @@ You can right-click the solution and select **Add** and then **New Project**. Th
 Every **Skyline.DataMiner.SDK** project, except other DataMiner package projects, will by default be included within the `.dmapp` created by this project.  
 You can customize this behavior using the **PackageContent/ProjectReferences.xml** file. This allows you to add filters to include or exclude projects as needed.
 
+<!-- Currently not supported
 ### Adding Content from the Catalog
 
 You can reference and include additional content from the Catalog using the **PackageContent/CatalogReferences.xml** file provided in this project.
+ -->
 
 ### Importing from DataMiner
 
@@ -119,7 +121,7 @@ You can publish your artifact manually through Visual Studio or by setting up a 
 1. Adjust the "Version" XML tag to the version you want to register.
 
    ```xml
-   <Version>1.0.0.1</Version>
+   <Version>1.0.1</Version>
    ```
 
 <!--#elseif (IsCatalogBasicCICD)-->
