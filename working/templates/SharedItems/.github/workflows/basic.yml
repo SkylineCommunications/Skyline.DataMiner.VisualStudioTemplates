@@ -22,11 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
         
     - name: Validate DataMiner Secret Token
       id: validate-dataminer-token
@@ -68,7 +63,7 @@ jobs:
       shell: bash
 
     - name: Test
-      run: dotnet test
+      run: dotnet test -c Release
       
     - name: Publish Prerelease
       if: github.ref_type == 'branch'
@@ -80,6 +75,7 @@ jobs:
           -p:Version="0.0.${{ github.run_number }}" `
           -p:VersionComment="${{ steps.findVersionComment.outputs.versionComment }}" `
           -p:CatalogPublishKeyName="DATAMINER_TOKEN" `
+          -c Release `
 
     - name: Publish Release
       if: github.ref_type == 'tag'
@@ -91,3 +87,4 @@ jobs:
           -p:Version="${{ github.ref_name }}" `
           -p:VersionComment="${{ steps.findVersionComment.outputs.versionComment }}" `
           -p:CatalogPublishKeyName="DATAMINER_TOKEN" `
+          -c Release `
