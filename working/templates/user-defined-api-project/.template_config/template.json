@@ -20,6 +20,29 @@
       "replaces": "$AUTHOR$",
       "description": "The author."
     },
+    "CopyrightYear": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$COPYRIGHTYEAR$",
+      "parameters": {
+        "format": "yyyy"
+      }
+    },
+    "AuthorVersionHistory": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "replaces": "$AUTHORVERSIONHISTORY$",
+      "parameters": {
+        "source": "Author",
+        "steps": [
+          {
+            "regex": "^SKYLINE2\\\\(.*?)$",
+            "replacement": "$1"
+          }
+        ]
+      }
+    },
     "CreateDataMinerPackage": {
       "type": "parameter",
       "datatype": "bool",
