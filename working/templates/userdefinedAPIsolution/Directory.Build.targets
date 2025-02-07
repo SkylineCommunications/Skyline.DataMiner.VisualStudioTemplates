@@ -1,5 +1,0 @@
-<Project>
-	<PropertyGroup>
-		<AssemblySearchPaths>$(AssemblySearchPaths);$(ReferencePath)</AssemblySearchPaths>
-	</PropertyGroup>
-</Project>

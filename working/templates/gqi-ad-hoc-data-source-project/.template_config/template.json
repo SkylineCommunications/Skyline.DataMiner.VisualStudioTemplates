@@ -1,0 +1,234 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [
+    "DataMiner"
+  ],
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "identity": "Skyline.DataMiner.Gqi.AdHocDataSource.Project.Template",
+  "name": "DataMiner Ad Hoc Data Source Project",
+  "shortName": "dataminer-gqi-ad-hoc-data-source-project",
+  "sourceName": "$SCRIPTNAME$",
+  "symbols": {
+    "IGQIOnInit": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Initialize the data source and get access to additional capabilities such as logging and fetching information from the DataMiner System."
+    },
+    "IGQIInputArguments": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Enable arguments to pass along inputs to the data source."
+    },
+    "IGQIOnPrepareFetch": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Execute custom logic immediately before a user starts receiving data."
+    },
+    "IGQIUpdateable": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Provide real-time updates on your data. Available from DataMiner 10.4.4/10.5.0 onwards."
+    },
+    "IGQIOnDestroy": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Tear down your data source to release all resources."
+    },
+    "Author": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$AUTHOR$",
+      "description": "The author."
+    },
+    "CreateDataMinerPackage": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Enables this project to generate a .dmapp and optionally publish to the online catalog as a stand-alone item. For multi-artifact packages please leave this empty and use an additional DataMiner Package Project.",
+      "defaultValue": "false",
+      "replaces": "$CREATEPACKAGE$"
+    },
+    "IncludeGitHubWorkflow": {
+      "type": "parameter",
+      "datatype": "choice",
+      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: When a new project is added to an existing solution or when dotnet-cli is used, workflow files will always be added to the parent folder of your OUTPUT_DIRECTORY.",
+      "choices": [
+        {
+          "choice": "None",
+          "description": "None"
+        },
+        {
+          "choice": "Basic",
+          "description": "Basic (build, test, publish)"
+        },
+        {
+          "choice": "Complete",
+          "description": "Complete (Skyline Quality Gate)"
+        }
+      ]
+    },
+    "InitialVersionDate": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "$INITIALVERSIONDATE$",
+      "parameters": {
+        "format": "dd/MM/yyyy"
+      }
+    },
+    "Namespace": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "invalidChars",
+      "replaces": "$NAMESPACE$"
+    },
+    "WillCreateSolutionOneLevelHigher": {
+      "type": "bind",
+      "binding": "context:createsolutiondirectory"
+    },
+    "CreatingNewVSSolution": {
+      "type": "bind",
+      "binding": "context:isexclusive"
+    },
+    "HostIdentifier": {
+      "type": "bind",
+      "binding": "host:HostIdentifier"
+    },
+    "IsCatalogNoCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == None"
+    },
+    "IsCatalogBasicCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Basic"
+    },
+    "IsCatalogCompleteCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Complete"
+    },
+    "ShowGettingStarted": {
+      "type": "computed",
+      "value": "(WillCreateSolutionOneLevelHigher) || (CreateDataMinerPackage)"
+    },
+    "PlaceSolutionFilesHigh": {
+      "type": "computed",
+      "value": "(WillCreateSolutionOneLevelHigher && CreatingNewVSSolution) || !CreatingNewVSSolution"
+    }
+  },
+  "forms": {
+    "invalidChars": {
+      "identifier": "replace",
+      "pattern": "([\\-_\\.\\ ])",
+      "replacement": ""
+    }
+  },
+  "guids": [
+    "4c5d14ab-9cec-4c0b-8b58-af379fdb4123"
+  ],
+  "sources": [
+    {
+      "exclude": [
+        "./[Content_Types].xml",
+        "src/.vs/**",
+        ".template_config/**",
+        "[Content_Types].xml",
+        "_rels/**",
+        "*.nuspec",
+        "*.nupkg"
+      ]
+    },
+    {
+      "source": "../SharedItems/OnSolutionLevel",
+      "target": "../",
+      "condition": "(HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)"
+    },
+    {
+      "source": "../SharedItems/OnSolutionLevel",
+      "target": "./",
+      "condition": "!(HostIdentifier == dotnetcli) && !PlaceSolutionFilesHigh"
+    },
+    {
+      "source": "../SharedItems/SkylineDevopsHelp",
+      "condition": "ShowGettingStarted"
+    },
+    {
+      "source": "../SharedItems/CatalogInformation",
+      "target": "CatalogInformation",
+      "condition": "CreateDataMinerPackage"
+    },
+    {
+      "source": "../SharedItems/Properties",
+      "target": "Properties",
+      "condition": "CreateDataMinerPackage"
+    },
+    {
+      "source": "../SharedItems/.github",
+      "target": "../.github/",
+      "exclude": [
+        "**"
+      ],
+      "condition": "!(IncludeGitHubWorkflow == None) && (HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)",
+      "modifiers": [
+        {
+          "condition": "IncludeGitHubWorkflow == Basic",
+          "include": [
+            "workflows/basic.yml",
+            "dependabot.yml"
+          ]
+        },
+        {
+          "condition": "IncludeGitHubWorkflow == Complete",
+          "include": [
+            "workflows/complete.yml",
+            "dependabot.yml"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "../SharedItems/.github",
+      "target": ".github/",
+      "exclude": [
+        "**"
+      ],
+      "condition": "!(IncludeGitHubWorkflow == None) && !(HostIdentifier == dotnetcli) && !PlaceSolutionFilesHigh",
+      "modifiers": [
+        {
+          "condition": "IncludeGitHubWorkflow == Basic",
+          "include": [
+            "workflows/basic.yml",
+            "dependabot.yml"
+          ]
+        },
+        {
+          "condition": "IncludeGitHubWorkflow == Complete",
+          "include": [
+            "workflows/complete.yml",
+            "dependabot.yml"
+          ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\") && ShowGettingStarted",
+      "path": "GettingStarted.md"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\") && ShowGettingStarted",
+      "description": "Opens GettingStarted.md in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    }
+  ]
+}
