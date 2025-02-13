@@ -152,7 +152,7 @@
     },
     {
       "source": "../SharedItems/SkylineDevopsHelp",
-      "condition": "ShowGettingStarted"
+      "condition": "ShowGettingStarted || CreateDataMinerPackage"
     },
     {
       "source": "../SharedItems/CatalogInformation",
