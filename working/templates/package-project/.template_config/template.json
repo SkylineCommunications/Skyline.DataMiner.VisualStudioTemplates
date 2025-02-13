@@ -23,7 +23,7 @@
     "CreateDataMinerPackage": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Enables this project to generate a .dmapp and optionally publish to the online catalog as a stand-alone item. For multi-artifact packages please leave this empty and use an additional DataMiner Package Project.",
+      "description": "Enables this project to generate a .dmapp and optionally publish to the online catalog. We recommend keeping this enabled unless you have a specific reason to disable it.",
       "defaultValue": "true",
       "replaces": "$CREATEPACKAGE$"
     },
