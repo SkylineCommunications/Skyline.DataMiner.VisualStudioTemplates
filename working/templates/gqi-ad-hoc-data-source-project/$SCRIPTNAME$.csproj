@@ -6,6 +6,7 @@
 	<PropertyGroup>
 		<DataMinerType>AdHocDataSource</DataMinerType>
 		<GenerateDataMinerPackage>$CREATEPACKAGE$</GenerateDataMinerPackage>
+		<MinimumRequiredDmVersion>10.3.0.0 - 12790</MinimumRequiredDmVersion>
 		<Version>1.0.0</Version>
 		<VersionComment>Initial Version</VersionComment>
 <!--#if (CreateDataMinerPackage)-->
@@ -17,7 +18,7 @@
 <!--#if (IGQIUpdateable)-->
 		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.4.2" />
 <!--#else-->
-		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.2.5.5" />
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.3.0.24" />
 <!--#endif-->
 		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="1.2.2">
 			<PrivateAssets>all</PrivateAssets>
