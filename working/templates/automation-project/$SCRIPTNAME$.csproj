@@ -6,6 +6,7 @@
 	<PropertyGroup>
 		<DataMinerType>AutomationScript</DataMinerType>
 		<GenerateDataMinerPackage>$CREATEPACKAGE$</GenerateDataMinerPackage>
+		<MinimumRequiredDmVersion>10.3.0.0 - 12790</MinimumRequiredDmVersion>
 		<Version>1.0.0</Version>
 		<VersionComment>Initial Version</VersionComment>
 <!--#if (CreateDataMinerPackage)-->
@@ -14,7 +15,7 @@
 <!--#endif-->
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.2.0.25" />
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.3.0.24" />
 		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="1.2.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
