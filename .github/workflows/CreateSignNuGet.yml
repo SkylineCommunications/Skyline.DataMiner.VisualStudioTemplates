@@ -39,7 +39,7 @@ jobs:
     needs: build
     steps:
       - name: Install Sign CLI tool
-        run: dotnet tool install sign -g --prerelease
+        run: dotnet tool install sign -g --version 0.9.1-beta.24529.1
 
       - name: Download Unsigned NuGet
         id: downloadUnsignedNuget
