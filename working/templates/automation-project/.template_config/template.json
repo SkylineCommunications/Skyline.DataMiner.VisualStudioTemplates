@@ -118,12 +118,12 @@
     {
       "source": "../SharedItems/OnSolutionLevel",
       "target": "../",
-      "condition": "(HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)"
+      "condition": "(HostIdentifier == dotnetcli || HostIdentifier == dis || PlaceSolutionFilesHigh)"
     },
     {
       "source": "../SharedItems/OnSolutionLevel",
       "target": "./",
-      "condition": "!(HostIdentifier == dotnetcli) && !PlaceSolutionFilesHigh"
+      "condition": "!(HostIdentifier == dotnetcli) && !(HostIdentifier == dis) && !PlaceSolutionFilesHigh"
     },
     {
       "source": "../SharedItems/SkylineDevopsHelp",
