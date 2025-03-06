@@ -9,23 +9,3 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-
-# NuGet packages in the csproj files
-  - package-ecosystem: "nuget" # See documentation for possible values
-    directories:
-      - "/working/templates/*solution"
-      - "/working/templates/*-project"
-    schedule:
-      interval: "daily"
-    ignore:
-      # DevPacks represents the DMA on which to compile. Doesn't make sense to always be on the latest version.
-      - dependency-name: "Skyline.DataMiner.Files.*"
-      - dependency-name: "Skyline.DataMiner.Dev.*"
-      - dependency-name: "Skyline.DataMiner.Sdk" # Will be done separately 
-
-# Specifically global.json
-  - package-ecosystem: "nuget" # See documentation for possible values
-    directories:
-      - "/working/templates/SharedItems/OnSolutionLevel"
-    schedule:
-      interval: "daily"
