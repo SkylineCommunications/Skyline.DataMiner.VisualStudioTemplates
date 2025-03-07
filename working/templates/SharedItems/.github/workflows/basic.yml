@@ -29,7 +29,7 @@ jobs:
         if [[ -z "${{ secrets.DATAMINER_TOKEN }}" ]]; then
           echo "Error: DATAMINER_TOKEN is not set. Release not possible!"
           echo "Please create or re-use an admin.dataminer.services token by visiting: https://admin.dataminer.services/."
-          echo "Navigate to the right Organization then go to Keys and create/find a key with permissions to Register Catalog Items."
+          echo "Navigate to the right Organization then go to Keys and create/find a key with permissions to Register catalog items, Download catalog versions and Read catalog items."
           echo "Copy the value of the token."
           repo_url="https://github.com/${{ github.repository }}/settings/secrets/actions"
           echo "Then set a DATAMINER_TOKEN secret in your repository settings: $repo_url"
@@ -75,6 +75,7 @@ jobs:
           -p:Version="0.0.${{ github.run_number }}" `
           -p:VersionComment="${{ steps.findVersionComment.outputs.versionComment }}" `
           -p:CatalogPublishKeyName="DATAMINER_TOKEN" `
+          -p:CatalogDefaultDownloadKeyName="DATAMINER_TOKEN" `
           -c Release `
 
     - name: Publish Release
@@ -87,4 +88,5 @@ jobs:
           -p:Version="${{ github.ref_name }}" `
           -p:VersionComment="${{ steps.findVersionComment.outputs.versionComment }}" `
           -p:CatalogPublishKeyName="DATAMINER_TOKEN" `
+          -p:CatalogDefaultDownloadKeyName="DATAMINER_TOKEN" `
           -c Release `

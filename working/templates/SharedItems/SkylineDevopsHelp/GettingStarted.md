@@ -42,8 +42,9 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
 ### Manual Publishing
 
 1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
-   - **Register Catalog items**
-   - **Read Catalog items**
+   - **Register catalog items**
+   - **Read catalog items**
+   - **Download catalog versions**
 
 1. Securely store the key using Visual Studio User Secrets:
 
@@ -55,7 +56,7 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
       {
         "skyline": {
           "sdk": {
-            "catalogpublishtoken": "MyKeyHere"
+            "dataminertoken": "MyKeyHere"
           }
         }
       }
@@ -110,8 +111,9 @@ Follow these steps to set it up:
    You can use the links from the actual error to better address the next couple of steps.
 
 1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
-   - **Register Catalog items**
-   - **Read Catalog items**
+   - **Register catalog items**
+   - **Read catalog items**
+   - **Download catalog versions**
 
 1. Add the key as a secret in your GitHub repository, by navigating to **Settings > Secrets and variables > Actions** and creating a secret named `DATAMINER_TOKEN`.
 
@@ -153,7 +155,7 @@ You need a **SonarCloud Organization**. If you don’t have one, you can create 
    ``` text
    Error: DATAMINER_TOKEN is not set. Release not possible!
    Please create or re-use an admin.dataminer.services token by visiting: https://admin.dataminer.services/.
-   Navigate to the right Organization then go to Keys and create/find a key with permissions to Register Catalog Items.
+   Navigate to the right Organization then go to Keys and create/find a key with permissions to Register catalog items, Download catalog versions and Read catalog items.
    Copy the value of the token.
    Then set a DATAMINER_TOKEN secret in your repository settings: **Dynamic Link**
    ```
@@ -161,8 +163,9 @@ You need a **SonarCloud Organization**. If you don’t have one, you can create 
    You can use the links from the actual error to better address the next couple of steps.
 
 1. Obtain an **Organization Key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
-   - **Register Catalog items**
-   - **Read Catalog items**
+   - **Register catalog items**
+   - **Read catalog items**
+   - **Download catalog versions**
 
 1. Add the key as a secret in your GitHub repository, by navigating to **Settings > Secrets and variables > Actions** and creating secrets or variables with the required names.
 
@@ -172,7 +175,7 @@ The following secrets and variables will have been added to your repository afte
 
 | Name            | Type    | Description                                        | Setup Guide                                                                                 |
 |-----------------|---------|----------------------------------------------------|---------------------------------------------------------------------------------------------|
-| `DATAMINER_TOKEN` | Secret  | Organization key for publishing to the Catalog   | Obtain from [admin.dataminer.services](https://admin.dataminer.services/) and add it as a secret. |
+| `DATAMINER_TOKEN` | Secret  | Organization key for downloading/publishing from/to the Catalog   | Obtain from [admin.dataminer.services](https://admin.dataminer.services/) and add it as a secret. |
 | `SONAR_TOKEN`    | Secret  | Token for SonarCloud authentication               | Obtain from [SonarCloud Security](https://sonarcloud.io/account/security) and add it as a secret.  |
 | `SONAR_NAME`     | Variable | SonarCloud project ID                            | Visit [SonarCloud](https://sonarcloud.io/projects/create), copy the project ID, and add it as a variable. |
 
