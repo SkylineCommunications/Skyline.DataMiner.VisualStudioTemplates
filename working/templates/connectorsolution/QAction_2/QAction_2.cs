@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Text;
 
 using Skyline.DataMiner.Scripting;
+using Skyline.DataMiner.Utils.Protocol.Extension;
 
 /// <summary>
 /// DataMiner QAction Class: After Startup.

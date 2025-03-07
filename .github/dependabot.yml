@@ -9,13 +9,3 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-
-  - package-ecosystem: "nuget" # See documentation for possible values
-    directories:
-      - "/working/templates/*" # Location of package manifests
-    schedule:
-      interval: "daily"
-    ignore:
-      # DevPacks represents the DMA on which to compile. Doesn't make sense to always be on the latest version.
-      - dependency-name: "Skyline.DataMiner.Files.*"
-      - dependency-name: "Skyline.DataMiner.Dev.*"
