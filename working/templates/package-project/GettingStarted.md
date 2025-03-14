@@ -48,7 +48,7 @@ You can import specific items directly from a DataMiner Agent using DIS:
 
 You can reference and include additional content from the Catalog using the *PackageContent/CatalogReferences.xml* file provided in this project. See [CatalogReferences.xml](xref:skyline_dataminer_sdk_dataminer_package_project_catalog_references) for more information.
 
-To be able for the SDK to download the referenced items from the Catalog, configure a user secret in Visual Studio:
+For the SDK to be able to download the referenced items from the Catalog, configure a user secret in Visual Studio:
 
 1. Obtain an *Organization Key* from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
    - *Register catalog items*
@@ -187,8 +187,8 @@ Follow these steps to set it up:
 
 1. Obtain an **organization key** from [admin.dataminer.services](https://admin.dataminer.services/) with the following scopes:
 
-   - *Register Catalog items*
-   - *Read Catalog items*
+   - *Register catalog items*
+   - *Read catalog items*
    - *Download catalog versions*
 
 1. Add the key as a secret in your GitHub repository, by navigating to *Settings* > *Secrets and variables* > *Actions* and creating a secret named `DATAMINER_TOKEN`.
@@ -228,7 +228,7 @@ This project includes a comprehensive GitHub workflow that adheres to Skyline Co
    ``` text
    Error: DATAMINER_TOKEN is not set. Release not possible!
    Please create or re-use an admin.dataminer.services token by visiting: https://admin.dataminer.services/.
-   Navigate to the right Organization then go to Keys and create/find a key with permissions to Register catalog items, Download catalog versions and Read catalog items.
+   Navigate to the right organization, then go to Keys and create or find a key with permissions Register catalog items, Download catalog versions, and Read catalog items.
    Copy the value of the token.
    Then set a DATAMINER_TOKEN secret in your repository settings: **Dynamic Link**
    ```
