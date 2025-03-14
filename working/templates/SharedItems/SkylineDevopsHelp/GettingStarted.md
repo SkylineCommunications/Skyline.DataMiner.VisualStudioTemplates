@@ -7,7 +7,7 @@ For more details and comprehensive instructions, please visit [DataMiner Docs](h
 <!--#if (CreateDataMinerPackage)-->
 ## Creating a DataMiner application package
 
-This project is configured to create a `.dmapp` file every time you build the project.
+This project is configured to create a .dmapp file every time you build the project.
 
 When you compile or build the project, you will find the generated .dmapp in the standard output folder, typically the *bin* folder of your project.
 
@@ -16,13 +16,13 @@ When you publish the project, a corresponding item will be created in the online
 <!--#else-->
 ## Enabling the creation of a DataMiner application package
 
-This project was not configured to generate a `.dmapp` file.
-To enable `.dmapp` generation, consider migrating to a multi-artifact DataMiner Application Package as described below.
+This project was not configured to generate a .dmapp file.
+To enable .dmapp generation, consider migrating to a multi-artifact DataMiner Application Package as described below.
 
 <!--#endif-->
 ## Migrating to a multi-artifact DataMiner application package
 
-If you need to combine additional components in your `.dmapp` file, you should:
+If you need to combine additional components in your .dmapp file, you should:
 
 1. Open the `$SCRIPTNAME$.csproj` file and ensure the `<GenerateDataminerPackage>` property is set to `False`.
 
@@ -162,7 +162,7 @@ This project includes a comprehensive GitHub workflow that adheres to Skyline Co
    ``` text
    Error: DATAMINER_TOKEN is not set. Release not possible!
    Please create or re-use an admin.dataminer.services token by visiting: https://admin.dataminer.services/.
-   Navigate to the right Organization then go to Keys and create/find a key with permissions to Register catalog items, Download catalog versions and Read catalog items.
+   Navigate to the right organization, then go to Keys and create or find a key with permissions Register catalog items, Download catalog versions, and Read catalog items.
    Copy the value of the token.
    Then set a DATAMINER_TOKEN secret in your repository settings: **Dynamic Link**
    ```

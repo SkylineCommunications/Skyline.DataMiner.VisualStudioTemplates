@@ -7,9 +7,9 @@ For more details and comprehensive instructions, please visit [DataMiner Docs](h
 <!--#if (CreateDataMinerPackage)-->
 ## Creating a DataMiner application package
 
-This project is configured to create a `.dmapp` file every time you build the project.
+This project is configured to create a .dmapp file every time you build the project.
 
-When you compile or build the project, you will find the generated `.dmapp` in the standard output folder, which is typically the `bin` folder of your project.
+When you compile or build the project, you will find the generated .dmapp in the standard output folder, which is typically the *bin* folder of your project.
 
 When you publish the project, a corresponding item will be created in the online DataMiner Catalog.
 
@@ -28,7 +28,7 @@ You can also add new projects by using the dotnet-cli. For the sake of stability
     dotnet sln add MyUserDefinedApiFromGithub
 ```
 
-Every *Skyline.DataMiner.SDK* project within the solution, except other DataMiner package projects, will by default be included within the `.dmapp` created by this project. You can customize this behavior using the *PackageContent/ProjectReferences.xml* file. This allows you to add filters to include or exclude projects as needed. See [ProjectReferences.xml](xref:skyline_dataminer_sdk_dataminer_package_project_project_references) for more information.
+Every *Skyline.DataMiner.SDK* project within the solution, except other DataMiner package projects, will by default be included within the .dmapp created by this project. You can customize this behavior using the *PackageContent/ProjectReferences.xml* file. This allows you to add filters to include or exclude projects as needed.
 
 ## Importing from DataMiner
 
@@ -91,13 +91,13 @@ string setupContentPath = installer.GetSetupContentDirectory();
 <!--#else-->
 ## Enabling the creation of a DataMiner application package
 
-**OOPS!** This project is not configured to generate a `.dmapp` file.  
-If you intended to create a `.dmapp` file, you may have set up the project incorrectly.
+**OOPS!** This project is not configured to generate a .dmapp file.  
+If you intended to create a .dmapp file, you may have set up the project incorrectly.
 
 Please consider the following options:
 
-- Remove this project and create a new DataMiner Application Project with `.dmapp` generation enabled.
-- If you don’t require `.dmapp` creation, review your project setup to ensure it aligns with your goals.
+- Remove this project and create a new DataMiner Application Project with .dmapp generation enabled.
+- If you don’t require .dmapp creation, review your project setup to ensure it aligns with your goals.
 <!--#endif-->
 
 <!--#if (CreateDataMinerPackage)-->
@@ -272,7 +272,7 @@ If you intended to publish to the Catalog, you may have set up the project incor
 
 Please consider the following options:
 
-- Remove this project and create a new DataMiner Application Project with `.dmapp` creation and Catalog support enabled.
+- Remove this project and create a new DataMiner Application Project with .dmapp creation and Catalog support enabled.
 - If Catalog publishing is not required, review your project setup to ensure it aligns with your goals.
 
 <!--#endif-->
