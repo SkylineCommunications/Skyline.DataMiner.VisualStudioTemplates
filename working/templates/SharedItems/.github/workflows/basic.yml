@@ -19,7 +19,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04 # Mono is not installed on ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
         
@@ -34,7 +34,17 @@ jobs:
           repo_url="https://github.com/${{ github.repository }}/settings/secrets/actions"
           echo "Then set a DATAMINER_TOKEN secret in your repository settings: $repo_url"
           exit 1
-        fi       
+        fi
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Install Mono
+      run: |
+        sudo apt update
+        sudo apt install -y mono-complete
 
     - name: Authenticate with GitHub CLI
       run: gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
