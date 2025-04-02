@@ -15,7 +15,9 @@
 <!--#endif-->
 	</PropertyGroup>
 	<ItemGroup>
-<!--#if (IGQIUpdateable)-->
+<!--#if (IGQIOptimizableDataSource)-->
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.5.5" />
+<!--#elseif (IGQIUpdateable)-->
 		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.4.2" />
 <!--#else-->
 		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.3.0.24" />

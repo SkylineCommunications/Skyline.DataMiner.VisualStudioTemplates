@@ -11,6 +11,9 @@
     "IGQIInputArguments": {
       "shortName": "input-arguments"
     },
+    "IGQIOptimizableDataSource": {
+      "shortName": "optimizable"
+    },
     "IGQIOnPrepareFetch": {
       "shortName": "on-prepare-fetch"
     },

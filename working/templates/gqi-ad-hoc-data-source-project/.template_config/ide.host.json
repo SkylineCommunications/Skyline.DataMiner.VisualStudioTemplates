@@ -1,71 +1,70 @@
 {
-    "$schema": "http://json.schemastore.org/vs-2017.3.host",
-    "order": 0,
-    "icon": "icon.png",
-    "symbolInfo": [
-      {
-        "id": "Author",
-        "name":
-        {
-          "text": "Author"
-        },
-        "isVisible": true
+  "$schema": "http://json.schemastore.org/vs-2017.3.host",
+  "order": 0,
+  "icon": "icon.png",
+  "symbolInfo": [
+    {
+      "id": "Author",
+      "name": {
+        "text": "Author"
       },
-      {
-        "id": "IGQIOnInit",
-        "name":
-        {
-          "text": "Add the IGQIOnInit interface"
-        },
-        "isVisible": true
+      "isVisible": true
+    },
+    {
+      "id": "IGQIOnInit",
+      "name": {
+        "text": "Add the IGQIOnInit interface"
       },
-      {
-        "id": "IGQIInputArguments",
-        "name":
-        {
-          "text": "Add the IGQIInputArguments interface"
-        },
-        "isVisible": true
+      "isVisible": true
+    },
+    {
+      "id": "IGQIInputArguments",
+      "name": {
+        "text": "Add the IGQIInputArguments interface"
       },
-      {
-        "id": "IGQIOnPrepareFetch",
-        "name":
-        {
-          "text": "Add the IGQIOnPrepareFetch interface"
-        },
-        "isVisible": true
+      "isVisible": true
+    },
+    {
+      "id": "IGQIOptimizableDataSource",
+      "name": {
+        "text": "Add the IGQIOptimizableDataSource interface"
       },
-      {
-        "id": "IGQIUpdateable",
-        "name":
-        {
-          "text": "Add the IGQIUpdateable interface"
-        },
-        "isVisible": true
+      "isVisible": true
+    },
+    {
+      "id": "IGQIOnPrepareFetch",
+      "name": {
+        "text": "Add the IGQIOnPrepareFetch interface"
       },
-      {
-        "id": "IGQIOnDestroy",
-        "name":
-        {
-          "text": "Add the IGQIOnDestroy interface"
-        },
-        "isVisible": true
+      "isVisible": true
+    },
+    {
+      "id": "IGQIUpdateable",
+      "name": {
+        "text": "Add the IGQIUpdateable interface"
       },
-      {
-        "id": "CreateDataMinerPackage",
-        "name":
-        {
-          "text": "Create DataMiner Package"
-        },
-        "isVisible": true
+      "isVisible": true
+    },
+    {
+      "id": "IGQIOnDestroy",
+      "name": {
+        "text": "Add the IGQIOnDestroy interface"
       },
-      {
-        "id": "IncludeGitHubWorkflow",
-        "name":
-        {
-          "text": "Add GitHub CI/CD Workflow (Overwrite Existing)"
-        },
-        "isVisible": true
-      }
-    ]
+      "isVisible": true
+    },
+    {
+      "id": "CreateDataMinerPackage",
+      "name": {
+        "text": "Create DataMiner Package"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "IncludeGitHubWorkflow",
+      "name": {
+        "text": "Add GitHub CI/CD Workflow (Overwrite Existing)"
+      },
+      "isVisible": true
+    }
+  ]
 }

@@ -23,6 +23,11 @@
       "datatype": "bool",
       "description": "Enable arguments to pass along inputs to the data source."
     },
+    "IGQIOptimizableDataSource": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Optimize or customize behavior based on applied operators."
+    },
     "IGQIOnPrepareFetch": {
       "type": "parameter",
       "datatype": "bool",
