@@ -15,6 +15,9 @@ namespace $NAMESPACE$
 #if (IGQIInputArguments)
 		, IGQIInputArguments
 #endif
+#if (IGQIOptimizableDataSource)
+		, IGQIOptimizableDataSource
+#endif
 #if (IGQIOnPrepareFetch)
 		, IGQIOnPrepareFetch
 #endif
@@ -56,6 +59,15 @@ namespace $NAMESPACE$
 			// See: https://aka.dataminer.services/igqidatasource-getcolumns
 			return Array.Empty<GQIColumn>();
 		}
+#if (IGQIOptimizableDataSource)
+
+		public IGQIQueryNode Optimize(IGQIDataSourceNode currentNode, IGQICoreOperator nextOperator)
+		{
+			// Inspect, optimize or customize behavior for applied operators
+			// See: https://aka.dataminer.services/igqioptimizabledatasource-optimize
+			return currentNode.Append(nextOperator);
+		}
+#endif
 #if (IGQIOnPrepareFetch)
 
 		public OnPrepareFetchOutputArgs OnPrepareFetch(OnPrepareFetchInputArgs args)
