@@ -1,12 +1,15 @@
 ﻿namespace $PackageId$
 {
-    using System;
-    using System.CommandLine;
-    using System.Threading.Tasks;
+    using System.CommandLine.Builder;
+    using System.CommandLine.Hosting;
 
-    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
 
     using Serilog;
+    using Serilog.Events;
+
+    using $PackageId$.Commands;
 
     /// <summary>
     /// $PackageDescription$.
@@ -24,60 +27,53 @@
         /// <returns>0 if successful.</returns>
         public static async Task<int> Main(string[] args)
         {
+            var rootCommand = new RootCommand("$PackageDescription$.")
+            {
+                new ExampleCommand()
+            };
+
             var isDebug = new Option<bool>(
             name: "--debug",
             description: "Indicates the tool should write out debug logging.")
             {
-                IsRequired = false,
+                IsHidden = true
             };
 
-            isDebug.SetDefaultValue(false);
+            var logLevel = new Option<LogEventLevel>(
+                name: "--minimum-log-level",
+                description: "Indicates what the minimum log level should be. Default is Information",
+                getDefaultValue: () => LogEventLevel.Information);
 
-            var exampleArgument = new Option<string>(
-                name: "--example-argument",
-                description: "Just an example argument.")
+            rootCommand.AddGlobalOption(isDebug);
+            rootCommand.AddGlobalOption(logLevel);
+
+            ParseResult parseResult = rootCommand.Parse(args);
+            LogEventLevel level = parseResult.GetValueForOption(isDebug)
+                ? LogEventLevel.Debug
+                : parseResult.GetValueForOption(logLevel);
+
+            var builder = new CommandLineBuilder(rootCommand).UseDefaults().UseHost(host =>
             {
-                IsRequired = true
-            };
+                host.ConfigureServices(services =>
+                    {
+                        services.AddLogging(loggingBuilder =>
+                                {
+                                    loggingBuilder.AddSerilog(
+                                        new LoggerConfiguration()
+                                            .MinimumLevel.Is(level)
+                                            .WriteTo.Console()
+                                            .CreateLogger());
+                                });
+                    })
+                    .ConfigureHostConfiguration(configurationBuilder =>
+                    {
+                        configurationBuilder.AddUserSecrets<ExampleCommand>() // For easy testing
+                                            .AddEnvironmentVariables();
+                    })
+                    .UseCommandHandler<ExampleCommand, ExampleCommandHandler>();
+            });
 
-            var rootCommand = new RootCommand("$PackageDescription$")
-            {
-                isDebug,
-                exampleArgument,
-            };
-
-            rootCommand.SetHandler(Process, isDebug, exampleArgument);
-
-            return await rootCommand.InvokeAsync(args);
-        }
-
-        private static async Task<int> Process(bool isDebug, string exampleArgument)
-        {
-            try
-            {
-                var logConfig = new LoggerConfiguration().WriteTo.Console();
-                logConfig.MinimumLevel.Is(isDebug ? Serilog.Events.LogEventLevel.Debug : Serilog.Events.LogEventLevel.Information);
-                var seriLog = logConfig.CreateLogger();
-
-                using var loggerFactory = LoggerFactory.Create(builder => builder.AddSerilog(seriLog));
-                var logger = loggerFactory.CreateLogger("$PackageId$");
-                try
-                {
-                    //Main Code for program here
-                }
-                catch (Exception e)
-                {
-                    logger.LogError($"Exception during Process Run: {e}");
-                    return 1;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exception on Logger Creation: {e}");
-                return 1;
-            }
-
-            return 0;
+            return await builder.Build().InvokeAsync(args);
         }
     }
 }
