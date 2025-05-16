@@ -21,7 +21,7 @@
 			<Value><![CDATA[[Project:$SCRIPTNAME$]]]></Value>
 			<!--<Param type="debug">true</Param>-->
 			<Param type="preCompile">true</Param>
-			<Param type="libraryName">$SCRIPTNAME$</Param>
+			<Param type="libraryName">$NAMESPACE$</Param>
 		</Exe>
 	</Script>
 </DMSScript>
