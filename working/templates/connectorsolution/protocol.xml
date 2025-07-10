@@ -10,7 +10,11 @@
 	<DeviceOID>$DEVICEOID$</DeviceOID>
 	<SNMP includepages="true">auto</SNMP>
 	<ElementType>$ELEMENTTYPE$</ElementType>
+  <!--#if (SecondConnectionType == "none")-->
 	<Type relativeTimers="true" options=";unicode">$CONNECTIONTYPE$</Type>
+  <!--#else-->
+  <Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$">$CONNECTIONTYPE$</Type>
+  <!--#endif-->
 	<Display defaultPage="General" pageOrder="General"/>
 
 	<Compliancies>
@@ -26,6 +30,15 @@
 		</Param>
 	</Params>
 
+  <!--#if (ConnectionType == "serial" || SecondConnectionType == "serial")-->
+  <Commands>
+  </Commands>
+  <Responses>
+  </Responses>
+  <Pairs>
+  </Pairs>
+  <!--#else-->
+  <!--#endif-->
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
 		<QAction id="2" name="After Startup" encoding="csharp" triggers="2" />
