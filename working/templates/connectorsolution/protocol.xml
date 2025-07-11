@@ -10,11 +10,36 @@
 	<DeviceOID>$DEVICEOID$</DeviceOID>
 	<SNMP includepages="true">auto</SNMP>
 	<ElementType>$ELEMENTTYPE$</ElementType>
-  <!--#if (SecondConnectionType == "none")-->
+	<!--#if (SecondConnectionType == "none")-->
 	<Type relativeTimers="true" options=";unicode">$CONNECTIONTYPE$</Type>
-  <!--#else-->
-  <Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$">$CONNECTIONTYPE$</Type>
-  <!--#endif-->
+	<!--#else-->
+	<!--#if(ConnectionType != SecondConnectionType)-->
+	<!--#if(SecondConnectionType == "http")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:HTTP Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "snmp" || SecondConnectionType == "snmpv2" || SecondConnectionType == "snmpv3")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SNMP Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:TCP Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "opc")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:OPC Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
+	<!-- TODO: Update "XXX Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:XXX Connection">$CONNECTIONTYPE$</Type>
+	<!--#endif-->
+	<!--#else-->
+	<!--#if(SecondConnectionType == "http")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:HTTP Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "snmp" || SecondConnectionType == "snmpv2" || SecondConnectionType == "snmpv3")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SNMP Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:TCP Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "opc")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:OPC Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:XXX Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#endif-->
+	<!--#endif-->
+	<!--#endif-->
 	<Display defaultPage="General" pageOrder="General"/>
 
 	<Compliancies>
@@ -30,14 +55,20 @@
 		</Param>
 	</Params>
 
-  <!--#if (ConnectionType == "serial" || SecondConnectionType == "serial")-->
-  <Commands>
-  </Commands>
-  <Responses>
-  </Responses>
-  <Pairs>
-  </Pairs>
-  <!--#else-->
+	<!--#if (ConnectionType == "serial" || SecondConnectionType == "serial")-->
+	<Commands>
+	</Commands>
+	<Responses>
+	</Responses>
+	<Pairs>
+	</Pairs>
+	<!--#else-->
+
+	<!--#if (ConnectionType == "http" || SecondConnectionType == "http")-->
+	<HTTP>
+	</HTTP>
+	<!--#else-->
+
   <!--#endif-->
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
@@ -104,8 +135,101 @@
 		</Timer>
 	</Timers>
 
-	<PortSettings>
+	<!--#if(SecondConnectionType == "none" || ConnectionType != SecondConnectionType)-->
+	<!--#if(ConnectionType == "virtual")-->
+	<PortSettings name="Virtual Connection">
+	<!--#elseif(ConnectionType == "http")-->
+	<PortSettings name="HTTP Connection">
+		<PortTypeUDP>
+			<Disabled>true</Disabled>
+		</PortTypeUDP>
+		<PortTypeSerial>
+			<Disabled>true</Disabled>
+		</PortTypeSerial>
+	<!--#elseif(ConnectionType == "snmp" || ConnectionType == "snmpv2" || ConnectionType == "snmpv3")-->
+	<PortSettings name="SNMP Connection">
+	<!--#elseif(ConnectionType == "smart-serial" || ConnectionType == "smart-serial single")-->
+	<PortSettings name="IP Connection">
+		<PortTypeSerial>
+			<Disabled>true</Disabled>
+		</PortTypeSerial>
+	<!--#elseif(ConnectionType == "opc")-->
+	<PortSettings name="OPC Connection">
+	<!--#elseif(ConnectionType == "serial" || ConnectionType == "serial single")-->
+	<PortSettings name="*** Connection"><!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used). -->
+	<!--#endif-->
+	<!--#else-->
+	<!--#if(ConnectionType == "http")-->
+	<PortSettings name="HTTP Connection - XXX"><!--TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+		<PortTypeUDP>
+			<Disabled>true</Disabled>
+		</PortTypeUDP>
+		<PortTypeSerial>
+			<Disabled>true</Disabled>
+		</PortTypeSerial>
+	<!--#elseif(ConnectionType == "snmp" || ConnectionType == "snmpv2" || ConnectionType == "snmpv3")-->
+	<PortSettings name="SNMP Connection - XXX"><!--TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<!--#elseif(ConnectionType == "smart-serial" || ConnectionType == "smart-serial single")-->
+	<PortSettings name="IP Connection - XXX"><!--TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+		<PortTypeSerial>
+			<Disabled>true</Disabled>
+		</PortTypeSerial>
+	<!--#elseif(ConnectionType == "opc")-->
+	<PortSettings name="OPC Connection - XXX"><!--TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<!--#elseif(ConnectionType == "serial" || ConnectionType == "serial single")-->
+	<PortSettings name="*** Connection - XXX"><!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used) and replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.).-->
+	<!--#endif-->
+	<!--#endif-->
 	</PortSettings>
+
+	<!--#if(SecondConnectionType != "none")-->
+	<Ports>
+	<!--#if(ConnectionType != SecondConnectionType)-->
+	<!--#if(SecondConnectionType == "http")-->
+		<PortSettings name="HTTP Connection">
+			<PortTypeUDP>
+				<Disabled>true</Disabled>
+			</PortTypeUDP>
+			<PortTypeSerial>
+				<Disabled>true</Disabled>
+			</PortTypeSerial>
+	<!--#elseif(SecondConnectionType == "snmp" || SecondConnectionType == "snmpv2" || SecondConnectionType == "snmpv3")-->
+		<PortSettings name="SNMP Connection">
+	<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
+		<PortSettings name="IP Connection">
+			<PortTypeSerial>
+				<Disabled>true</Disabled>
+			</PortTypeSerial>
+	<!--#elseif(SecondConnectionType == "opc")-->
+		<PortSettings name="OPC Connection">
+	<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
+		<PortSettings name="*** Connection"><!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used) and update the Protocl/Type@advanced attribute value accordingly. -->
+	<!--#endif-->
+	<!--#else-->
+	<!--#if(ConnectionType == "http")-->
+		<PortSettings name="HTTP Connection - XXX"><!--TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.) and update the value of the Protocol/Type@advanced attribute accordingly. -->
+			<PortTypeUDP>
+				<Disabled>true</Disabled>
+			</PortTypeUDP>
+			<PortTypeSerial>
+				<Disabled>true</Disabled>
+			</PortTypeSerial>
+	<!--#elseif(ConnectionType == "snmp" || ConnectionType == "snmpv2" || ConnectionType == "snmpv3")-->
+		<PortSettings name="SNMP Connection - XXX"><!--TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.) and update the value of the Protocol/Type@advanced attribute accordingly. -->
+	<!--#elseif(ConnectionType == "smart-serial" || ConnectionType == "smart-serial single")-->
+		<PortSettings name="IP Connection - XXX"><!--TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.) and update the value of the Protocol/Type@advanced attribute accordingly. -->
+			<PortTypeSerial>
+				<Disabled>true</Disabled>
+			</PortTypeSerial>
+	<!--#elseif(ConnectionType == "opc")-->
+		<PortSettings name="OPC Connection - XXX"><!--TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.) and update the value of the Protocol/Type@advanced attribute accordingly. -->
+	<!--#elseif(ConnectionType == "serial" || ConnectionType == "serial single")-->
+		<PortSettings name="*** Connection - XXX"><!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used) and replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.) and update the value of the Protocol/Type@advanced attribute accordingly.-->
+	<!--#endif-->
+	<!--#endif-->
+		</PortSettings>
+	</Ports>
+	<!--#endif-->
 
 	<VersionHistory>
 		<Branches>
