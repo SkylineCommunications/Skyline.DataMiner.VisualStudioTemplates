@@ -19,7 +19,7 @@
 	<!--#elseif(SecondConnectionType == "snmp" || SecondConnectionType == "snmpv2" || SecondConnectionType == "snmpv3")-->
 	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SNMP Connection">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
-	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:TCP Connection">$CONNECTIONTYPE$</Type>
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:IP Connection">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "opc")-->
 	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:OPC Connection">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
@@ -32,11 +32,11 @@
 	<!--#elseif(SecondConnectionType == "snmp" || SecondConnectionType == "snmpv2" || SecondConnectionType == "snmpv3")-->
 	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SNMP Connection - XXX">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
-	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:TCP Connection - XXX">$CONNECTIONTYPE$</Type>
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:IP Connection - XXX">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "opc")-->
 	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:OPC Connection - XXX">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
-	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:XXX Connection - XXX">$CONNECTIONTYPE$</Type>
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:*** Connection - XXX">$CONNECTIONTYPE$</Type>
 	<!--#endif-->
 	<!--#endif-->
 	<!--#endif-->
@@ -62,14 +62,12 @@
 	</Responses>
 	<Pairs>
 	</Pairs>
-	<!--#else-->
+	<!--#endif-->
 
 	<!--#if (ConnectionType == "http" || SecondConnectionType == "http")-->
 	<HTTP>
 	</HTTP>
-	<!--#else-->
-
-  <!--#endif-->
+	<!--#endif-->
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
 		<QAction id="2" name="After Startup" encoding="csharp" triggers="2" />
