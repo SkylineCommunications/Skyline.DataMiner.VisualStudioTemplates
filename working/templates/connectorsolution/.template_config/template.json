@@ -233,7 +233,7 @@
       "args": {
         "files": "0"
       },
-      "continueOnError": false
+      "continueOnError": true
     }
   ]
 }
