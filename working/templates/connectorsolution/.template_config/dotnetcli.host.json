@@ -33,6 +33,10 @@
             "longName": "connection-type",
             "shortName": "ct"
         },
+        "SecondConnectionType": {
+            "longName": "second-connection-type",
+            "shortName": "sct"
+        },
 		"Author": {
             "longName": "author",
             "shortName": "auth"
