@@ -1,6 +1,8 @@
 ﻿// ReSharper disable UnusedMember.Global
 namespace $PackageId$.SystemCommandLine
 {
+    using Skyline.DataMiner.CICD.FileSystem;
+
     /// <summary>
     /// Helper methods so that System.CommandLine can deal with CICD.FileSystem classes.
     /// </summary>
@@ -37,7 +39,7 @@ namespace $PackageId$.SystemCommandLine
             }
 
             string tokenValue = result.Tokens[0].Value;
-            if (CICD.FileSystem.FileSystem.Instance.File.GetAttributes(tokenValue).HasFlag(System.IO.FileAttributes.Directory))
+            if (FileSystem.Instance.File.GetAttributes(tokenValue).HasFlag(System.IO.FileAttributes.Directory))
             {
                 return new DirectoryInfo(tokenValue);
             }
