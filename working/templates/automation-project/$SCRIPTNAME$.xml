@@ -6,6 +6,7 @@
 	<Author>$AUTHOR$</Author>
 	<CheckSets>FALSE</CheckSets>
 	<Folder></Folder>
+	<Interactivity>Auto</Interactivity>
 
 	<Protocols>
 	</Protocols>
