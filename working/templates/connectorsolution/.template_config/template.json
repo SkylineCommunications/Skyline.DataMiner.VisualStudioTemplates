@@ -77,10 +77,6 @@
           "description": "An HTTP connection."
         },
         {
-          "choice": "opc",
-          "description": "An OPC connection."
-        },
-        {
           "choice": "serial",
           "description": "A serial connection."
         },
@@ -138,10 +134,6 @@
           "description": "An HTTP connection."
         },
         {
-          "choice": "opc",
-          "description": "An OPC connection."
-        },
-        {
           "choice": "serial",
           "description": "A serial connection."
         },
@@ -193,6 +185,22 @@
       "parameters": {
         "format": "yyyy-MM-dd"
       }
+    },
+    "HasSnmpFirstConnection":{
+      "type": "computed",
+      "value": "(ConnectionType == \"snmp\" || ConnectionType == \"snmpv2\" || ConnectionType == \"snmpv3\")"
+    },
+    "HasSnmpSecondConnection":{
+      "type": "computed",
+      "value": "(SecondConnectionType == \"snmp\" || SecondConnectionType == \"snmpv2\" || SecondConnectionType == \"snmpv3\")"
+    },
+    "HasSerialFirstConnection":{
+      "type": "computed",
+      "value": "(ConnectionType == \"serial\" || ConnectionType == \"serial single\" || ConnectionType == \"smart-serial\" || ConnectionType == \"smart-serial single\")"
+    },
+    "HasSerialSecondConnection":{
+      "type": "computed",
+      "value": "(SecondConnectionType == \"serial\" || SecondConnectionType == \"serial single\" || SecondConnectionType == \"smart-serial\" || SecondConnectionType == \"smart-serial single\")"
     }
   },
   "guids": [
