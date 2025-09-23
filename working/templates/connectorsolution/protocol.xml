@@ -21,8 +21,8 @@
 	<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
 	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:IP Connection">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
-	<!-- TODO: Update "XXX Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used). -->
-	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:XXX Connection">$CONNECTIONTYPE$</Type>
+	<!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:*** Connection">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "sla")-->
 	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SLA Connection">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "service")-->
