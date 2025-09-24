@@ -68,6 +68,14 @@
         "isVisible": true      
       },
 	  {       
+        "id": "SecondConnectionType",
+        "name": 
+        {
+          "text": "Type of the second connection"
+        },
+        "isVisible": true      
+      },
+	  {       
         "id": "Author",
         "name": 
         {

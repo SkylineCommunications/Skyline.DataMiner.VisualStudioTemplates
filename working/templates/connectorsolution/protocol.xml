@@ -10,7 +10,52 @@
 	<DeviceOID>$DEVICEOID$</DeviceOID>
 	<SNMP includepages="true">auto</SNMP>
 	<ElementType>$ELEMENTTYPE$</ElementType>
+	<!--#if (SecondConnectionType == "none")-->
 	<Type relativeTimers="true" options=";unicode">$CONNECTIONTYPE$</Type>
+	<!--#else-->
+	<!--#if(ConnectionType != SecondConnectionType)-->
+	<!--#if(SecondConnectionType == "http")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:HTTP Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(HasSnmpSecondConnection)-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SNMP Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:IP Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
+	<!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:*** Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "sla")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SLA Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "service")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:Service Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "gpib")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:GPIB Connection">$CONNECTIONTYPE$</Type>
+	<!--#endif-->
+	<!--#else-->
+	<!--#if(SecondConnectionType == "http")-->
+	<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:HTTP Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(HasSnmpSecondConnection)-->
+	<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SNMP Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
+	<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:IP Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
+	<!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used). -->
+	<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:*** Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "sla")-->
+	<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SLA Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "service")-->
+	<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:Service Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "gpib")-->
+	<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:GPIB Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#endif-->
+	<!--#endif-->
+	<!--#endif-->
 	<Display defaultPage="General" pageOrder="General"/>
 
 	<Compliancies>
@@ -25,6 +70,20 @@
 			<Type>dummy</Type>
 		</Param>
 	</Params>
+	<!--#if (HasSerialFirstConnection || HasSerialSecondConnection)-->
+
+	<Commands>
+	</Commands>
+	<Responses>
+	</Responses>
+	<Pairs>
+	</Pairs>
+	<!--#endif-->
+	<!--#if (ConnectionType == "http" || SecondConnectionType == "http")-->
+
+	<HTTP>
+	</HTTP>
+	<!--#endif-->
 
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
@@ -91,8 +150,123 @@
 		</Timer>
 	</Timers>
 
-	<PortSettings>
+	<!--#if(ConnectionType == "virtual")-->
+	<PortSettings name="Virtual Connection" />
+	<!--#elseif(ConnectionType == "http")-->
+	<PortSettings name="HTTP Connection">
+		<PortTypeUDP>
+			<Disabled>true</Disabled>
+		</PortTypeUDP>
+		<PortTypeSerial>
+			<Disabled>true</Disabled>
+		</PortTypeSerial>
 	</PortSettings>
+	<!--#elseif(HasSnmpFirstConnection)-->
+	<PortSettings name="SNMP Connection">
+		<IPport>
+			<DefaultValue>161</DefaultValue>
+		</IPport>
+	</PortSettings>
+	<!--#elseif(ConnectionType == "smart-serial" || ConnectionType == "smart-serial single")-->
+	<PortSettings name="IP Connection">
+		<PortTypeSerial>
+			<Disabled>true</Disabled>
+		</PortTypeSerial>
+	</PortSettings>
+	<!--#elseif(ConnectionType == "serial" || ConnectionType == "serial single")-->
+	<PortSettings name="*** Connection">
+	<!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used). -->
+	</PortSettings>
+	<!--#elseif(ConnectionType == "sla")-->
+	<PortSettings name="SLA Connection" />
+	<!--#elseif(ConnectionType == "service")-->
+	<PortSettings name="Service Connection" />
+	<!--#elseif(ConnectionType == "gpib")-->
+	<PortSettings name="GPIB Connection" />
+	<!--#endif-->
+	<!--#if(SecondConnectionType != "none")-->
+
+	<Ports>
+	<!--#if(ConnectionType != SecondConnectionType)-->
+		<!--#if(SecondConnectionType == "http")-->
+		<PortSettings name="HTTP Connection">
+			<PortTypeUDP>
+				<Disabled>true</Disabled>
+			</PortTypeUDP>
+			<PortTypeSerial>
+				<Disabled>true</Disabled>
+			</PortTypeSerial>
+		</PortSettings>
+		<!--#elseif(HasSnmpSecondConnection)-->
+		<PortSettings name="SNMP Connection">
+			<IPport>
+				<DefaultValue>161</DefaultValue>
+			</IPport>
+		</PortSettings>
+		<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
+		<PortSettings name="IP Connection">
+			<PortTypeSerial>
+				<Disabled>true</Disabled>
+			</PortTypeSerial>
+		</PortSettings>
+		<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
+		<PortSettings name="*** Connection">
+		<!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used). -->
+		</PortSettings>
+		<!--#elseif(SecondConnectionType == "sla")-->
+		<PortSettings name="SLA Connection" />
+		<!--#elseif(SecondConnectionType == "service")-->
+		<PortSettings name="Service Connection" />
+		<!--#elseif(SecondConnectionType == "gpib")-->
+		<PortSettings name="GPIB Connection" />
+		<!--#endif-->
+	<!--#endif-->
+	<!--#if(ConnectionType == SecondConnectionType)-->
+		<!--#if(SecondConnectionType == "http")-->
+		<PortSettings name="HTTP Connection - XXX">
+		<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+			<PortTypeUDP>
+				<Disabled>true</Disabled>
+			</PortTypeUDP>
+			<PortTypeSerial>
+				<Disabled>true</Disabled>
+			</PortTypeSerial>
+		</PortSettings>
+		<!--#elseif(HasSnmpSecondConnection)-->
+		<PortSettings name="SNMP Connection - XXX">
+		<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+			<IPport>
+				<DefaultValue>161</DefaultValue>
+			</IPport>
+		</PortSettings>
+		<!--#elseif(SecondConnectionType == "smart-serial" || SecondConnectionType == "smart-serial single")-->
+		<PortSettings name="IP Connection - XXX">
+		<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+			<PortTypeSerial>
+				<Disabled>true</Disabled>
+			</PortTypeSerial>
+		</PortSettings>
+		<!--#elseif(SecondConnectionType == "serial" || SecondConnectionType == "serial single")-->
+		<PortSettings name="*** Connection - XXX">
+		<!-- TODO: Update "*** Connection" to either "IP Connection" (if TCP or UDP is used) or "Serial Connection" (if a physical serial port is used). -->
+		<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+		</PortSettings>
+		<!--#elseif(SecondConnectionType == "sla")-->
+		<PortSettings name="SLA Connection - XXX">
+		<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+		</PortSettings>
+		<!--#elseif(SecondConnectionType == "service")-->
+		<PortSettings name="Service Connection - XXX">
+		<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+		</PortSettings>
+		<!--#elseif(SecondConnectionType == "gpib")-->
+		<PortSettings name="GPIB Connection - XXX">
+		<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+		</PortSettings>
+		<!--#endif-->
+	<!--#endif-->
+	</Ports>
+	<!--#endif-->
 
 	<VersionHistory>
 		<Branches>

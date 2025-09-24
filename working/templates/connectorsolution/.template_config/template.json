@@ -13,126 +13,179 @@
   "sourceName": "SkylineDataMinerConnectorSolutionTemplate",
   "symbols": {
     "ConnectorName": {
-        "type": "parameter",
-        "datatype": "string",
-        "defaultValue": "Connector1",
-        "replaces": "$CONNECTORNAME$",
-        "description": "The name of the connector.",
-		"isRequired": true
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "Connector1",
+      "replaces": "$CONNECTORNAME$",
+      "description": "The name of the connector.",
+      "isRequired": true
     },
     "ProviderName": {
-        "type": "parameter",
-        "datatype": "string",
-        "defaultValue": "",
-        "replaces": "$PROVIDER$",
-        "description": "The provider name."
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$PROVIDER$",
+      "description": "The provider name."
     },
-	"VendorName": {
-        "type": "parameter",
-        "datatype": "string",
-        "replaces": "$VENDORNAME$",
-        "description": "The name of the vendor.",
-        "defaultValue": "",
-        "isRequired": true
+    "VendorName": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "$VENDORNAME$",
+      "description": "The name of the vendor.",
+      "defaultValue": "",
+      "isRequired": true
     },
-	"VendorOid": {
-        "type": "parameter",
-        "datatype": "string",
-        "defaultValue": "1.3.6.1.4.1.8813.2.",
-        "replaces": "$VENDOROID$",
-        "description": "The OID of the vendor.",
-        "isRequired": true
+    "VendorOid": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "1.3.6.1.4.1.8813.2.",
+      "replaces": "$VENDOROID$",
+      "description": "The OID of the vendor.",
+      "isRequired": true
     },
-	"DeviceOid": {
-        "type": "parameter",
-        "datatype": "string",
-        "replaces": "$DEVICEOID$",
-        "description": "The OID of the data source.",
-        "defaultValue": "",
-        "isRequired": true
+    "DeviceOid": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "$DEVICEOID$",
+      "description": "The OID of the data source.",
+      "defaultValue": "",
+      "isRequired": true
     },
-	"IntegrationId": {
-        "type": "parameter",
-        "datatype": "string",
-        "defaultValue": "DMS-DRV-",
-        "replaces": "$INTEGRATIONID$",
-        "description": "The integration ID."
+    "IntegrationId": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "DMS-DRV-",
+      "replaces": "$INTEGRATIONID$",
+      "description": "The integration ID."
     },
-	"ElementType": {
-        "type": "parameter",
-        "datatype": "string",
-        "defaultValue": "",
-        "replaces": "$ELEMENTTYPE$",
-        "description": "The element type."
+    "ElementType": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$ELEMENTTYPE$",
+      "description": "The element type."
     },
-	"ConnectionType": {
-        "type": "parameter",
-        "datatype": "choice",
-        "defaultValue": "virtual",
-        "replaces": "$CONNECTIONTYPE$",
-        "description": "The type of the main connection.",
-		    "choices": [
-							{
-							  "choice": "gpib",
-							  "description": "A GPIB connection."
-							},
-							{
-							  "choice": "http",
-							  "description": "An HTTP connection."
-							},
-							{
-							  "choice": "opc",
-							  "description": "An OPC connection."
-							},
-								{
-							  "choice": "serial",
-							  "description": "A serial connection."
-							},
-							{
-							  "choice": "serial single",
-							  "description": "A serial single connection."
-							},
-								{
-							  "choice": "service",
-							  "description": "A service."
-							},
-							{
-							  "choice": "sla",
-							  "description": "A service level agreement (SLA)."
-							},
-								{
-							  "choice": "smart-serial",
-							  "description": "A smart serial connection."
-							},
-							{
-							  "choice": "smart-serial single",
-							  "description": "A dedicated smart serial connection."
-							},
-								{
-							  "choice": "snmp",
-							  "description": "An SNMPv1 connection."
-							},
-							{
-							  "choice": "snmpv2",
-							  "description": "An SNMPv2c connection."
-							},
-								{
-							  "choice": "snmpv3",
-							  "description": "An SNMPv3 connection."
-							},
-							{
-							  "choice": "virtual",
-							  "description": "A virtual connection."
-							}
-						]
+    "ConnectionType": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "virtual",
+      "replaces": "$CONNECTIONTYPE$",
+      "description": "The type of the main connection.",
+      "choices": [
+        {
+          "choice": "gpib",
+          "description": "A GPIB connection."
+        },
+        {
+          "choice": "http",
+          "description": "An HTTP connection."
+        },
+        {
+          "choice": "serial",
+          "description": "A serial connection."
+        },
+        {
+          "choice": "serial single",
+          "description": "A serial single connection."
+        },
+        {
+          "choice": "service",
+          "description": "A service."
+        },
+        {
+          "choice": "sla",
+          "description": "A service level agreement (SLA)."
+        },
+        {
+          "choice": "smart-serial",
+          "description": "A smart serial connection."
+        },
+        {
+          "choice": "smart-serial single",
+          "description": "A dedicated smart serial connection."
+        },
+        {
+          "choice": "snmp",
+          "description": "An SNMPv1 connection."
+        },
+        {
+          "choice": "snmpv2",
+          "description": "An SNMPv2c connection."
+        },
+        {
+          "choice": "snmpv3",
+          "description": "An SNMPv3 connection."
+        },
+        {
+          "choice": "virtual",
+          "description": "A virtual connection."
+        }
+      ]
+    },
+    "SecondConnectionType": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "none",
+      "replaces": "$SECONDCONNECTIONTYPE$",
+      "description": "The type of the second connection.",
+      "choices": [
+        {
+          "choice": "none",
+          "description": "No second connection."
+        },
+        {
+          "choice": "gpib",
+          "description": "A GPIB connection."
+        },
+        {
+          "choice": "http",
+          "description": "An HTTP connection."
+        },
+        {
+          "choice": "serial",
+          "description": "A serial connection."
+        },
+        {
+          "choice": "serial single",
+          "description": "A serial single connection."
+        },
+        {
+          "choice": "service",
+          "description": "A service."
+        },
+        {
+          "choice": "sla",
+          "description": "A service level agreement (SLA)."
+        },
+        {
+          "choice": "smart-serial",
+          "description": "A smart serial connection."
+        },
+        {
+          "choice": "smart-serial single",
+          "description": "A dedicated smart serial connection."
+        },
+        {
+          "choice": "snmp",
+          "description": "An SNMPv1 connection."
+        },
+        {
+          "choice": "snmpv2",
+          "description": "An SNMPv2c connection."
+        },
+        {
+          "choice": "snmpv3",
+          "description": "An SNMPv3 connection."
+        }
+      ]
     },
     "Author": {
-          "type": "parameter",
-          "datatype": "string",
-          "defaultValue": "",
-          "replaces": "$AUTHOR$",
-          "description": "The author."
-      },
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$AUTHOR$",
+      "description": "The author."
+    },
     "InitialVersionDate": {
       "type": "generated",
       "generator": "now",
@@ -140,7 +193,23 @@
       "parameters": {
         "format": "yyyy-MM-dd"
       }
-	  }
+    },
+    "HasSnmpFirstConnection":{
+      "type": "computed",
+      "value": "(ConnectionType == \"snmp\" || ConnectionType == \"snmpv2\" || ConnectionType == \"snmpv3\")"
+    },
+    "HasSnmpSecondConnection":{
+      "type": "computed",
+      "value": "(SecondConnectionType == \"snmp\" || SecondConnectionType == \"snmpv2\" || SecondConnectionType == \"snmpv3\")"
+    },
+    "HasSerialFirstConnection":{
+      "type": "computed",
+      "value": "(ConnectionType == \"serial\" || ConnectionType == \"serial single\" || ConnectionType == \"smart-serial\" || ConnectionType == \"smart-serial single\")"
+    },
+    "HasSerialSecondConnection":{
+      "type": "computed",
+      "value": "(SecondConnectionType == \"serial\" || SecondConnectionType == \"serial single\" || SecondConnectionType == \"smart-serial\" || SecondConnectionType == \"smart-serial single\")"
+    }
   },
   "guids": [
     "1F2B2B24-15BE-4DE0-99F7-6531694672FB",
@@ -163,6 +232,24 @@
           "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg" ]
         }
       ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "path": "protocol.xml"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "description": "Opens the protocol.xml file in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
     }
   ]
 }
