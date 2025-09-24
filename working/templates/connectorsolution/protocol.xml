@@ -27,6 +27,8 @@
 	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:SLA Connection">$CONNECTIONTYPE$</Type>
 	<!--#elseif(SecondConnectionType == "service")-->
 	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:Service Connection">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "gpib")-->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:GPIB Connection">$CONNECTIONTYPE$</Type>
 	<!--#endif-->
 	<!--#else-->
 	<!--#if(SecondConnectionType == "http")-->
@@ -48,6 +50,9 @@
 	<!--#elseif(SecondConnectionType == "service")-->
 	<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
 	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:Service Connection - XXX">$CONNECTIONTYPE$</Type>
+	<!--#elseif(SecondConnectionType == "gpib")-->
+	<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+	<Type relativeTimers="true" options=";unicode" advanced="$SECONDCONNECTIONTYPE$:GPIB Connection - XXX">$CONNECTIONTYPE$</Type>
 	<!--#endif-->
 	<!--#endif-->
 	<!--#endif-->
@@ -176,6 +181,8 @@
 	<PortSettings name="SLA Connection" />
 	<!--#elseif(ConnectionType == "service")-->
 	<PortSettings name="Service Connection" />
+	<!--#elseif(ConnectionType == "gpib")-->
+	<PortSettings name="GPIB Connection" />
 	<!--#endif-->
 	<!--#if(SecondConnectionType != "none")-->
 
@@ -210,6 +217,8 @@
 		<PortSettings name="SLA Connection" />
 		<!--#elseif(SecondConnectionType == "service")-->
 		<PortSettings name="Service Connection" />
+		<!--#elseif(SecondConnectionType == "gpib")-->
+		<PortSettings name="GPIB Connection" />
 		<!--#endif-->
 	<!--#endif-->
 	<!--#if(ConnectionType == SecondConnectionType)-->
@@ -248,6 +257,10 @@
 		</PortSettings>
 		<!--#elseif(SecondConnectionType == "service")-->
 		<PortSettings name="Service Connection - XXX">
+		<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
+		</PortSettings>
+		<!--#elseif(SecondConnectionType == "gpib")-->
+		<PortSettings name="GPIB Connection - XXX">
 		<!-- TODO: Replace XXX with a meaningful description (e.g. Redundant, Backup, Traps, Events, etc.). -->
 		</PortSettings>
 		<!--#endif-->

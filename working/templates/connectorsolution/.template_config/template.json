@@ -73,6 +73,10 @@
       "description": "The type of the main connection.",
       "choices": [
         {
+          "choice": "gpib",
+          "description": "A GPIB connection."
+        },
+        {
           "choice": "http",
           "description": "An HTTP connection."
         },
@@ -128,6 +132,10 @@
         {
           "choice": "none",
           "description": "No second connection."
+        },
+        {
+          "choice": "gpib",
+          "description": "A GPIB connection."
         },
         {
           "choice": "http",
