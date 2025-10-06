@@ -1,14 +1,14 @@
 namespace $NAMESPACE$
 {
-	using Skyline.DataMiner.Automation;
-	using Skyline.DataMiner.Net.Apps.UserDefinableApis;
-	using Skyline.DataMiner.Net.Apps.UserDefinableApis.Actions;
-
 	/// <summary>
 	/// Represents a DataMiner user-defined API.
 	/// </summary>
 	public class Script
 	{
+		using Skyline.DataMiner.Automation;
+		using Skyline.DataMiner.Net.Apps.UserDefinableApis;
+		using Skyline.DataMiner.Net.Apps.UserDefinableApis.Actions;
+
 		/// <summary>
 		/// The API trigger.
 		/// </summary>
