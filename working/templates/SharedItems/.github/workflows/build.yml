@@ -1,0 +1,34 @@
+# This is a simple build workflow that builds and tests the solution.
+# It does not publish to the catalog. Use the Demo or Complete workflow if you need catalog publishing.
+
+name: Build Solution
+
+on:
+  push:
+    branches: [ "master", "main" ]
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+.[0-9]+"
+      - "[0-9]+.[0-9]+.[0-9]+.[0-9]+-**"
+      - "[0-9]+.[0-9]+.[0-9]+"
+      - "[0-9]+.[0-9]+.[0-9]+-**"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Test
+      run: dotnet test -c Release
+
+    - name: Rebuild Solution
+      run: |
+        dotnet clean *.sln -c Release
+        dotnet build *.sln -c Release
