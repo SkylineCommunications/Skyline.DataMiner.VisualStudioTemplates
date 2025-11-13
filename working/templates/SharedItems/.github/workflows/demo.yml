@@ -1,9 +1,8 @@
-# This is a basic workflow, without the standard Skyline Quality Gate. It serves as a start and an example that can be extended as required.
+# This is a demo workflow, without the standard Skyline Quality Gate. It serves as a start and an example that can be extended as required.
 # Important: Every change to the master or main branch will upload a new package to the Catalog using a new prerelease version.
 # A stable release can be done by creating a tag or a GitHub Release.
 
-
-name: Basic Workflow
+name: Demo Workflow
 
 on:
   push:
