@@ -25,10 +25,8 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Test
-      run: dotnet test -c Release
+    - name: Build
+      run: dotnet build -c Release
 
-    - name: Rebuild Solution
-      run: |
-        dotnet clean *.sln -c Release
-        dotnet build *.sln -c Release
+    - name: Test
+      run: dotnet test -c Release --no-build
