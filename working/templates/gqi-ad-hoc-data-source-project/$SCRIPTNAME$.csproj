@@ -16,11 +16,14 @@
 	</PropertyGroup>
 	<ItemGroup>
 <!--#if (IGQIOptimizableDataSource)-->
-		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.5.5.2" />
+		<PackageReference Include="Skyline.DataMiner.Dev.Common" Version="10.5.5.2" />
+		<PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.5.5.2" />
 <!--#elseif (IGQIUpdateable)-->
-		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.4.2" />
+		<PackageReference Include="Skyline.DataMiner.Dev.Common" Version="10.4.4.2" />
+		<PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.4.4.2" />
 <!--#else-->
-		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.3.0.25" />
+		<PackageReference Include="Skyline.DataMiner.Dev.Common" Version="10.3.0.25" />
+		<PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.3.0.25" />
 <!--#endif-->
 		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="2.2.1">
 			<PrivateAssets>all</PrivateAssets>
