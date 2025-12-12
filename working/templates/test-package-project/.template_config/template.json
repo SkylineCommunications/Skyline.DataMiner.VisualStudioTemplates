@@ -53,15 +53,19 @@
     "IncludeGitHubWorkflow": {
       "type": "parameter",
       "datatype": "choice",
-      "description": "Add/Overwrite a GitHub Workflow: Basic (build, test, publish) or Complete (Skyline Quality Gate). Warning: When a new project is added to an existing solution or when dotnet-cli is used, workflow files will always be added to the parent folder of your OUTPUT_DIRECTORY.",
+      "description": "Add/Overwrite a GitHub Workflow: Demo (build, test, publish), Build (build and test only) or Complete (Skyline Quality Gate). Warning: When a new project is added to an existing solution or when dotnet-cli is used, workflow files will always be added to the parent folder of your OUTPUT_DIRECTORY.",
       "choices": [
         {
           "choice": "None",
           "description": "None"
         },
         {
-          "choice": "Basic",
-          "description": "Basic (build, test, publish)"
+          "choice": "Demo",
+          "description": "Demo (build, test, publish)"
+        },
+        {
+          "choice": "Build",
+          "description": "Build (build and test only)"
         },
         {
           "choice": "Complete",
@@ -99,13 +103,17 @@
       "type": "computed",
       "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == None"
     },
-    "IsCatalogBasicCICD": {
-      "type": "computed",
-      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Basic"
-    },
     "IsCatalogCompleteCICD": {
       "type": "computed",
       "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Complete"
+    },
+    "IsCatalogDemoCICD": {
+      "type": "computed",
+      "value": "(CreateDataMinerPackage) && IncludeGitHubWorkflow == Demo"
+    },
+    "IsBuildCICD": {
+      "type": "computed",
+      "value": "IncludeGitHubWorkflow == Build"
     },
     "PlaceSolutionFilesHigh": {
       "type": "computed",
@@ -158,9 +166,16 @@
       "condition": "!(IncludeGitHubWorkflow == None) && (HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)",
       "modifiers": [
         {
-          "condition": "IncludeGitHubWorkflow == Basic",
+          "condition": "IncludeGitHubWorkflow == Demo",
           "include": [
-            "workflows/basic.yml",
+            "workflows/demo.yml",
+            "dependabot.yml"
+          ]
+        },
+        {
+          "condition": "IncludeGitHubWorkflow == Build",
+          "include": [
+            "workflows/build.yml",
             "dependabot.yml"
           ]
         },
@@ -182,9 +197,16 @@
       "condition": "!(IncludeGitHubWorkflow == None) && !(HostIdentifier == dotnetcli) && !PlaceSolutionFilesHigh",
       "modifiers": [
         {
-          "condition": "IncludeGitHubWorkflow == Basic",
+          "condition": "IncludeGitHubWorkflow == Demo",
           "include": [
-            "workflows/basic.yml",
+            "workflows/demo.yml",
+            "dependabot.yml"
+          ]
+        },
+        {
+          "condition": "IncludeGitHubWorkflow == Build",
+          "include": [
+            "workflows/build.yml",
             "dependabot.yml"
           ]
         },

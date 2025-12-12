@@ -160,10 +160,10 @@ There are two ways to change the version of a package:
      <Version>1.0.1</Version>
      ```
 
-<!--#elseif (IsCatalogBasicCICD)-->
-## Publishing to the Catalog with basic CI/CD workflow
+<!--#elseif (IsCatalogDemoCICD)-->
+## Publishing to the Catalog with demo CI/CD workflow
 
-This project includes a basic GitHub workflow for Catalog publishing.
+This project includes a demo GitHub workflow for Catalog publishing.
 
 Follow these steps to set it up:
 
@@ -207,6 +207,19 @@ With this setup, any push with new content (including the initial creation) to t
 
 > [!NOTE]
 > The description will be visible in the DataMiner Catalog.
+
+<!--#elseif (IsBuildCICD)-->
+## Build CI/CD workflow
+
+This project includes a simple build GitHub workflow that builds and tests your solution without publishing to the Catalog.
+
+The workflow automatically runs on every push to the main/master branch and on tags. It performs:
+- Checkout of code
+- .NET 8.0 setup
+- Test execution
+- Clean and build of the solution
+
+To enable Catalog publishing, consider switching to the Demo or Complete workflow option.
 
 <!--#elseif (IsCatalogCompleteCICD)-->
 ## Publishing to the Catalog with the complete CI/CD workflow
