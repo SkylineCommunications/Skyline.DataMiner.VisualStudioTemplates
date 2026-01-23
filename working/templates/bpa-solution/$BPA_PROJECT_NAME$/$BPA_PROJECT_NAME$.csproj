@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>$(SolutionDir)..\import\skyline\bin\StandaloneBpaExecutor.exe</StartProgram>
+    <StartArguments>-debug "$(ProjectDir)$(AssemblyName).dll"</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>$(SolutionDir)..\import\skyline\bin\StandaloneBpaExecutor.exe</StartProgram>
+    <StartArguments>-debug "$(ProjectDir)$(AssemblyName).dll"</StartArguments>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BPA">
+      <HintPath>$(SolutionDir)..\import\Skyline\bin\BPA.dll</HintPath>
+    </Reference>
+    <Reference Include="SLNetTypes">
+      <HintPath>$(SolutionDir)..\import\Skyline\bin\SLNetTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(SolutionDir)..\import\skyline\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Message Text="&gt;&gt;&gt; Prebuild target executed for $(ProjectDir)" Importance="high" />
+    <Exec Command="&quot;$(SolutionDir)..\import\skyline\versioning\ApplyAssemblyInfoVersionFromGit.exe&quot; -basePath &quot;$(ProjectDir)\&quot;" />
+  </Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Message Text="&gt;&gt;&gt; PostBuild target executed for $(ProjectDir)" Importance="high" />
+    <Exec Command="&quot;$(SolutionDir)..\import\skyline\versioning\ApplyAssemblyInfoVersionFromGit.exe&quot; -reset -basePath &quot;$(ProjectDir)\&quot;" />
+  </Target>
+</Project>

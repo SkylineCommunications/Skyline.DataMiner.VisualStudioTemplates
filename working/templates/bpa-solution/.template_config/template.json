@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [ "DataMiner" ],
+  "tags": {
+	"language": "C#",
+	"type": "solution",
+	"editorTreatAs":"solution"
+  },
+  "identity": "Skyline.DataMiner.Bpa.Solution.Template",
+  "name": "DataMiner BPA Solution",
+  "shortName": "dataminer-bpa-solution",
+  "sourceName": "$BPA_PROJECT_NAME$",
+  "symbols": {
+    "BpaDescription": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$BPA_DESCRIPTION$",
+      "description": "A short description of the BPA."
+    },
+    "Author": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$BPA_AUTHOR$",
+      "description": "The author of the BPA."
+    },
+    "IsCorrectiveBpa": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "This BPA has a corrective action."
+    },
+    "SafeClassName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "invalidChars",
+      "replaces": "$CLASS_NAME_PLACEHOLDER$"
+    },
+    "SafeProjectName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "invalidChars",
+      "replaces": "$SAFE_PROJECT_NAME$"
+    }
+  },
+    "forms":
+	{
+    "invalidChars": {
+      "identifier": "replace",
+      "pattern": "([\\-_\\.\\ ])",
+      "replacement": ""
+    }
+  },
+  "guids": [
+    "1F2B2B24-15BE-4DE0-99F7-6531694672FB"
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ "./[Content_Types].xml", "src/.vs/**", ".template_config/**", "[Content_Types].xml", "_rels/**", "*.nuspec", "*.nupkg" ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "path": "protocol.xml"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "description": "Opens the BPA source file in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    }
+  ]
+}

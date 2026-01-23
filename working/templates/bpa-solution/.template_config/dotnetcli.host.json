@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json.schemastore.org/dotnetcli.host",
+    "symbolInfo": {
+      "BpaDescription": {
+        "longName": "bpa-description",
+        "shortName": "description"
+      },
+      "Author": {
+        "longName": "bpa-author",
+        "shortName": "author"
+      },
+      "IsCorrectiveBpa": {
+        "longName": "is-corrective-bpa",
+        "shortName": "corrective"
+      }
+    }
+}

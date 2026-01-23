@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json.schemastore.org/vs-2017.3.host",
+    "order": 0,
+    "icon": "icon.png",
+    "symbolInfo": [
+      {
+        "id": "BpaDescription",
+        "name": 
+        {
+          "text": "Description"
+        },
+        "isVisible": true
+      },
+      {
+        "id": "Author",
+        "name": 
+        {
+          "text": "Author"
+        },
+        "isVisible": true
+      },
+      {
+        "id": "IsCorrectiveBpa",
+        "name": 
+        {
+          "text": "Is corrective BPA"
+        },
+        "isVisible": true
+      }
+    ]
+}
