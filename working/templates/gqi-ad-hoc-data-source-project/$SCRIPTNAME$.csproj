@@ -15,6 +15,9 @@
 <!--#endif-->
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Skyline.DataMiner.CICD.CSharpAnalysis.Analyzer" Version="2.1.1">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 <!--#if (IGQIOptimizableDataSource)-->
 		<PackageReference Include="Skyline.DataMiner.Dev.Common" Version="10.5.5.2" />
 		<PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.5.5.2" />
@@ -26,7 +29,6 @@
 		<PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.3.0.25" />
 <!--#endif-->
 		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="2.2.1">
-			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
