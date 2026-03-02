@@ -6,7 +6,13 @@
 	<PropertyGroup>
 		<DataMinerType>AdHocDataSource</DataMinerType>
 		<GenerateDataMinerPackage>$CREATEPACKAGE$</GenerateDataMinerPackage>
-		<MinimumRequiredDmVersion>10.3.0.0 - 12752</MinimumRequiredDmVersion>
+<!--#if (IGQIOptimizableDataSource)-->
+		<MinimumRequiredDmVersion>10.5.5.0 - 15690</MinimumRequiredDmVersion>
+<!--#elseif (IGQIUpdateable)-->
+		<MinimumRequiredDmVersion>10.4.4.0 - 14113</MinimumRequiredDmVersion>
+<!--#else-->
+		<MinimumRequiredDmVersion>10.4.0.0 - 14003</MinimumRequiredDmVersion>
+<!--#endif-->
 		<Version>1.0.0</Version>
 		<VersionComment>Initial Version</VersionComment>
 <!--#if (CreateDataMinerPackage)-->
@@ -22,8 +28,8 @@
 		<PackageReference Include="Skyline.DataMiner.Dev.Common" Version="10.4.4.2" />
 		<PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.4.4.2" />
 <!--#else-->
-		<PackageReference Include="Skyline.DataMiner.Dev.Common" Version="10.3.0.25" />
-		<PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.3.0.25" />
+		<PackageReference Include="Skyline.DataMiner.Dev.Common" Version="10.4.0.24" />
+		<PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.4.0.24" />
 <!--#endif-->
 		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="2.2.1">
 			<PrivateAssets>all</PrivateAssets>
