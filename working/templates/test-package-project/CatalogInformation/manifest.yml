@@ -39,6 +39,7 @@ title: $SCRIPTNAME$
 # [Optional]
 # General information about the Catalog item.
 #   Max length: 100,000 characters
+# Currently not shown in the Catalog UI but will be supported in the near future.
 short_description: This is a custom solution for DataMiner.
 
 # [Optional]
@@ -55,11 +56,13 @@ documentation_url:
 
 # [Optional]
 # People who are responsible for this Catalog item. Might be developers, but this is not required.
-# Format: 'name <email> (URL)'
+# Format: 'name <email> (url)'
 #   The name is required; max 256 characters.
-#   The email and URL are optional, and should be in valid email/URL formats.
+#   The email and url are optional, and should be in valid email/URL formats.
 owners:
   - name: '$AUTHOR$'
+    email:
+    url:
   
 # [Optional]
 # Tags that allow you to categorize your Catalog items.
@@ -68,4 +71,4 @@ owners:
 #   Cannot contain newlines.
 #   Cannot contain leading or trailing whitespace characters.
 tags:
-  - dataminer
+  - 
