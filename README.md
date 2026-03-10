@@ -10,13 +10,43 @@ The following section lists the currently available Visual Studio templates.
 
 Template that creates a new connector Visual Studio solution.
 
-### Automation script solution
+Short name: `dataminer-connector-solution`
 
-Template that creates a new Automation script Visual Studio solution.
+### Automation script project
 
-### User-defined APIs solution
+Template that creates a new Automation script Visual Studio project.
 
-Template that creates a new User-Defined API Visual Studio solution.
+Short name: `dataminer-automation-project`
+
+### Automation script library project
+
+Template that creates a new Automation script library Visual Studio project.
+
+Short name: `dataminer-automation-library-project`
+
+### User-defined API project
+
+Template that creates a new User-Defined API Visual Studio project.
+
+Short name: `dataminer-user-defined-api-project`
+
+### GQI ad hoc data source project
+
+Template that creates a new GQI ad hoc data source Visual Studio project.
+
+Short name: `dataminer-gqi-ad-hoc-data-source-project`
+
+### Package project
+
+Template that creates a new DataMiner package Visual Studio project.
+
+Short name: `dataminer-package-project`
+
+### Test package project
+
+Template that creates a new DataMiner test package Visual Studio project.
+
+Short name: `dataminer-test-package-project`
 
 ## How to install
 
@@ -39,9 +69,9 @@ As of version 2.42, DataMiner Integration Studio (DIS) automatically installs th
 
 ### Using the CLI
 
-1. Choose a project template i.e. `dataminer-srmfunction-solution`.
-2. Run `dotnet new dataminer-srmfunction-solution --help` to see the available options.
-3. Run `dotnet new dataminer-srmfunction-solution ' with the required options along with any other options to create a solution from the template.
+1. Choose a project template i.e. `dataminer-automation-project`.
+2. Run `dotnet new dataminer-automation-project --help` to see the available options.
+3. Run `dotnet new dataminer-automation-project` with the required options along with any other options to create a project from the template.
 
 ## How to contribute
 
