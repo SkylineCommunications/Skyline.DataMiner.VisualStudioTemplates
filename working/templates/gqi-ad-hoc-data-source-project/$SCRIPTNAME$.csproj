@@ -34,7 +34,7 @@
 		<PackageReference Include="Skyline.DataMiner.Dev.Common" Version="10.4.0.24" />
 		<PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.4.0.24" />
 <!--#endif-->
-		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="2.2.1">
+		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="2.2.3">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
