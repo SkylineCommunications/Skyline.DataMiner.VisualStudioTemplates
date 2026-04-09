@@ -49,7 +49,7 @@ jobs:
           --azure-key-vault-url "https://kv-slc-codesigning.vault.azure.net/"
           --file-list ${{ github.workspace }}\FilesToExcludeFromSigning.txt
         
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: SignedNugetPackages
           path: "${{ steps.findcreatednuget.outputs.nugetPackageName }}"
