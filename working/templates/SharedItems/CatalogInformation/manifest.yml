@@ -56,7 +56,6 @@ documentation_url:
 
 # [Optional]
 # People who are responsible for this Catalog item. Might be developers, but this is not required.
-# Format: 'name <email> (url)'
 #   The name is required; max 256 characters.
 #   The email and url are optional, and should be in valid email/URL formats.
 owners:
@@ -71,7 +70,6 @@ owners:
 #   Cannot contain newlines.
 #   Cannot contain leading or trailing whitespace characters.
 tags:
-  - 
   - 
 
 # [Optional]
