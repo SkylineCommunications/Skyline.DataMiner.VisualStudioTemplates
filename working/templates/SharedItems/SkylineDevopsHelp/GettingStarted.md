@@ -40,7 +40,7 @@ You can publish your artifact either manually via the Visual Studio IDE or by se
 
 You can adjust the information displayed in the Catalog by modifying the `README.md`, the `manifest.yml`, or the images in the `CatalogInformation` folder.
 
-To add a custom icon, place an image in the `images` folder named `custom-icon` with one of the supported extensions: `.jpg`, `.jpeg`, `.png`, `.bmp`, `.tif`, `.tiff`, or `.webp`.
+To add a custom icon, place an image named `custom-icon` in the `images` folder, using one of the supported extensions: `.jpg`, `.jpeg`, `.png`, `.bmp`, `.tif`, `.tiff`, or `.webp`.
 
  
 <!--#endif-->
