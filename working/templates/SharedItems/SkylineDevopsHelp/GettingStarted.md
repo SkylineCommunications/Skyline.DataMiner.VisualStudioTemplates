@@ -37,6 +37,12 @@ Follow the provided **Getting Started** guide in the new project for further ins
 
 This project was created with support for publishing to the DataMiner Catalog.
 You can publish your artifact either manually via the Visual Studio IDE or by setting up a CI/CD workflow.
+
+You can adjust the information displayed in the catalog by modifying the `README.md`, `manifest.yml`, or the images in the `CatalogInformation` folder.
+
+To add a custom icon, place an image in the `images` folder named `custom-icon` with one of the supported extensions: `.jpg`, `.jpeg`, `.png`, `.bmp`, `.tif`, `.tiff`, or `.webp`.
+
+ 
 <!--#endif-->
 <!--#if (IsCatalogNoCICD)-->
 
