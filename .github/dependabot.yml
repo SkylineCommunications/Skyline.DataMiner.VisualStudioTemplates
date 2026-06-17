@@ -5,7 +5,47 @@
 
 version: 2
 updates:
-  - package-ecosystem: "github-actions" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
       interval: "weekly"
+
+  # NuGet PackageReferences in template project files.
+  # Note: Explicit directory listing is intentional — glob patterns are case-sensitive on Linux.
+  # Directories with only ignored packages (Dev.*, Files.*) or no PackageReferences are omitted.
+  - package-ecosystem: "nuget"
+    directories:
+      # Single-project templates
+      - "/working/templates/automation-project"
+      - "/working/templates/automation-library-project"
+      - "/working/templates/gqi-ad-hoc-data-source-project"
+      - "/working/templates/user-defined-api-project"
+      - "/working/templates/package-project"
+      - "/working/templates/test-package-project"
+      - "/working/templates/dotnetToolProject"
+      # Connector solution — csproj files live in subdirectories
+      - "/working/templates/connectorsolution/QAction_1"
+      - "/working/templates/connectorsolution/QAction_2"
+      - "/working/templates/connectorsolution/QAction_Helper"
+    schedule:
+      interval: "weekly"
+    ignore:
+      # DevPacks represent the DMA on which to compile. Doesn't make sense to always be on the latest version.
+      - dependency-name: "Skyline.DataMiner.Files.*"
+      - dependency-name: "Skyline.DataMiner.Dev.*"
+      # Skyline.DataMiner.Sdk is managed separately via global.json (see entry below)
+      - dependency-name: "Skyline.DataMiner.Sdk"
+    groups:
+      all-template-dependencies:
+        group-by: "dependency-name"
+
+  # global.json — tracks the Skyline.DataMiner.Sdk MSBuild SDK version
+  - package-ecosystem: "nuget"
+    directories:
+      - "/working/templates/SharedItems/OnSolutionLevel"
+      - "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      global-json:
+        group-by: "dependency-name"
