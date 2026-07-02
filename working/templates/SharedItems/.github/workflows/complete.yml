@@ -19,10 +19,9 @@ on:
 jobs:
 
   CI:
+    # For more information which inputs and secrets are available, see the documentation of the reusable workflow:
+    # https://docs.dataminer.services/develop/CICD/GitHub/GitHubReusableWorkflows/GitHub_Reusable_Workflows_Master_Workflow.html
     uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/Master Workflow.yml@main
-    with:
-      sonarcloud-project-name: ${{ vars.SONAR_NAME }} # Go to 'https://sonarcloud.io/projects/create' and create a project. Then create a SONAR_NAME variable with the ID of the project as mentioned in the SonarCloud project URL.
-      # solution-filter-name: "MySolutionFilter.slnf"
     secrets:
       DATAMINER_TOKEN: ${{ secrets.DATAMINER_TOKEN }} # The API key: generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain organization.
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # The API key for access to SonarCloud.
