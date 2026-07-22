@@ -42,11 +42,24 @@ Template that creates a new DataMiner package Visual Studio project.
 
 Short name: `dataminer-package-project`
 
+> **Tip**
+> This template has an *Integrate with DataMiner Assistant* option (`--integrate-with-dataminer-assistant`) that adds `SetupContent` folders (`adhocs`, `agents`, `scripts`, `skills`) with guidance for integrating the package with the DataMiner Assistant. It is disabled by default. Already have an existing package project? Use the [DataMiner Assistant Integration](#dataminer-assistant-integration) item template instead.
+
 ### Test package project
 
 Template that creates a new DataMiner test package Visual Studio project.
 
 Short name: `dataminer-test-package-project`
+
+## Available item templates
+
+Unlike the project templates above, item templates add files to an existing project rather than creating a new project.
+
+### DataMiner Assistant Integration
+
+Item template that adds `SetupContent` folders (`adhocs`, `agents`, `scripts`, `skills`) with guidance for integrating an existing DataMiner package project with the DataMiner Assistant. Run it from the root of the package project.
+
+Short name: `dataminer-assistant-integration`
 
 ## How to install
 
@@ -67,11 +80,15 @@ As of version 2.42, DataMiner Integration Studio (DIS) automatically installs th
 
 ![Visual Studio New Project Window](https://github.com/SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates/blob/main/images/VisualStudio-NewProject.png)
 
+Item templates (e.g. DataMiner Assistant Integration) are added to an existing project instead: right-click the target project in *Solution Explorer* and select *Add* > *New Item*, then select the template from the DataMiner category.
+
 ### Using the CLI
 
-1. Choose a project template i.e. `dataminer-automation-project`.
+1. Choose a template i.e. `dataminer-automation-project`.
 2. Run `dotnet new dataminer-automation-project --help` to see the available options.
 3. Run `dotnet new dataminer-automation-project` with the required options along with any other options to create a project from the template.
+
+For item templates, run the equivalent command from the target project's root directory, e.g. `dotnet new dataminer-assistant-integration` from the root of an existing package project.
 
 ## How to contribute
 

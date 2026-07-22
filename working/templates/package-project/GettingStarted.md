@@ -88,6 +88,24 @@ Access them in your code using:
 string setupContentPath = installer.GetSetupContentDirectory();
 ```
 
+<!--#if (IntegrateWithDataMinerAssistant)-->
+## Integrating with the DataMiner Assistant
+
+This project was created with DataMiner Assistant integration scaffolding. The *SetupContent* folder now contains the following subfolders:
+
+- *adhocs*: Markdown files describing GQI ad hoc data sources exposed to the Assistant as read-only data tools.
+- *scripts*: Markdown files describing Automation script tools (e.g. create/update/delete operations) that the Assistant can call.
+- *skills*: One subfolder per guided user flow, each containing a `SKILL.md` file.
+- *agents*: One subfolder (named with a GUID) per specialized agent, each containing an `agent.md` file.
+
+Each of these folders contains an `AboutThisFolder.md` file describing the expected file layout, front matter, and naming constraints.
+
+For full guidance and worked examples, see the [AI Integration Steps](https://internaldocs.skyline.be/Solutions/Guidelines/ai-integration-steps.html) and [Assistant Capabilities](https://internaldocs.skyline.be/DevDocs/Features/Assistant/Assistant_Capabilities.html) internal documentation.
+
+> [!TIP]
+> Already have an existing DataMiner package project that needs this same scaffolding? Use the **DataMiner Assistant Integration** item template (`dataminer-assistant-integration`) from the project root to add it.
+<!--#endif-->
+
 <!--#else-->
 ## Enabling the creation of a DataMiner application package
 

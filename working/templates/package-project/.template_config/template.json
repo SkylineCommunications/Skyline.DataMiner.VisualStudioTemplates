@@ -27,6 +27,12 @@
       "defaultValue": "true",
       "replaces": "$CREATEPACKAGE$"
     },
+    "IntegrateWithDataMinerAssistant": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Adds SetupContent folders (adhocs, agents, scripts, skills) with guidance for integrating this package with the DataMiner Assistant.",
+      "defaultValue": "false"
+    },
     "IncludeGitHubWorkflow": {
       "type": "parameter",
       "datatype": "choice",
@@ -138,6 +144,11 @@
       "source": "../SharedItems/Properties",
       "target": "Properties",
       "condition": "CreateDataMinerPackage"
+    },
+    {
+      "source": "../SharedItems/DataMinerAssistantIntegration",
+      "target": "SetupContent",
+      "condition": "IntegrateWithDataMinerAssistant"
     },
     {
       "source": "../SharedItems/.github",
