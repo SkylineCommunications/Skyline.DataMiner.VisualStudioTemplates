@@ -146,8 +146,16 @@
       "condition": "CreateDataMinerPackage"
     },
     {
-      "source": "../SharedItems/DataMinerAssistantIntegration",
+      "source": "../SharedItems/DataMinerAssistantIntegration/SetupContent",
       "target": "SetupContent",
+      "condition": "IntegrateWithDataMinerAssistant"
+    },
+    {
+      "source": "../SharedItems/DataMinerAssistantIntegration",
+      "target": "./",
+      "exclude": [
+        "SetupContent/**"
+      ],
       "condition": "IntegrateWithDataMinerAssistant"
     },
     {

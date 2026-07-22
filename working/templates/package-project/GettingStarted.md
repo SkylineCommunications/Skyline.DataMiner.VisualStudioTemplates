@@ -100,10 +100,12 @@ This project was created with DataMiner Assistant integration scaffolding. The *
 
 Each of these folders contains an `AboutThisFolder.md` file describing the expected file layout, front matter, and naming constraints.
 
+The project also contains an `AssistantInstaller.cs` class. Its `InstallAssistantFiles` method copies these Markdown files from *SetupContent* into the DataMiner Assistant's custom context folder (`C:\ProgramData\Skyline Communications\DataMiner Assistant\Synced Documents\Context\Custom`) so the Assistant picks them up. The call to `AssistantInstaller.InstallAssistantFiles(installer);` is already wired into `$SCRIPTNAME$.cs`'s `Install` method, right after `installer.InstallDefaultContent();` — no extra steps needed.
+
 For full guidance and worked examples, see the [AI Integration Steps](https://internaldocs.skyline.be/Solutions/Guidelines/ai-integration-steps.html) and [Assistant Capabilities](https://internaldocs.skyline.be/DevDocs/Features/Assistant/Assistant_Capabilities.html) internal documentation.
 
 > [!TIP]
-> Already have an existing DataMiner package project that needs this same scaffolding? Use the **DataMiner Assistant Integration** item template (`dataminer-assistant-integration`) from the project root to add it.
+> Already have an existing DataMiner package project that needs this same scaffolding? Use the **DataMiner Assistant Integration** item template (`dataminer-assistant-integration`) from the project root to add it. Since it adds files to an existing project, you'll need to manually add the one-line call to `AssistantInstaller.InstallAssistantFiles(installer);` yourself — the item template prints instructions for this after it runs.
 <!--#endif-->
 
 <!--#else-->

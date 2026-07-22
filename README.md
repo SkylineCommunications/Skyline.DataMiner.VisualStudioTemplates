@@ -43,7 +43,7 @@ Template that creates a new DataMiner package Visual Studio project.
 Short name: `dataminer-package-project`
 
 > **Tip**
-> This template has an *Integrate with DataMiner Assistant* option (`--integrate-with-dataminer-assistant`) that adds `SetupContent` folders (`adhocs`, `agents`, `scripts`, `skills`) with guidance for integrating the package with the DataMiner Assistant. It is disabled by default. Already have an existing package project? Use the [DataMiner Assistant Integration](#dataminer-assistant-integration) item template instead.
+> This template has an *Integrate with DataMiner Assistant* option (`--integrate-with-dataminer-assistant`) that adds `SetupContent` folders (`adhocs`, `agents`, `scripts`, `skills`) with guidance for integrating the package with the DataMiner Assistant, plus an `AssistantInstaller.cs` class that is automatically wired into the install entry point to copy those files into the Assistant's context folder on install. It is disabled by default. Already have an existing package project? Use the [DataMiner Assistant Integration](#dataminer-assistant-integration) item template instead.
 
 ### Test package project
 
@@ -57,7 +57,18 @@ Unlike the project templates above, item templates add files to an existing proj
 
 ### DataMiner Assistant Integration
 
-Item template that adds `SetupContent` folders (`adhocs`, `agents`, `scripts`, `skills`) with guidance for integrating an existing DataMiner package project with the DataMiner Assistant. Run it from the root of the package project.
+Item template that adds `SetupContent` folders (`adhocs`, `agents`, `scripts`, `skills`) with guidance for integrating an existing DataMiner package project with the DataMiner Assistant, plus an `AssistantInstaller.cs` class. Run it from the root of the package project.
+
+Since this template adds files to an existing project, it cannot safely edit your existing install entry point. After it runs:
+
+1. Make sure the project references the `Skyline.DataMiner.Utils.SecureCoding` NuGet package (`AssistantInstaller.cs` uses its secure path helpers): `dotnet add package Skyline.DataMiner.Utils.SecureCoding`.
+2. Add one line to your `Install(IEngine engine, AppInstallContext context)` method (right after `installer.InstallDefaultContent();`):
+
+   ```csharp
+   AssistantInstaller.InstallAssistantFiles(installer);
+   ```
+
+The template prints these instructions after generation as a reminder.
 
 Short name: `dataminer-assistant-integration`
 

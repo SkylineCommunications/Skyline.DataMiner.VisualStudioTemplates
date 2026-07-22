@@ -26,8 +26,27 @@
       ]
     },
     {
-      "source": "../SharedItems/DataMinerAssistantIntegration",
+      "source": "../SharedItems/DataMinerAssistantIntegration/SetupContent",
       "target": "SetupContent"
+    },
+    {
+      "source": "../SharedItems/DataMinerAssistantIntegration",
+      "target": "./",
+      "exclude": [
+        "SetupContent/**"
+      ]
+    }
+  ],
+  "postActions": [
+    {
+      "description": "Wire up the DataMiner Assistant installer call",
+      "actionId": "AC1156F7-BB77-4DB8-B28F-24EEBCCA1E5C",
+      "manualInstructions": [
+        {
+          "text": "1) If the project does not already reference the 'Skyline.DataMiner.Utils.SecureCoding' NuGet package (version matching Skyline.DataMiner.Utils.SecureCoding.Analyzers), add it: dotnet add package Skyline.DataMiner.Utils.SecureCoding. 2) Open the project's install entry point (the .cs file containing the [AutomationEntryPoint(AutomationEntryPointType.Types.InstallAppPackage)] method) and add 'AssistantInstaller.InstallAssistantFiles(installer);' right after 'installer.InstallDefaultContent();' so the Assistant files added to SetupContent get installed."
+        }
+      ],
+      "continueOnError": true
     }
   ]
 }
