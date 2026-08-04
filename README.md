@@ -59,7 +59,7 @@ Unlike the project templates listed above, item templates add files to an existi
 
 An item template that adds `SetupContent` folders (`adhocs`, `agents`, `scripts`, `skills`) with guidance for integrating an existing DataMiner package project with the DataMiner Assistant, as well as an `AssistantInstaller.cs` class. Run it from the root of the package project.
 
-Since this template adds files to an existing project, it cannot safely edit your existing install entry point. After it had run, do the following:
+Since this template adds files to an existing project, it cannot safely edit your existing install entry point. After it has run, do the following:
 
 1. Make sure the project references the `Skyline.DataMiner.Utils.SecureCoding` NuGet package (`AssistantInstaller.cs` uses its secure path helpers): `dotnet add package Skyline.DataMiner.Utils.SecureCoding`.
 1. Add one line to your `Install(IEngine engine, AppInstallContext context)` method (right after `installer.InstallDefaultContent();`):
