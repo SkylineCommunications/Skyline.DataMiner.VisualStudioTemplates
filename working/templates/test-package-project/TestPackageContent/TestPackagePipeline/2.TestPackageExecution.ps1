@@ -13,6 +13,14 @@ $pathToGeneratedTests = Join-Path $pathToTestHarvesting 'tests.generated'
 $pathToGeneratedDependencies = Join-Path $pathToTestHarvesting 'dependencies.generated'
 $pathToTests = Join-Path $PathToTestPackageContent 'Tests'
 $pathToDependencies = Join-Path $PathToTestPackageContent 'Dependencies'
+# Optional directory that may contain supplementary files passed in the QAOps test-run request.
+# This directory may not exist when no supplementary files were provided, so never assume that it
+# or any specific file inside it is available.
+# The QAOps Bridge also extracts the same files to an agent-local directory on EVERY agent of the
+# cluster and exposes that path through the QAOPS_SUPPLEMENTARY_FILES machine environment variable.
+# Use that variable from code that may execute on another agent (for example an Automation script):
+#   [Environment]::GetEnvironmentVariable('QAOPS_SUPPLEMENTARY_FILES', 'Machine')
+$pathToSupplementaryFiles = Join-Path $PathToTestPackageContent 'SupplementaryFiles'
 
 # Track script start time
 $scriptStart = Get-Date
