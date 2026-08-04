@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [
+    "DataMiner",
+    "Assistant"
+  ],
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "identity": "Skyline.DataMiner.Assistant.Integration.Template",
+  "name": "DataMiner Assistant Integration",
+  "description": "Adds SetupContent folders (adhocs, agents, scripts, skills) with guidance for integrating an existing DataMiner package project with the DataMiner Assistant. Run this from the root of the package project.",
+  "shortName": "dataminer-assistant-integration",
+  "sources": [
+    {
+      "exclude": [
+        "./[Content_Types].xml",
+        "src/.vs/**",
+        ".template_config/**",
+        "[Content_Types].xml",
+        "_rels/**",
+        "*.nuspec",
+        "*.nupkg"
+      ]
+    },
+    {
+      "source": "../SharedItems/DataMinerAssistantIntegration/SetupContent",
+      "target": "SetupContent"
+    },
+    {
+      "source": "../SharedItems/DataMinerAssistantIntegration",
+      "target": "./",
+      "exclude": [
+        "SetupContent/**"
+      ]
+    }
+  ],
+  "postActions": [
+    {
+      "description": "Wire up the DataMiner Assistant installer call",
+      "actionId": "AC1156F7-BB77-4DB8-B28F-24EEBCCA1E5C",
+      "manualInstructions": [
+        {
+          "text": "1) If the project does not already reference the 'Skyline.DataMiner.Utils.SecureCoding' NuGet package (version matching Skyline.DataMiner.Utils.SecureCoding.Analyzers), add it: dotnet add package Skyline.DataMiner.Utils.SecureCoding. 2) Open the project's install entry point (the .cs file containing the [AutomationEntryPoint(AutomationEntryPointType.Types.InstallAppPackage)] method) and add 'AssistantInstaller.InstallAssistantFiles(installer);' right after 'installer.InstallDefaultContent();' so the Assistant files added to SetupContent get installed."
+        }
+      ],
+      "continueOnError": true
+    }
+  ]
+}

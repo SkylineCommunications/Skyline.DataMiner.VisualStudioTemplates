@@ -23,6 +23,11 @@ internal class Script
 			engine.GenerateInformation("Starting installation");
 			var installer = new AppInstaller(Engine.SLNetRaw, context);
 			installer.InstallDefaultContent();
+#if (IntegrateWithDataMinerAssistant)
+
+			// Copies the DataMiner Assistant integration files (adhocs, scripts, skills, agents) from SetupContent.
+			AssistantInstaller.InstallAssistantFiles(installer);
+#endif
 
 			////string setupContentPath = installer.GetSetupContentDirectory();
 

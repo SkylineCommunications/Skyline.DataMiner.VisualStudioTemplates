@@ -21,6 +21,9 @@
 	<ItemGroup>
 		<PackageReference Include="Skyline.DataMiner.Core.AppPackageInstaller" Version="4.1.0" />
 		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.0.24" />
+<!--#if (IntegrateWithDataMinerAssistant)-->
+		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding" Version="2.2.3" />
+<!--#endif-->
 	</ItemGroup>
 
 	<ItemGroup>
