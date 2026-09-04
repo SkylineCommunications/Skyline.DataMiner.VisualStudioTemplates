@@ -17,6 +17,9 @@
 	<Parameters>
 	</Parameters>
 
+	<Credentials>
+	</Credentials>
+
 	<Script>
 		<Exe id="1" type="csharp">
 			<Value><![CDATA[[Project:$SCRIPTNAME$]]]></Value>
