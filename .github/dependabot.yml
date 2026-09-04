@@ -4,6 +4,12 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+
+multi-ecosystem-groups:
+  all-template-dependencies:
+    schedule:
+      interval: "weekly"
+
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -27,25 +33,17 @@ updates:
       - "/working/templates/connectorsolution/QAction_1"
       - "/working/templates/connectorsolution/QAction_2"
       - "/working/templates/connectorsolution/QAction_Helper"
-    schedule:
-      interval: "weekly"
     ignore:
       # DevPacks represent the DMA on which to compile. Doesn't make sense to always be on the latest version.
       - dependency-name: "Skyline.DataMiner.Files.*"
       - dependency-name: "Skyline.DataMiner.Dev.*"
       # Skyline.DataMiner.Sdk is managed separately via global.json (see entry below)
       - dependency-name: "Skyline.DataMiner.Sdk"
-    groups:
-      all-template-dependencies:
-        group-by: "dependency-name"
+    multi-ecosystem-group: "all-template-dependencies"
 
   # global.json — tracks the Skyline.DataMiner.Sdk MSBuild SDK version
   - package-ecosystem: "nuget"
     directories:
       - "/working/templates/SharedItems/OnSolutionLevel"
       - "/"
-    schedule:
-      interval: "weekly"
-    groups:
-      global-json:
-        group-by: "dependency-name"
+    multi-ecosystem-group: "all-template-dependencies"
