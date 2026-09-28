@@ -8,6 +8,9 @@
     "CreateDataMinerPackage": {
       "longName": "create-dataminer-package"
     },
+    "IntegrateWithDataMinerAssistant": {
+      "longName": "integrate-with-dataminer-assistant"
+    },
     "IncludeGitHubWorkflow": {
       "longname": "include-github-workflow"
     }

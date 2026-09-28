@@ -18,6 +18,13 @@
       "isVisible": true
     },
     {
+      "id": "IntegrateWithDataMinerAssistant",
+      "name": {
+        "text": "Integrate with DataMiner Assistant"
+      },
+      "isVisible": true
+    },
+    {
       "id": "IncludeGitHubWorkflow",
       "name": {
           "text": "Add GitHub CI/CD Workflow (Overwrite Existing)"
