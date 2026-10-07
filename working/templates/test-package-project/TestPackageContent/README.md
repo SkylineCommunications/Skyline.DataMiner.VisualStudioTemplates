@@ -120,15 +120,10 @@ $pathToSupplementaryFiles = Join-Path $PathToTestPackageContent 'SupplementaryFi
 
 ```txt
 TestPackagePipeline/
-├── 1.setup.ps1          # Environment setup and prerequisites
-├── 2.install-deps.ps1   # Install test dependencies
-├── 3.run-tests.ps1      # Execute your actual tests
-├── 4.finalize.ps1       # Collect results
-└── helpers/             # TODO: Optional helper files directory
-    ├── test-utilities.psm1
-    ├── data-processor.py
-    ├── config-validator.js
-    └── shared-functions.ps1
+├── 1.TestPackageSetup.ps1      # Set up the test package
+├── 2.TestPackageExecution.ps1  # Execute the tests
+├── 3.TestPackageFinalize.ps1   # Finalize the test package
+└── CommonCode.psm1             # Shared helper functions
 ```
 
 #### Adding Helper Code and Utilities
@@ -215,11 +210,9 @@ If you need to customize the QAOps test execution behavior, adapt the `qaops.con
 Create your `qaops.config.xml` file like this:
 
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<QAOpsConfig>
-  <!-- Set to false if you only need PowerShell script execution -->
+<Settings>
   <PerformPackageInstallation>true</PerformPackageInstallation>
-</QAOpsConfig>
+</Settings>
 ```
 
 This allows you to choose between different testing approaches:
