@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{1F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QActions", "QActions", "{81FC1C77-D739-4465-9327-5801075F1415}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Connector Scripts", "Connector Scripts", "{D5A9F5E2-9C03-4EC3-A967-83A82F11D8B7}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{D04FCDE1-4B4C-4057-AAFC-6648C16AFA6D}"
 	ProjectSection(SolutionItems) = preProject
 		Dlls\ABOUT.md = Dlls\ABOUT.md
