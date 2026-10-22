@@ -6,6 +6,13 @@ Script ID: `4f0bc4d6-7b21-48ee-9abc-4ce4be94b757`
 
 Entry point: `run/main.py`
 
+## Prerequisites
+
+Install the latest Python 3.14 patch release before creating the virtual
+environment. You can find the available releases on the
+[Python downloads](https://www.python.org/downloads/) page. Do not install
+Python 3.15 for this project; the connector runtime only supports Python 3.14.
+
 ## Development
 
 1. Expand **Python Environments**. Do not generate requirements from the
@@ -13,15 +20,23 @@ Entry point: `run/main.py`
    dependencies.
 2. Add a project-local virtual environment named `.venv` using Python 3.14
    x64 and set it as current.
-3. Install only packages required for local development into `.venv`.
-4. Use **Generate requirements.txt** > **Replace entire file** on `.venv`, then
-   retain only direct third-party dependencies.
+3. Right-click `.venv` and select **Install from requirements.txt**.
+
+   Alternatively, install the dependencies from a terminal:
+
+   `.\.venv\Scripts\python.exe -m pip install -r requirements.txt`
+
+4. When dependencies change, install only the packages required by the
+   project and use **Generate requirements.txt** > **Replace entire file** on
+   `.venv`.
 5. Set the `EDGE_RUN_SECRET` environment variable and run `run\main.py` with
    the project root as the working directory. Never store secrets in the
    project Debug arguments because they are committed to Git.
 6. Run tests with:
 
-   `.\.venv\Scripts\python.exe -m unittest discover -s tests -t . -p "test*.py" -v`
+   ```powershell
+   .\.venv\Scripts\python.exe -m unittest discover -s tests -t . -p "test*.py" -v
+   ```
 
 The project root contains the runtime files copied into the packaged
 `.dmprotocol\Scripts\4f0bc4d6-7b21-48ee-9abc-4ce4be94b757` directory.
