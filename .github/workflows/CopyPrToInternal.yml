@@ -1,0 +1,100 @@
+name: Copy PR to Internal templates
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: PR number in Skyline.DataMiner.VisualStudioTemplates
+        required: true
+        type: number
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Internal repository access
+        env:
+          INTERNAL_REPO_TOKEN: ${{ secrets.INTERNAL_REPO_TOKEN }}
+        run: |
+          if [[ -z "$INTERNAL_REPO_TOKEN" ]]; then
+            echo "::error::Configure INTERNAL_REPO_TOKEN with Contents and Pull requests write access to the Internal repository."
+            exit 1
+          fi
+
+      - name: Check out source PR
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: refs/pull/${{ inputs.pr_number }}/head
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Prepare PR patch
+        working-directory: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ inputs.pr_number }}
+        run: |
+          set -euo pipefail
+          gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" \
+            --json title,url,baseRefName,headRefOid > "$RUNNER_TEMP/source-pr.json"
+          base_branch=$(jq -r '.baseRefName' "$RUNNER_TEMP/source-pr.json")
+          head_sha=$(jq -r '.headRefOid' "$RUNNER_TEMP/source-pr.json")
+          if [[ "$(git rev-parse HEAD)" != "$head_sha" ]]; then
+            echo "::error::The source PR changed during checkout; rerun the workflow."
+            exit 1
+          fi
+          merge_base=$(git merge-base HEAD "origin/$base_branch")
+          git diff --binary --full-index --find-renames "$merge_base" HEAD > "$RUNNER_TEMP/pr.patch"
+          if [[ ! -s "$RUNNER_TEMP/pr.patch" ]]; then
+            echo "::error::The source PR has no file changes to copy."
+            exit 1
+          fi
+
+      - name: Check out Internal repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates.Internal
+          ref: main
+          path: internal
+          token: ${{ secrets.INTERNAL_REPO_TOKEN }}
+
+      - name: Apply patch and push branch
+        id: push
+        working-directory: internal
+        env:
+          PR_NUMBER: ${{ inputs.pr_number }}
+        run: |
+          set -euo pipefail
+          branch="sync/pr-${PR_NUMBER}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git switch -c "$branch"
+          git apply --3way --index "$RUNNER_TEMP/pr.patch"
+          if git diff --cached --quiet; then
+            echo "::error::The PR changes are already present in Internal; no PR was created."
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Copy source PR #${PR_NUMBER} to Internal"
+          git push origin "$branch"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Open Internal PR
+        working-directory: internal
+        env:
+          GH_TOKEN: ${{ secrets.INTERNAL_REPO_TOKEN }}
+          PR_NUMBER: ${{ inputs.pr_number }}
+          BRANCH: ${{ steps.push.outputs.branch }}
+        run: |
+          set -euo pipefail
+          title=$(jq -r '.title' "$RUNNER_TEMP/source-pr.json")
+          source_url=$(jq -r '.url' "$RUNNER_TEMP/source-pr.json")
+          gh pr create \
+            --repo SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates.Internal \
+            --base main --head "$BRANCH" \
+            --title "Copy #${PR_NUMBER}: ${title}" \
+            --body "Copies the file changes from ${source_url} onto Internal's main branch. Review any Internal-specific adaptations before merging."
