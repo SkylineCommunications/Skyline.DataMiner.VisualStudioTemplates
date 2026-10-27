@@ -17,7 +17,7 @@ jobs:
       - name: Install Sign CLI tool
         run: dotnet tool install sign -g --prerelease
 
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
 
       - name: Create NuGet Package (Branch)
         if: github.ref_type != 'tag'
