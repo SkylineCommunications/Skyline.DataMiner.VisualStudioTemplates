@@ -48,6 +48,14 @@ Template that creates a new DataMiner test package Visual Studio project.
 
 Short name: `dataminer-test-package-project`
 
+### Scripted connector project
+
+Creates a Python based connector script project.
+
+Language: Python
+
+Short name: `dataminer-connector-script`
+
 ## How to install
 
 As of version 2.42, DataMiner Integration Studio (DIS) automatically installs the latest template package when you open Visual Studio. If you don't have this version of DIS, then follow these steps:
