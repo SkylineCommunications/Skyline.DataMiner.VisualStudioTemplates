@@ -1,5 +1,5 @@
 <Project>
-	<PropertyGroup>
+	<PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
 		<PlatformTarget>x86</PlatformTarget>
 		<DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
 	</PropertyGroup>
