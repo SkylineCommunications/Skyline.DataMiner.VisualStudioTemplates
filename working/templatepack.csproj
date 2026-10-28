@@ -30,5 +30,12 @@
     <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
     <Compile Remove="**\*" />
   </ItemGroup>
+  
+  <Target Name="CopyNuGetPackage" AfterTargets="Pack" Condition="'$(LocalNuGetStorePath)' != ''">
+    <Exec Command="dotnet new uninstall $(PackageId)" IgnoreExitCode="true" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(BaseOutputPath)$(Configuration)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(LocalNuGetStorePath)\$(PackageId)" />
+    <Exec Command="dotnet new install $(PackageId)@$(PackageVersion)" />
+    <Message Text="### Finished copying and installing new templates. ###" Importance="High" />
+  </Target>
 
 </Project>
