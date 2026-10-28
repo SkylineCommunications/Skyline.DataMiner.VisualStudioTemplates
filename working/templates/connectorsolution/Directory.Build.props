@@ -14,13 +14,15 @@
 		<DebugType>pdbonly</DebugType>
 		<CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
+	<ItemGroup>
+		<Content Include="..\Internal\.editorconfig">
+			<Link>Properties\.editorconfig</Link>
+		</Content>
+	</ItemGroup>
 	<ItemGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
 		<AdditionalFiles Include="..\Internal\Code Analysis\stylecop.json">
 			<Link>Properties\stylecop.json</Link>
 		</AdditionalFiles>
-		<Content Include="..\Internal\.editorconfig">
-			<Link>Properties\.editorconfig</Link>
-		</Content>
 	</ItemGroup>
 	<ItemGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
 		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
