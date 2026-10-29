@@ -89,7 +89,9 @@ To add additional templates, create a new template and put it under the working/
 
 Maintainers can run the **Copy PR to Internal templates** workflow from the Actions tab on this repository's default branch. Enter the source PR number; the workflow applies that PR's file changes to a new branch based on `Skyline.DataMiner.VisualStudioTemplates.Internal`'s `main` and opens an Internal PR for review. It does not merge the PR or copy unrelated source files.
 
-Configure a repository Actions secret named `INTERNAL_REPO_TOKEN` first. Use a fine-grained token scoped to `Skyline.DataMiner.VisualStudioTemplates.Internal`, with **Contents: Read and write** and **Pull requests: Read and write** permissions. The token's owner must be able to push branches and create PRs there. If the changes conflict with Internal or are already present, the workflow fails without opening a PR; resolve the differences manually.
+Configure a repository Actions secret named `INTERNAL_REPO_TOKEN` first. Use a fine-grained **personal access token** scoped to `Skyline.DataMiner.VisualStudioTemplates.Internal`, with **Contents: Read and write**, **Pull requests: Read and write**, and **Agent tasks: Read and write** permissions. The token's owner must be able to push branches, create PRs, and use Copilot cloud agent in Internal. GitHub App installation tokens do not support the Copilot agent tasks API.
+
+If applying the source PR's patch fails (for example, because of a conflict), the workflow instead starts a Copilot cloud-agent task in Internal to apply the changes and create a PR. The workflow summary links to the task; Copilot works asynchronously, so the PR may appear later and must be reviewed for Internal-specific adaptations. The workflow still fails without invoking Copilot if the changes are already present or if a checkout, push, or GitHub API call fails. The agent tasks API is in public preview and can change.
 
 ## License
 
