@@ -18,10 +18,10 @@ jobs:
     steps:
       - name: Check Internal repository access
         env:
-          INTERNAL_REPO_TOKEN: ${{ secrets.INTERNAL_REPO_TOKEN }}
+          VS_TEMPLATES_REPO_TOKEN: ${{ secrets.VS_TEMPLATES_REPO_TOKEN }}
         run: |
-          if [[ -z "$INTERNAL_REPO_TOKEN" ]]; then
-            echo "::error::Configure INTERNAL_REPO_TOKEN with Contents and Pull requests write access to the Internal repository."
+          if [[ -z "$VS_TEMPLATES_REPO_TOKEN" ]]; then
+            echo "::error::Configure VS_TEMPLATES_REPO_TOKEN with Contents and Pull requests write access to the Internal repository."
             exit 1
           fi
 
@@ -61,7 +61,7 @@ jobs:
           repository: SkylineCommunications/Skyline.DataMiner.VisualStudioTemplates.Internal
           ref: main
           path: internal
-          token: ${{ secrets.INTERNAL_REPO_TOKEN }}
+          token: ${{ secrets.VS_TEMPLATES_REPO_TOKEN }}
 
       - name: Apply patch and push branch
         id: push
@@ -95,7 +95,7 @@ jobs:
         if: steps.push.outputs.patch_failed != 'true'
         working-directory: internal
         env:
-          GH_TOKEN: ${{ secrets.INTERNAL_REPO_TOKEN }}
+          GH_TOKEN: ${{ secrets.VS_TEMPLATES_REPO_TOKEN }}
           PR_NUMBER: ${{ inputs.pr_number }}
           BRANCH: ${{ steps.push.outputs.branch }}
         run: |
@@ -111,7 +111,7 @@ jobs:
       - name: Ask Copilot to create the Internal PR
         if: steps.push.outputs.patch_failed == 'true'
         env:
-          GH_TOKEN: ${{ secrets.INTERNAL_REPO_TOKEN }}
+          GH_TOKEN: ${{ secrets.VS_TEMPLATES_REPO_TOKEN }}
           PR_NUMBER: ${{ inputs.pr_number }}
         run: |
           set -euo pipefail
