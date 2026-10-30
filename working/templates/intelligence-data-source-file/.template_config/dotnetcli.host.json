@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json.schemastore.org/dotnetcli.host",
+  "symbolInfo": {
+    "SchemaVersion": {
+      "longName": "schema-version"
+    },
+    "name": {
+      "longName": "name"
+    },
+    "version": {
+      "longName": "version"
+    },
+    "description": {
+      "longName": "description"
+    },
+    "scriptName": {
+      "longName": "script-name"
+    },
+    "libraryName": {
+      "longName": "library-name"
+    },
+    "typeFullName": {
+      "longName": "type-full-name"
+    },
+    "typeName": {
+      "longName": "type-name"
+    }
+  }
+}

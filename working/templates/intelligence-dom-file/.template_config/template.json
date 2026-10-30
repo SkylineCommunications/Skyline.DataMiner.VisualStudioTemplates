@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [
+    "DataMiner"
+  ],
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "identity": "Skyline.DataMiner.Intelligence.Dom.File.Template",
+  "name": "DataMiner Intelligence DOM File",
+  "shortName": "dataminer-intelligence-dom-file",
+  "defaultName": "my-dom",
+  "sourceName": "$name$",
+  "symbols": {
+    "SchemaVersion": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "1.0",
+      "description": "The schema version for the intelligence file.",
+      "replaces": "$SCHEMAVERSION$",
+      "choices": [
+        {
+          "choice": "1.0",
+          "description": "Schema version 1.0"
+        }
+      ]
+    },
+    "SafeDomToolName": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "parameters": {
+        "source": "name",
+        "steps": [
+          {
+            "regex": "[^a-zA-Z0-9-]+",
+            "replacement": ""
+          },
+          {
+            "regex": "^$",
+            "replacement": "my-dom"
+          }
+        ]
+      }
+    },
+    "DomToolName": {
+      "type": "generated",
+      "generator": "casing",
+      "dataType": "string",
+      "replaces": "$DOMTOOLNAME$",
+      "parameters": {
+        "source": "SafeDomToolName",
+        "toLower": true
+      }
+    },
+    "version": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "1.0.0",
+      "description": "The version of the DOM definition."
+    },
+    "SafeVersion": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "replaces": "$VERSION$",
+      "parameters": {
+        "source": "version",
+        "steps": [
+          {
+            "regex": "[^0-9A-Za-z.+-]+",
+            "replacement": ""
+          },
+          {
+            "regex": "^(?!\\d+\\.\\d+\\.\\d+(?:[-+][0-9A-Za-z.-]+)?$).*$",
+            "replacement": "1.0.0"
+          },
+          {
+            "regex": "^$",
+            "replacement": "1.0.0"
+          }
+        ]
+      }
+    },
+    "description": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$DESCRIPTION$",
+      "description": "A brief description for the DOM definition."
+    },
+    "DomModule": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "(slc)module",
+      "replaces": "$DOMMODULE$",
+      "description": "The module for the DOM definition."
+    },
+    "DomDefinition": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "00000000-0000-0000-0000-000000000000",
+      "replaces": "$DOMDEFINITION$",
+      "description": "The DOM definition identifier."
+    }
+  },
+  "sources": [
+    {
+      "exclude": [
+        ".template_config/**"
+      ]
+    }
+  ]
+}

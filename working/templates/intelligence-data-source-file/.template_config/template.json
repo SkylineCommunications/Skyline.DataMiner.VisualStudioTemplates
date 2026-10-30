@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [
+    "DataMiner"
+  ],
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "identity": "Skyline.DataMiner.Intelligence.DataSource.File.Template",
+  "name": "DataMiner Intelligence Data Source File",
+  "shortName": "dataminer-intelligence-data-source-file",
+  "defaultName": "my-data-source",
+  "sourceName": "$name$",
+  "symbols": {
+    "SafeDataSourceToolName": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "parameters": {
+        "source": "name",
+        "steps": [
+          {
+            "regex": "[^a-zA-Z0-9-]+",
+            "replacement": ""
+          },
+          {
+            "regex": "^$",
+            "replacement": "my-data-source"
+          }
+        ]
+      }
+    },
+    "DataSourceToolName": {
+      "type": "generated",
+      "generator": "casing",
+      "dataType": "string",
+      "replaces": "$DATASOURCETOOLNAME$",
+      "parameters": {
+        "source": "SafeDataSourceToolName",
+        "toLower": true
+      }
+    },
+    "SchemaVersion": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "1.0",
+      "description": "The schema version for the intelligence file.",
+      "replaces": "$SCHEMAVERSION$",
+      "choices": [
+        {
+          "choice": "1.0",
+          "description": "Schema version 1.0"
+        }
+      ]
+    },
+    "version": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "1.0.0",
+      "description": "The version of the data source."
+    },
+    "SafeVersion": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "replaces": "$VERSION$",
+      "parameters": {
+        "source": "version",
+        "steps": [
+          {
+            "regex": "[^0-9A-Za-z.+-]+",
+            "replacement": ""
+          },
+          {
+            "regex": "^(?!\\d+\\.\\d+\\.\\d+(?:[-+][0-9A-Za-z.-]+)?$).*$",
+            "replacement": "1.0.0"
+          },
+          {
+            "regex": "^$",
+            "replacement": "1.0.0"
+          }
+        ]
+      }
+    },
+    "description": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$DESCRIPTION$",
+      "description": "A brief description for the data source."
+    },
+    "scriptName": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "SampleDataSourceScript",
+      "replaces": "$SCRIPTNAME$",
+      "description": "The script where the data source is defined."
+    },
+    "libraryName": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "SampleDataSourceLibrary",
+      "replaces": "$LIBRARYNAME$",
+      "description": "The name in the library for the precompiled script."
+    },
+    "typeFullName": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "SampleDataSourceLibrary.SampleDataSource",
+      "replaces": "$TYPEFULLNAME$",
+      "description": "The fully qualified name of the data source class."
+    },
+    "typeName": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "SampleDataSource",
+      "replaces": "$TYPENAME$",
+      "description": "The name of the data source class."
+    }
+  },
+  "sources": [
+    {
+      "exclude": [
+        ".template_config/**"
+      ]
+    }
+  ]
+}

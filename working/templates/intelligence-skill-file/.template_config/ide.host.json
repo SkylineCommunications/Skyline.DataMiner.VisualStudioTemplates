@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json.schemastore.org/vs-2017.3.host",
+  "order": 0,
+  "symbolInfo": [
+    {
+      "id": "SkillName",
+      "name": {
+        "text": "Name"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "version",
+      "name": {
+        "text": "Version"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "SchemaVersion",
+      "name": {
+        "text": "Schema Version"
+      },
+      "isVisible": true
+    }
+  ],
+  "defaultItemExtension": "md",
+  "itemHierarchyPaths": [ "DataMiner\\Intelligence" ]
+}
