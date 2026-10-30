@@ -4,7 +4,7 @@ This repository contains DataMiner templates that can be used with Visual Studio
 
 ## Available templates
 
-The following section lists the currently available Visual Studio templates.
+The following section lists the currently available templates.
 
 ### Connector solution
 
@@ -55,6 +55,42 @@ Creates a Python based connector script project.
 Language: Python
 
 Short name: `dataminer-connector-script`
+
+### Intelligence project
+
+Template that creates a new DataMiner Intelligence project.
+
+Short name: `dataminer-intelligence-project`
+
+### Intelligence agent file
+
+Template that creates a new DataMiner Intelligence agent file.
+
+Short name: `dataminer-intelligence-agent-file`
+
+### Intelligence data source file
+
+Template that creates a new DataMiner Intelligence data source file.
+
+Short name: `dataminer-intelligence-data-source-file`
+
+### Intelligence DOM file
+
+Template that creates a new DataMiner Intelligence DOM file.
+
+Short name: `dataminer-intelligence-dom-file`
+
+### Intelligence script file
+
+Template that creates a new DataMiner Intelligence script file.
+
+Short name: `dataminer-intelligence-script-file`
+
+### Intelligence skill file
+
+Template that creates a new DataMiner Intelligence skill file.
+
+Short name: `dataminer-intelligence-skill-file`
 
 ## How to install
 
