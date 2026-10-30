@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [
+    "DataMiner"
+  ],
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "identity": "Skyline.DataMiner.Intelligence.Agent.File.Template",
+  "name": "DataMiner Intelligence Agent File",
+  "shortName": "dataminer-intelligence-agent-file",
+  "defaultName": "my-agent",
+  "sourceName": "$name$",
+  "guids": [
+    "d56116a2-b8e2-479c-93c2-731657d1ab2c"
+  ],
+  "symbols": {
+    "SchemaVersion": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "1.0",
+      "description": "The schema version for the intelligence file.",
+      "replaces": "$SCHEMAVERSION$",
+      "choices": [
+        {
+          "choice": "1.0",
+          "description": "Schema version 1.0"
+        }
+      ]
+    },
+    "version": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "1.0.0",
+      "description": "The version of the agent."
+    },
+    "SafeVersion": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "replaces": "$VERSION$",
+      "parameters": {
+        "source": "version",
+        "steps": [
+          {
+            "regex": "[^0-9A-Za-z.+-]+",
+            "replacement": ""
+          },
+          {
+            "regex": "^(?!\\d+\\.\\d+\\.\\d+(?:[-+][0-9A-Za-z.-]+)?$).*$",
+            "replacement": "1.0.0"
+          },
+          {
+            "regex": "^$",
+            "replacement": "1.0.0"
+          }
+        ]
+      }
+    },
+    "description": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$DESCRIPTION$",
+      "description": "A description for the agent."
+    }
+  },
+  "forms": {
+    "invalidChars": {
+      "identifier": "replace",
+      "pattern": "([\\-_\\.\\ ])",
+      "replacement": ""
+    }
+  },
+  "sources": [
+    {
+      "exclude": [
+        ".template_config/**"
+      ]
+    }
+  ]
+}

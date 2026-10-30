@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json.schemastore.org/vs-2017.3.host",
+  "order": 0,
+  "symbolInfo": [
+    {
+      "id": "name",
+      "name": {
+        "text": "Data source name"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "SchemaVersion",
+      "name": {
+        "text": "Schema Version"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "version",
+      "name": {
+        "text": "Version"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "description",
+      "name": {
+        "text": "Description"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "scriptName",
+      "name": {
+        "text": "Script name"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "libraryName",
+      "name": {
+        "text": "Library name"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "typeFullName",
+      "name": {
+        "text": "Type full name"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "typeName",
+      "name": {
+        "text": "Type name"
+      },
+      "isVisible": true
+    }
+  ],
+  "defaultItemExtension": "md",
+  "itemHierarchyPaths": [ "DataMiner\\Intelligence" ]
+}

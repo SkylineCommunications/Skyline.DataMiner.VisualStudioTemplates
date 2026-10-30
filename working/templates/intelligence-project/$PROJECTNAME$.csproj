@@ -1,0 +1,13 @@
+<Project Sdk="Skyline.DataMiner.Sdk.Intelligence">
+    <PropertyGroup>
+        <DataMinerType>Intelligence</DataMinerType>
+        <GenerateDataMinerPackage>$CREATEPACKAGE$</GenerateDataMinerPackage>
+        <MinimumRequiredDmVersion>10.6.11.0 - 17692</MinimumRequiredDmVersion>
+        <Version>1.0.0</Version>
+        <VersionComment>Initial Version</VersionComment>
+    <!--#if (CreateDataMinerPackage)-->
+        <!-- Do NOT fill in the Organization Token here. This points to either an Environment Variable skyline__sdk__dataminertoken holding the organization token or a Visual Studio User Secret holding the token. -->
+        <CatalogPublishKeyName>skyline:sdk:dataminertoken</CatalogPublishKeyName>
+    <!--#endif-->
+    </PropertyGroup>
+</Project>

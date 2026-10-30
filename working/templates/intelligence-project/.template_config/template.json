@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [
+    "DataMiner"
+  ],
+  "tags": {
+    "language": "Markdown",
+    "type": "project"
+  },
+  "identity": "Skyline.DataMiner.Intelligence.Project.Template",
+  "name": "DataMiner Intelligence Project",
+  "shortName": "dataminer-intelligence-project",
+  "defaultName": "MyIntelligenceProject",
+  "sourceName": "$PROJECTNAME$",
+  "symbols": {
+    "ProjectName": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "MyIntelligenceProject",
+      "replaces": "$PROJECTNAME$"
+    },
+    "SchemaVersion": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "1.0",
+      "description": "The schema version for the intelligence files.",
+      "replaces": "$SCHEMAVERSION$",
+      "choices": [
+        {
+          "choice": "1.0",
+          "description": "Schema version 1.0"
+        }
+      ]
+    },
+    "CreateDataMinerPackage": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Enables this project to generate a .dmapp and optionally publish to the online catalog as a stand-alone item. For multi-artifact packages please leave this empty and use an additional DataMiner Package Project.",
+      "defaultValue": "false",
+      "replaces": "$CREATEPACKAGE$"
+    },
+    "IncludeGitHubWorkflow": {
+      "type": "parameter",
+      "datatype": "choice",
+      "description": "Add/Overwrite a GitHub Workflow: Demo (build, test, publish), Build (build and test only) or Complete (Skyline Quality Gate). Warning: When a new project is added to an existing solution or when dotnet-cli is used, workflow files will always be added to the parent folder of your OUTPUT_DIRECTORY.",
+      "choices": [
+        {
+          "choice": "None",
+          "description": "None"
+        },
+        {
+          "choice": "Demo",
+          "description": "Demo (build, test, publish)"
+        },
+        {
+          "choice": "Build",
+          "description": "Build (build and test only)"
+        },
+        {
+          "choice": "Complete",
+          "description": "Complete (Skyline Quality Gate)"
+        }
+      ]
+    },
+    "HostIdentifier": {
+      "type": "bind",
+      "binding": "host:HostIdentifier"
+    },
+    "CreatingNewVSSolution": {
+      "type": "bind",
+      "binding": "context:isexclusive"
+    },
+    "WillCreateSolutionOneLevelHigher": {
+      "type": "bind",
+      "binding": "context:createsolutiondirectory"
+    },
+    "PlaceSolutionFilesHigh": {
+      "type": "computed",
+      "value": "(WillCreateSolutionOneLevelHigher && CreatingNewVSSolution) || !CreatingNewVSSolution"
+    }
+  },
+  "sources": [
+    {
+      "exclude": [
+        ".template_config/**"
+      ]
+    },
+    {
+      "source": "../SharedItems/OnSolutionLevel",
+      "target": "../",
+      "condition": "(HostIdentifier == dotnetcli || HostIdentifier == dis || PlaceSolutionFilesHigh)"
+    },
+    {
+      "source": "../SharedItems/OnSolutionLevel",
+      "target": "./",
+      "condition": "!(HostIdentifier == dotnetcli) && !(HostIdentifier == dis) && !PlaceSolutionFilesHigh"
+    },
+    {
+      "source": "../SharedItems/CatalogInformation",
+      "target": "CatalogInformation",
+      "condition": "CreateDataMinerPackage"
+    },
+    {
+      "source": "../SharedItems/Properties",
+      "target": "Properties",
+      "condition": "CreateDataMinerPackage"
+    },
+    {
+      "source": "../SharedItems/.github",
+      "target": "../.github/",
+      "exclude": [
+        "**"
+      ],
+      "condition": "!(IncludeGitHubWorkflow == None) && (HostIdentifier == dotnetcli || PlaceSolutionFilesHigh)",
+      "modifiers": [
+        {
+          "condition": "IncludeGitHubWorkflow == Demo",
+          "include": [
+            "workflows/demo.yml",
+            "dependabot.yml"
+          ]
+        },
+        {
+          "condition": "IncludeGitHubWorkflow == Build",
+          "include": [
+            "workflows/build.yml",
+            "dependabot.yml"
+          ]
+        },
+        {
+          "condition": "IncludeGitHubWorkflow == Complete",
+          "include": [
+            "workflows/complete.yml",
+            "dependabot.yml"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "../SharedItems/.github",
+      "target": ".github/",
+      "exclude": [
+        "**"
+      ],
+      "condition": "!(IncludeGitHubWorkflow == None) && !(HostIdentifier == dotnetcli) && !PlaceSolutionFilesHigh",
+      "modifiers": [
+        {
+          "condition": "IncludeGitHubWorkflow == Demo",
+          "include": [
+            "workflows/demo.yml",
+            "dependabot.yml"
+          ]
+        },
+        {
+          "condition": "IncludeGitHubWorkflow == Build",
+          "include": [
+            "workflows/build.yml",
+            "dependabot.yml"
+          ]
+        },
+        {
+          "condition": "IncludeGitHubWorkflow == Complete",
+          "include": [
+            "workflows/complete.yml",
+            "dependabot.yml"
+          ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "path": "GettingStarted.md"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "description": "Opens GettingStarted.md in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    }
+  ]
+}

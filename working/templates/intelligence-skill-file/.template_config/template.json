@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [
+    "DataMiner"
+  ],
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "identity": "Skyline.DataMiner.Intelligence.Skill.File.Template",
+  "name": "DataMiner Intelligence Skill File",
+  "shortName": "dataminer-intelligence-skill-file",
+  "defaultName": "my-skill",
+  "sourceName": "$name$",
+  "symbols": {
+    "SchemaVersion": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "1.0",
+      "description": "The schema version for the intelligence file.",
+      "replaces": "$SCHEMAVERSION$",
+      "choices": [
+        {
+          "choice": "1.0",
+          "description": "Schema version 1.0"
+        }
+      ]
+    },
+    "SafeSkillName": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "parameters": {
+        "source": "name",
+        "steps": [
+          {
+            "regex": "[^a-zA-Z0-9-]+",
+            "replacement": ""
+          },
+          {
+            "regex": "^$",
+            "replacement": "my-skill"
+          }
+        ]
+      }
+    },
+    "SkillName": {
+      "type": "generated",
+      "generator": "casing",
+      "dataType": "string",
+      "replaces": "$SKILLNAME$",
+      "parameters": {
+        "source": "SafeSkillName",
+        "toLower": true
+      }
+    },
+    "version": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "1.0.0",
+      "description": "The version of the skill."
+    },
+    "SafeVersion": {
+      "type": "generated",
+      "generator": "regex",
+      "dataType": "string",
+      "replaces": "$VERSION$",
+      "parameters": {
+        "source": "version",
+        "steps": [
+          {
+            "regex": "[^0-9A-Za-z.+-]+",
+            "replacement": ""
+          },
+          {
+            "regex": "^(?!\\d+\\.\\d+\\.\\d+(?:[-+][0-9A-Za-z.-]+)?$).*$",
+            "replacement": "1.0.0"
+          },
+          {
+            "regex": "^$",
+            "replacement": "1.0.0"
+          }
+        ]
+      }
+    },
+    "description": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "",
+      "replaces": "$DESCRIPTION$",
+      "description": "A required description for the skill."
+    }
+  },
+  "sources": [
+    {
+      "exclude": [
+        ".template_config/**"
+      ]
+    }
+  ]
+}
