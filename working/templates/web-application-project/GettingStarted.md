@@ -26,6 +26,6 @@ A web application doesn't produce its own DataMiner package. To deploy it, inclu
 
 When the package project is built, the web application is built as well. Its output folder (`dist`, as configured by the `BuildOutputFolder` property) is zipped together with `App.info.json` and added to the generated `.dmapp` package. The web application is imported when the package is installed on a DataMiner System.
 
-To zip another folder, set the `DataMinerWebApplicationOutputPath` property in the `.esproj` file.
+To zip another folder, change the `BuildOutputFolder` property in the `.esproj` file.
 
 For more information, visit [DataMiner Docs](https://docs.dataminer.services/).
