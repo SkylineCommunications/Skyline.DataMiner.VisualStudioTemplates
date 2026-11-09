@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.7173973">
+	<PropertyGroup>
+		<DataMinerType>WebApplication</DataMinerType>
+		<StartupCommand>npm run dev</StartupCommand>
+		<BuildCommand>npm run build</BuildCommand>
+		<ShouldRunNpmInstall>true</ShouldRunNpmInstall>
+		<!-- Folder holding the build output. This folder is zipped together with App.info.json when the project is included in a DataMiner package project. -->
+		<BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
+	</PropertyGroup>
+</Project>
