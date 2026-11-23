@@ -3,13 +3,6 @@
   "order": 0,
   "symbolInfo": [
     {
-      "id": "SchemaVersion",
-      "name": {
-        "text": "Schema Version"
-      },
-      "isVisible": true
-    },
-    {
       "id": "CreateDataMinerPackage",
       "name": {
         "text": "Create DataMiner Package"
