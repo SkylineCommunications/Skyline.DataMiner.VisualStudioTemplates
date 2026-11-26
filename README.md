@@ -68,8 +68,6 @@ Short name: `dataminer-connector-script`
 
 Template that creates a new DataMiner Intelligence project.
 
-Its solution-level `global.json` specifies version 2.8.0 of both the DataMiner SDK and the DataMiner Intelligence SDK.
-
 Short name: `dataminer-intelligence-project`
 
 ### Intelligence agent file
