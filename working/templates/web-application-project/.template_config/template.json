@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Skyline Communications",
+  "classifications": [
+    "DataMiner",
+    "Web"
+  ],
+  "tags": {
+    "language": "JavaScript",
+    "type": "project"
+  },
+  "identity": "Skyline.DataMiner.WebApplication.Project.Template",
+  "name": "DataMiner Web Application Project",
+  "shortName": "dataminer-web-application-project",
+  "defaultName": "MyWebApplication",
+  "sourceName": "$PROJECTNAME$",
+  "guids": [
+    "e2eb0f70-5282-4fc7-85d2-04decab3d6a7"
+  ],
+  "symbols": {
+    "HostIdentifier": {
+      "type": "bind",
+      "binding": "host:HostIdentifier"
+    }
+  },
+  "sources": [
+    {
+      "exclude": [
+        ".template_config/**"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "path": "GettingStarted.md"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\")",
+      "description": "Opens GettingStarted.md in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    }
+  ]
+}

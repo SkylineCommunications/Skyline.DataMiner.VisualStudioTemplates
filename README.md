@@ -48,6 +48,14 @@ Template that creates a new DataMiner test package Visual Studio project.
 
 Short name: `dataminer-test-package-project`
 
+### Web application project
+
+Template that creates a new DataMiner web application project (`.esproj`): a static web site that fully runs in the browser, with an `App.info.json` manifest. Include it in a package project to deploy it.
+
+Language: JavaScript
+
+Short name: `dataminer-web-application-project`
+
 ### Scripted connector project
 
 Creates a Python based connector script project.
